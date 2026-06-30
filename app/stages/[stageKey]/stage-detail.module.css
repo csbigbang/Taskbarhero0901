@@ -1,0 +1,210 @@
+.wrap {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+}
+
+.back {
+  color: #ffdf4a;
+  text-decoration: none;
+  font-family: var(--font-pixel), monospace;
+  font-size: 11px;
+}
+
+.hero,
+.panel,
+.metrics div {
+  border: 3px solid #43546f;
+  background: linear-gradient(180deg, rgba(18,21,27,.98), rgba(8,12,18,.98));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 6px 6px 0 rgba(0,0,0,.45);
+}
+
+.hero {
+  min-height: 170px;
+  padding: 28px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  background:
+    linear-gradient(180deg, rgba(102, 18, 20, .72) 0 34%, rgba(14, 18, 25, .98) 34% 100%);
+}
+
+.kicker {
+  color: #ffdf4a;
+  font-family: var(--font-pixel), monospace;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.hero h1 {
+  margin: 12px 0 8px;
+  color: #fff4c8;
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: .95;
+  text-shadow: 4px 4px 0 #000;
+}
+
+.hero p {
+  color: #d8e4ff;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.button {
+  color: #fff4c8;
+  border: 2px solid #ffdf4a;
+  background: linear-gradient(180deg, #6b4109, #171006);
+  padding: 12px 16px;
+  text-decoration: none;
+  font-family: var(--font-pixel), monospace;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metrics div {
+  padding: 18px;
+}
+
+.metrics span {
+  display: block;
+  color: #9fb0cd;
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.metrics strong {
+  color: #fff4c8;
+  font-size: 28px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  padding: 22px;
+}
+
+.panel h2 {
+  color: #ffdf4a;
+  font-family: var(--font-pixel), monospace;
+  font-size: 13px;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.monsters {
+  display: grid;
+  gap: 10px;
+}
+
+.monsterCard {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid #43546f;
+  background: rgba(4, 8, 16, .62);
+  padding: 10px;
+}
+
+.monsterCard:hover,
+.lootRow:hover {
+  border-color: #ffdf4a;
+  background: rgba(255, 223, 74, .06);
+}
+
+.monsterCard img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  background: radial-gradient(circle, rgba(255,255,255,.12), rgba(0,0,0,.6));
+  border: 2px solid #43546f;
+}
+
+.monsterCard strong {
+  display: block;
+  color: #fff4c8;
+}
+
+.monsterCard span {
+  color: #9fb0cd;
+  font-size: 12px;
+}
+
+.loot {
+  display: grid;
+  border: 2px solid #43546f;
+}
+
+.lootRow {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  padding: 13px;
+  border-top: 1px solid rgba(120,139,170,.28);
+}
+
+.lootRow:first-child {
+  border-top: 0;
+}
+
+.lootRow > span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #43546f;
+  color: #ffdf4a;
+}
+
+.lootRow strong {
+  display: block;
+  color: #fff4c8;
+}
+
+.lootRow small {
+  display: block;
+  color: #9fb0cd;
+  margin-top: 4px;
+}
+
+.lootRow em {
+  color: #ffdf4a;
+  font-style: normal;
+  font-size: 12px;
+}
+
+.empty {
+  color: #cdd9f3;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metrics,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

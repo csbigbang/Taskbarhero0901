@@ -1,0 +1,333 @@
+.databaseShell {
+  width: min(1280px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 60px;
+  color: #fff6d4;
+}
+
+.heroPanel,
+.searchPanel,
+.localPanel,
+.sectionHeader,
+.nextPanel {
+  border: 3px solid #3c4f6b;
+  background:
+    linear-gradient(180deg, rgba(7, 14, 25, .94), rgba(5, 10, 18, .96)),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 24px);
+  box-shadow: 0 0 0 3px rgba(0,0,0,.65), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.heroPanel {
+  display: grid;
+  grid-template-columns: 1.4fr .9fr;
+  gap: 24px;
+  align-items: flex-end;
+  padding: 34px;
+  border-top: 58px solid rgba(116, 19, 21, .78);
+  position: relative;
+}
+
+.kicker {
+  margin: 0 0 10px;
+  color: #ffe05a;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.heroPanel h1,
+.sectionHeader h2,
+.nextPanel h2 {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 70px);
+  line-height: .95;
+  color: #fff6c9;
+  text-shadow: 4px 4px 0 #000, 0 3px 0 #a87a22;
+  letter-spacing: .02em;
+}
+
+.heroPanel p,
+.nextPanel p {
+  max-width: 860px;
+  color: #f4ead0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.heroStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.heroStats article,
+.localPanel article {
+  border: 2px solid #415674;
+  background: rgba(3, 8, 15, .88);
+  padding: 18px;
+  min-height: 88px;
+}
+
+.heroStats strong,
+.localPanel strong {
+  display: block;
+  color: #ffe05a;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.heroStats span,
+.localPanel span {
+  display: block;
+  margin-top: 8px;
+  color: #d7e6ff;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.searchPanel {
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.searchForm {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+}
+
+.searchForm input {
+  min-height: 52px;
+  border: 2px solid #49617f;
+  background: rgba(2, 8, 15, .9);
+  color: #fff6d4;
+  padding: 0 16px;
+  font: inherit;
+}
+
+.searchForm button,
+.searchForm a,
+.categoryTabs a,
+.actions a,
+.nextPanel a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 2px solid #556d8d;
+  background: linear-gradient(180deg, #152235, #07111f);
+  color: #fff6d4;
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 3px 3px 0 rgba(0,0,0,.7);
+  cursor: pointer;
+}
+
+.searchForm button,
+.categoryTabs .activeTab,
+.actions a:first-child,
+.nextPanel a {
+  border-color: #ffe05a;
+  background: linear-gradient(180deg, #5f3b09, #140c03);
+  color: #ffe9a0;
+}
+
+.categoryTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.localPanel {
+  margin-top: 18px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sectionHeader {
+  margin-top: 18px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.sectionHeader h2,
+.nextPanel h2 {
+  font-size: clamp(28px, 3vw, 44px);
+}
+
+.sectionHeader > span {
+  color: #ffe05a;
+  font-weight: 900;
+}
+
+.datasetGrid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.datasetCard {
+  border: 2px solid #3e536f;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 30, .95), rgba(5, 10, 18, .98)),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 18px);
+  padding: 16px;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.75), inset 0 0 0 1px rgba(255,255,255,.035);
+  transition: transform .12s ease, border-color .12s ease, filter .12s ease;
+}
+
+.datasetCard:hover {
+  transform: translateY(-2px);
+  border-color: #ffe05a;
+  filter: brightness(1.08);
+}
+
+.datasetTop {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.iconBox {
+  width: 56px;
+  height: 56px;
+  border: 2px solid #536985;
+  background: radial-gradient(circle, rgba(255,255,255,.08), rgba(0,0,0,.5));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.iconBox img {
+  max-width: 42px;
+  max-height: 42px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.datasetTop span {
+  display: block;
+  color: #ffe05a;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.datasetTop h3 {
+  margin: 4px 0 0;
+  color: #fff6d4;
+  font-size: 20px;
+}
+
+.datasetTop em {
+  border: 1px solid #536985;
+  padding: 4px 8px;
+  font-style: normal;
+  color: #d7e6ff;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.online .datasetTop em { color: #71ff9a; border-color: #2b9c55; }
+.partial .datasetTop em { color: #ffe05a; border-color: #c69521; }
+.planned .datasetTop em { color: #9bb6d9; }
+
+.datasetCard p {
+  min-height: 58px;
+  color: #e9eef8;
+  line-height: 1.55;
+}
+
+.datasetMeta {
+  border-top: 1px solid #40546f;
+  border-bottom: 1px solid #40546f;
+  padding: 12px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.datasetMeta strong {
+  color: #ffe05a;
+  font-size: 26px;
+}
+
+.datasetMeta span {
+  color: #9bb6d9;
+  font-size: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tags span {
+  border: 1px solid #526783;
+  color: #dbe9ff;
+  padding: 4px 8px;
+  font-size: 11px;
+  background: rgba(0,0,0,.35);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.actions a {
+  min-height: 40px;
+  flex: 1;
+}
+
+.nextPanel {
+  margin-top: 18px;
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .heroPanel,
+  .nextPanel {
+    grid-template-columns: 1fr;
+  }
+  .datasetGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .localPanel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .databaseShell {
+    width: min(100% - 20px, 1280px);
+  }
+  .heroPanel {
+    padding: 20px;
+  }
+  .searchForm {
+    grid-template-columns: 1fr;
+  }
+  .datasetGrid,
+  .localPanel,
+  .heroStats {
+    grid-template-columns: 1fr;
+  }
+}

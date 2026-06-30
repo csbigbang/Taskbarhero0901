@@ -1,0 +1,285 @@
+.planner {
+  display: grid;
+  gap: 18px;
+}
+
+.controlPanel {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  color: #ffe7a8;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.field select,
+.field input {
+  min-height: 44px;
+  color: #fff3cf;
+  background: rgba(7, 12, 22, .96);
+  border: 3px solid #53657d;
+  padding: 0 12px;
+  outline: none;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.field select:focus,
+.field input:focus {
+  border-color: #ffd45a;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summaryBox {
+  padding: 14px;
+  color: #dbe7ff;
+  background: linear-gradient(180deg, rgba(12, 19, 31, .97), rgba(7, 11, 19, .97));
+  border: 3px solid #43546b;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.summaryBox strong {
+  display: block;
+  color: #ffd45a;
+  font-size: 23px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+
+.summaryBox span {
+  color: #b8c7db;
+  font-size: 12px;
+}
+
+.toolsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toolButton {
+  min-height: 40px;
+  color: #201200;
+  background: linear-gradient(180deg, #ffe27c, #e59519);
+  border: 3px solid #fff1b6;
+  box-shadow: 4px 4px 0 #000;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.toolButton:hover {
+  filter: brightness(1.08);
+  transform: translate(-1px, -1px);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.buildList,
+.sideList {
+  display: grid;
+  gap: 12px;
+}
+
+.buildCard,
+.sideCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 76px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+  padding: 13px;
+  background: linear-gradient(180deg, rgba(14, 24, 39, .98), rgba(8, 13, 23, .98));
+  border: 3px solid var(--rarity-color, #53657d);
+  box-shadow: 5px 5px 0 #000;
+  overflow: hidden;
+}
+
+.buildCard::before,
+.sideCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: var(--rarity-color, #53657d);
+}
+
+.iconBox {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: #060a11;
+  border: 3px solid #45566d;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.iconBox img {
+  max-width: 52px;
+  max-height: 52px;
+  image-rendering: pixelated;
+}
+
+.cardMain {
+  min-width: 0;
+}
+
+.cardMain h3 {
+  margin: 0 0 5px;
+  color: #fff2c4;
+  font-size: 18px;
+}
+
+.cardMain p {
+  margin: 0;
+  color: #c7d2e1;
+  line-height: 1.45;
+}
+
+.gradeBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  color: #090a0d;
+  background: var(--rarity-color, #a7adb7);
+  border: 2px solid #fff2bc;
+  box-shadow: 3px 3px 0 #000;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.pills span,
+.pills a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  color: #dbe7ff;
+  background: #070c15;
+  border: 2px solid #42536b;
+  box-shadow: 2px 2px 0 #000;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.pills a {
+  color: #ffda6b;
+}
+
+.scoreBar {
+  width: 100%;
+  height: 12px;
+  margin-top: 9px;
+  background: #050812;
+  border: 2px solid #39495e;
+  box-shadow: 2px 2px 0 #000;
+  overflow: hidden;
+}
+
+.scoreBar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #37d67a, #ffd45a, #ff5773);
+}
+
+.sidePanel {
+  padding: 16px;
+  background: rgba(7, 12, 20, .88);
+  border: 3px solid #45566d;
+  box-shadow: 5px 5px 0 #000;
+}
+
+.sidePanel h2 {
+  margin-top: 0;
+}
+
+.tierTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tierTab {
+  color: #e8f2ff;
+  background: #101927;
+  border: 2px solid #506278;
+  box-shadow: 3px 3px 0 #000;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.tierTabActive {
+  color: #201200;
+  background: #ffd45a;
+  border-color: #fff2bc;
+}
+
+.notice {
+  padding: 13px;
+  color: #ffe9ab;
+  background: rgba(61, 30, 8, .82);
+  border: 3px solid #ffd45a;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.smallText {
+  color: #9fb2c9;
+  font-size: 12px;
+}
+
+@media (max-width: 1100px) {
+  .controlPanel,
+  .summaryGrid,
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .controlPanel,
+  .summaryGrid,
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .buildCard,
+  .sideCard {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .gradeBadge {
+    grid-column: 1 / -1;
+    width: fit-content;
+  }
+}

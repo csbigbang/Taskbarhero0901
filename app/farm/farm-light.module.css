@@ -1,0 +1,77 @@
+.heroPanel {
+  position: relative;
+  overflow: hidden;
+}
+
+.heroPanel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(255, 204, 83, 0.16), transparent 28%),
+    radial-gradient(circle at 15% 75%, rgba(75, 177, 255, 0.12), transparent 32%);
+}
+
+.heroPanel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.toolGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.toolCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 178px;
+  text-decoration: none;
+  color: inherit;
+  background:
+    linear-gradient(180deg, rgba(27, 38, 64, 0.94), rgba(11, 18, 32, 0.96));
+  border: 1px solid rgba(255, 214, 115, 0.22);
+  transition: transform 0.12s ease, border-color 0.12s ease, filter 0.12s ease;
+}
+
+.toolCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 214, 115, 0.58);
+  filter: brightness(1.08);
+}
+
+.toolCard h2 {
+  margin: 10px 0 8px;
+  font-size: 1.1rem;
+}
+
+.toolCard p {
+  flex: 1;
+  color: rgba(240, 230, 198, 0.78);
+}
+
+.toolTag {
+  width: max-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #ffe7a3;
+  background: rgba(255, 195, 72, 0.12);
+  border: 1px solid rgba(255, 195, 72, 0.28);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.notePanel p {
+  max-width: 900px;
+}

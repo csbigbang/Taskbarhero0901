@@ -1,0 +1,1418 @@
+{
+  "generatedAt": "2026-06-29T13:04:23.719Z",
+  "mode": "17.7 deterministic no-404 monster frames",
+  "sources": [
+    "C:\\tbh-site\\public\\game-assets",
+    "C:\\imagens-thb\\Assets"
+  ],
+  "totalFilesScanned": 3832,
+  "totalMonsters": 61,
+  "copied": 61,
+  "copiedFrames": 183,
+  "missing": [],
+  "sprites": {
+    "10011": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicSlime_Idle_character.png",
+          "url": "/images/monsters/Monster_10011_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicSlime_Walk_character.png",
+          "url": "/images/monsters/Monster_10011_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\BasicSlime_Attack1_merged.png",
+          "url": "/images/monsters/Monster_10011_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10011.png",
+      "namePt": "Slime",
+      "nameEn": "Slime"
+    },
+    "10021": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicGoblin_Idle_character.png",
+          "url": "/images/monsters/Monster_10021_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicGoblin_Walk_character.png",
+          "url": "/images/monsters/Monster_10021_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicGoblin_Attack1_character.png",
+          "url": "/images/monsters/Monster_10021_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10021.png",
+      "namePt": "Goblin",
+      "nameEn": "Goblin"
+    },
+    "10022": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\AssassinGoblin_Idle_character.png",
+          "url": "/images/monsters/Monster_10022_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\AssassinGoblin_Walk_character.png",
+          "url": "/images/monsters/Monster_10022_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\AssassinGoblin_Attack1_Merged.png",
+          "url": "/images/monsters/Monster_10022_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10022.png",
+      "namePt": "Ladrão goblin",
+      "nameEn": "Goblin Thief"
+    },
+    "10023": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\ShamanGoblin_Idle_character.png",
+          "url": "/images/monsters/Monster_10023_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\ShamanGoblin_Walk_character.png",
+          "url": "/images/monsters/Monster_10023_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\ShamanGoblin_Attack1_character.png",
+          "url": "/images/monsters/Monster_10023_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10023.png",
+      "namePt": "Xamã goblin",
+      "nameEn": "Goblin Shaman"
+    },
+    "10031": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicBat_Idle_character.png",
+          "url": "/images/monsters/Monster_10031_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicBat_Walk_character.png",
+          "url": "/images/monsters/Monster_10031_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicBat_Attack1_character.png",
+          "url": "/images/monsters/Monster_10031_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10031.png",
+      "namePt": "Morcego",
+      "nameEn": "Bat"
+    },
+    "10041": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicOrc_Idle_character.png",
+          "url": "/images/monsters/Monster_10041_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BasicOrc_Walk_character.png",
+          "url": "/images/monsters/Monster_10041_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\BasicOrc_Attack1_merged.png",
+          "url": "/images/monsters/Monster_10041_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10041.png",
+      "namePt": "Orc",
+      "nameEn": "Orc"
+    },
+    "10042": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\items\\ArmoredOrc_Idle_character.png",
+          "url": "/images/monsters/Monster_10042_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\items\\ArmoredOrc_Walk_character.png",
+          "url": "/images/monsters/Monster_10042_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\items\\ArmoredOrc_BaseAttack1_merged.png",
+          "url": "/images/monsters/Monster_10042_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10042.png",
+      "namePt": "Guerreiro orc",
+      "nameEn": "Orc Warrior"
+    },
+    "10043": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\EliteOrc_Idle_character.png",
+          "url": "/images/monsters/Monster_10043_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\EliteOrc_Walk_character.png",
+          "url": "/images/monsters/Monster_10043_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\EliteOrc_Attack1_merged.png",
+          "url": "/images/monsters/Monster_10043_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10043.png",
+      "namePt": "Orc de elite",
+      "nameEn": "Elite Orc"
+    },
+    "10051": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Skeleton_Idle_character.png",
+          "url": "/images/monsters/Monster_10051_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Skeleton_Walk_character.png",
+          "url": "/images/monsters/Monster_10051_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Skeleton_BaseAttack1_merged.png",
+          "url": "/images/monsters/Monster_10051_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10051.png",
+      "namePt": "Esqueleto",
+      "nameEn": "Skeleton"
+    },
+    "10052": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonArcher_Idle_character.png",
+          "url": "/images/monsters/Monster_10052_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonArcher_Walk_character.png",
+          "url": "/images/monsters/Monster_10052_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\SkeletonArcher_BaseAttack1_merged.png",
+          "url": "/images/monsters/Monster_10052_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10052.png",
+      "namePt": "Arqueiro esqueleto",
+      "nameEn": "Skeleton Archer"
+    },
+    "10053": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10053_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Walk_character.png",
+          "url": "/images/monsters/Monster_10053_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\SkeletonKnight_LightAttack_Merged.png",
+          "url": "/images/monsters/Monster_10053_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10053.png",
+      "namePt": "Guerreiro esqueleto",
+      "nameEn": "Skeleton Warrior"
+    },
+    "10901": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10901_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_HeavyAttack_character.png",
+          "url": "/images/monsters/Monster_10901_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10901_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10901.png",
+      "namePt": "Rei esqueleto",
+      "nameEn": "Skeleton King"
+    },
+    "10902": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10902_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_HeavyAttack_character.png",
+          "url": "/images/monsters/Monster_10902_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10902_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10902.png",
+      "namePt": "Rei esqueleto",
+      "nameEn": "Skeleton King"
+    },
+    "10903": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10903_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_HeavyAttack_character.png",
+          "url": "/images/monsters/Monster_10903_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10903_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10903.png",
+      "namePt": "Rei esqueleto",
+      "nameEn": "Skeleton King"
+    },
+    "10904": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10904_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_HeavyAttack_character.png",
+          "url": "/images/monsters/Monster_10904_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SkeletonKnight_Idle_character.png",
+          "url": "/images/monsters/Monster_10904_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_10904.png",
+      "namePt": "Rei esqueleto",
+      "nameEn": "Skeleton King"
+    },
+    "20011": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Scorpion_Idle_character.png",
+          "url": "/images/monsters/Monster_20011_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Scorpion_Walk_character.png",
+          "url": "/images/monsters/Monster_20011_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Scorpion_Attack_character.png",
+          "url": "/images/monsters/Monster_20011_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20011.png",
+      "namePt": "Escorpião",
+      "nameEn": "Scorpion"
+    },
+    "20021": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\WarriorRatRace_Idle_character.png",
+          "url": "/images/monsters/Monster_20021_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\WarriorRatRace_Walk_character.png",
+          "url": "/images/monsters/Monster_20021_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\WarriorRatRace_Attack1_character.png",
+          "url": "/images/monsters/Monster_20021_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20021.png",
+      "namePt": "Guerreiro Ratuno",
+      "nameEn": "Ratfolk Warrior"
+    },
+    "20022": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\RangerRatRace_Idle_character.png",
+          "url": "/images/monsters/Monster_20022_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\RangerRatRace_Walk_character.png",
+          "url": "/images/monsters/Monster_20022_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\RangerRatRace_Attack_character.png",
+          "url": "/images/monsters/Monster_20022_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20022.png",
+      "namePt": "Arqueiro Ratuno",
+      "nameEn": "Ratfolk Archer"
+    },
+    "20023": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\ZombieRatRace_Idle_character.png",
+          "url": "/images/monsters/Monster_20023_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\ZombieRatRace_Walk_character.png",
+          "url": "/images/monsters/Monster_20023_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\ZombieRatRace_Attack1_character.png",
+          "url": "/images/monsters/Monster_20023_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20023.png",
+      "namePt": "Rato da Peste",
+      "nameEn": "Plague Rat"
+    },
+    "20024": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BerserkerRatRace_Idle_character.png",
+          "url": "/images/monsters/Monster_20024_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BerserkerRatRace_Walk_character.png",
+          "url": "/images/monsters/Monster_20024_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BerserkerRatRace_Attack1_character.png",
+          "url": "/images/monsters/Monster_20024_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20024.png",
+      "namePt": "Berserker Ratuno",
+      "nameEn": "Ratfolk Berserker"
+    },
+    "20031": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Cobra_Idle_character.png",
+          "url": "/images/monsters/Monster_20031_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Cobra_Walk_character.png",
+          "url": "/images/monsters/Monster_20031_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Cobra_Attack_character.png",
+          "url": "/images/monsters/Monster_20031_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20031.png",
+      "namePt": "Cobra",
+      "nameEn": "Cobra"
+    },
+    "20041": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\PoisonInsect_Idle_character.png",
+          "url": "/images/monsters/Monster_20041_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\PoisonInsect_Walk_character.png",
+          "url": "/images/monsters/Monster_20041_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\PoisonInsect_Attack_character.png",
+          "url": "/images/monsters/Monster_20041_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20041.png",
+      "namePt": "Inseto Venenoso",
+      "nameEn": "Venom Insect"
+    },
+    "20042": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\RedExplosionInsect_Idle_character.png",
+          "url": "/images/monsters/Monster_20042_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\RedExplosionInsect_Walk_character.png",
+          "url": "/images/monsters/Monster_20042_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\RedExplosionInsect_Attack_character.png",
+          "url": "/images/monsters/Monster_20042_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20042.png",
+      "namePt": "Senhor do Veneno",
+      "nameEn": "Venom Lord"
+    },
+    "20051": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\GiantFly_Idle_character.png",
+          "url": "/images/monsters/Monster_20051_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\GiantFly_Walk_character.png",
+          "url": "/images/monsters/Monster_20051_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\GiantFly_Attack_character.png",
+          "url": "/images/monsters/Monster_20051_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20051.png",
+      "namePt": "Mosca Gigante",
+      "nameEn": "Giant Fly"
+    },
+    "20061": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SpearKobolt_Idle_character.png",
+          "url": "/images/monsters/Monster_20061_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SpearKobolt_Walk_character.png",
+          "url": "/images/monsters/Monster_20061_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SpearKobolt_Attack_character.png",
+          "url": "/images/monsters/Monster_20061_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20061.png",
+      "namePt": "Guarda Kobold",
+      "nameEn": "Kobold Guard"
+    },
+    "20062": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SlingerKobolt_Idle_character.png",
+          "url": "/images/monsters/Monster_20062_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SlingerKobolt_Walk_character.png",
+          "url": "/images/monsters/Monster_20062_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SlingerKobolt_Attack_character.png",
+          "url": "/images/monsters/Monster_20062_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20062.png",
+      "namePt": "Fundeiro Kobold",
+      "nameEn": "Kobold Slinger"
+    },
+    "20071": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Homunculus_Idle_character.png",
+          "url": "/images/monsters/Monster_20071_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Homunculus_Walk_character.png",
+          "url": "/images/monsters/Monster_20071_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Homunculus_Attack_character.png",
+          "url": "/images/monsters/Monster_20071_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20071.png",
+      "namePt": "Homúnculo",
+      "nameEn": "Homunculus"
+    },
+    "20081": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Ghoul_Idle_character.png",
+          "url": "/images/monsters/Monster_20081_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Ghoul_Walk_character.png",
+          "url": "/images/monsters/Monster_20081_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Ghoul_Attack_character.png",
+          "url": "/images/monsters/Monster_20081_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20081.png",
+      "namePt": "Ghoul",
+      "nameEn": "Ghoul"
+    },
+    "20091": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireElemental_Idle_character.png",
+          "url": "/images/monsters/Monster_20091_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireElemental_Walk_character.png",
+          "url": "/images/monsters/Monster_20091_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireElemental_Attack_character.png",
+          "url": "/images/monsters/Monster_20091_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20091.png",
+      "namePt": "Elemental de Fogo",
+      "nameEn": "Fire Elemental"
+    },
+    "20111": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SmallMummy_Idle_character.png",
+          "url": "/images/monsters/Monster_20111_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SmallMummy_Walk_character.png",
+          "url": "/images/monsters/Monster_20111_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\SmallMummy_Attack_character.png",
+          "url": "/images/monsters/Monster_20111_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20111.png",
+      "namePt": "Múmia",
+      "nameEn": "Mummy"
+    },
+    "20121": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\GiantTick_Idle_character.png",
+          "url": "/images/monsters/Monster_20121_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\GiantTick_Walk_character.png",
+          "url": "/images/monsters/Monster_20121_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\GiantTick_Attack1_character.png",
+          "url": "/images/monsters/Monster_20121_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20121.png",
+      "namePt": "Carrapato",
+      "nameEn": "Tick"
+    },
+    "20901": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Idle_Character.png",
+          "url": "/images/monsters/Monster_20901_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Walk_Character.png",
+          "url": "/images/monsters/Monster_20901_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_leftStrike_character.png",
+          "url": "/images/monsters/Monster_20901_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20901.png",
+      "namePt": "Senhor do Deserto",
+      "nameEn": "Desert Overlord"
+    },
+    "20902": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Idle_Character.png",
+          "url": "/images/monsters/Monster_20902_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Walk_Character.png",
+          "url": "/images/monsters/Monster_20902_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_rightStrike_character.png",
+          "url": "/images/monsters/Monster_20902_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20902.png",
+      "namePt": "Senhor do Deserto",
+      "nameEn": "Desert Overlord"
+    },
+    "20903": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Idle_Character.png",
+          "url": "/images/monsters/Monster_20903_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Walk_Character.png",
+          "url": "/images/monsters/Monster_20903_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\imagens-thb\\Assets\\Texture2D\\Sibuna_DashAttack_Merged.png",
+          "url": "/images/monsters/Monster_20903_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20903.png",
+      "namePt": "Senhor do Deserto",
+      "nameEn": "Desert Overlord"
+    },
+    "20904": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Idle_Character.png",
+          "url": "/images/monsters/Monster_20904_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Sibuna_Walk_Character.png",
+          "url": "/images/monsters/Monster_20904_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\imagens-thb\\Assets\\Texture2D\\Sibuna_HowlAttack_Merged.png",
+          "url": "/images/monsters/Monster_20904_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_20904.png",
+      "namePt": "Senhor do Deserto",
+      "nameEn": "Desert Overlord"
+    },
+    "30011": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Gremlin_Idle_character.png",
+          "url": "/images/monsters/Monster_30011_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Gremlin_Walk_character.png",
+          "url": "/images/monsters/Monster_30011_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Gremlin_Attack_character.png",
+          "url": "/images/monsters/Monster_30011_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30011.png",
+      "namePt": "Gremlin",
+      "nameEn": "Gremlin"
+    },
+    "30012": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Geonid_Idle_character.png",
+          "url": "/images/monsters/Monster_30012_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Geonid_Walk_character.png",
+          "url": "/images/monsters/Monster_30012_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Geonid_Attack_character.png",
+          "url": "/images/monsters/Monster_30012_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30012.png",
+      "namePt": "Geônide",
+      "nameEn": "Geonid"
+    },
+    "30013": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\AngelicHelm_Idle_character.png",
+          "url": "/images/monsters/Monster_30013_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\AngelicHelm_Walk_character.png",
+          "url": "/images/monsters/Monster_30013_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\AngelicHelm_Attack_character.png",
+          "url": "/images/monsters/Monster_30013_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30013.png",
+      "namePt": "Elmo do Anjo Caído",
+      "nameEn": "Fallen Angel's Helm"
+    },
+    "30021": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Yeti_Idle_character.png",
+          "url": "/images/monsters/Monster_30021_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Yeti_Walk_character.png",
+          "url": "/images/monsters/Monster_30021_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Yeti_Attack1_character.png",
+          "url": "/images/monsters/Monster_30021_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30021.png",
+      "namePt": "Yeti",
+      "nameEn": "Yeti"
+    },
+    "30031": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\DragonHatchling_Idle_character.png",
+          "url": "/images/monsters/Monster_30031_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\DragonHatchling_Walk_character.png",
+          "url": "/images/monsters/Monster_30031_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\DragonHatchling_Attack_character.png",
+          "url": "/images/monsters/Monster_30031_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30031.png",
+      "namePt": "Filhote de Dragão",
+      "nameEn": "Dragon Hatchling"
+    },
+    "30041": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenWarrior_Idle_character.png",
+          "url": "/images/monsters/Monster_30041_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenWarrior_Walk_character.png",
+          "url": "/images/monsters/Monster_30041_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenWarrior_Attack_character.png",
+          "url": "/images/monsters/Monster_30041_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30041.png",
+      "namePt": "Guerreiro da Montanha Nevada",
+      "nameEn": "Snow Mountain Warrior"
+    },
+    "30042": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenArcher_Idle_character.png",
+          "url": "/images/monsters/Monster_30042_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenArcher_Walk_character.png",
+          "url": "/images/monsters/Monster_30042_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenArcher_Attack1_character.png",
+          "url": "/images/monsters/Monster_30042_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30042.png",
+      "namePt": "Arqueiro da Montanha Nevada",
+      "nameEn": "Snow Mountain Archer"
+    },
+    "30043": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenSpearman_Idle_character.png",
+          "url": "/images/monsters/Monster_30043_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenSpearman_Walk_character.png",
+          "url": "/images/monsters/Monster_30043_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenSpearman_Attack1_character.png",
+          "url": "/images/monsters/Monster_30043_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30043.png",
+      "namePt": "Guarda da Montanha Nevada",
+      "nameEn": "Snow Mountain Guard"
+    },
+    "30044": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenWizard_Idle_character.png",
+          "url": "/images/monsters/Monster_30044_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenWizard_Walk_character.png",
+          "url": "/images/monsters/Monster_30044_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FrozenWizard_Attack1_character.png",
+          "url": "/images/monsters/Monster_30044_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30044.png",
+      "namePt": "Mago da Montanha Nevada",
+      "nameEn": "Snow Mountain Mage"
+    },
+    "30051": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Ghost_Idle_character.png",
+          "url": "/images/monsters/Monster_30051_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Ghost_Walk_character.png",
+          "url": "/images/monsters/Monster_30051_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Ghost_Attack_character.png",
+          "url": "/images/monsters/Monster_30051_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30051.png",
+      "namePt": "Fantasma",
+      "nameEn": "Ghost"
+    },
+    "30061": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\MagmaHuman_Idle_character.png",
+          "url": "/images/monsters/Monster_30061_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\MagmaHuman_Walk_character.png",
+          "url": "/images/monsters/Monster_30061_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\MagmaHuman_Attack_character.png",
+          "url": "/images/monsters/Monster_30061_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30061.png",
+      "namePt": "Ser de Lava",
+      "nameEn": "Lava Being"
+    },
+    "30071": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BloodBender_Idle_character.png",
+          "url": "/images/monsters/Monster_30071_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BloodBender_Walk_character.png",
+          "url": "/images/monsters/Monster_30071_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\BloodBender_Attack1_character.png",
+          "url": "/images/monsters/Monster_30071_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30071.png",
+      "namePt": "Sacerdote de Sangue",
+      "nameEn": "Blood Priest"
+    },
+    "30081": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireImp_Idle_character.png",
+          "url": "/images/monsters/Monster_30081_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireImp_Walk_character.png",
+          "url": "/images/monsters/Monster_30081_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireImp_Attack1_character.png",
+          "url": "/images/monsters/Monster_30081_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30081.png",
+      "namePt": "Soldado Demônio",
+      "nameEn": "Demon Soldier"
+    },
+    "30082": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireDemonTormentor_Idle_character.png",
+          "url": "/images/monsters/Monster_30082_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireDemonTormentor_Walk_character.png",
+          "url": "/images/monsters/Monster_30082_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireDemonTormentor_Attack1_character.png",
+          "url": "/images/monsters/Monster_30082_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30082.png",
+      "namePt": "Comandante de Legião Demônio",
+      "nameEn": "Demon Legion Commander"
+    },
+    "30083": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireDemoness_Idle_character.png",
+          "url": "/images/monsters/Monster_30083_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireDemoness_Walk_character.png",
+          "url": "/images/monsters/Monster_30083_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireDemoness_Attack1_character.png",
+          "url": "/images/monsters/Monster_30083_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30083.png",
+      "namePt": "Tropa de Choque Demônio",
+      "nameEn": "Demon Shocktrooper"
+    },
+    "30084": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FirePiglet_Idle_character.png",
+          "url": "/images/monsters/Monster_30084_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FirePiglet_Walk_character.png",
+          "url": "/images/monsters/Monster_30084_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FirePiglet_Attack_character.png",
+          "url": "/images/monsters/Monster_30084_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30084.png",
+      "namePt": "Leitão Ardente",
+      "nameEn": "Burning Piglet"
+    },
+    "30091": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireGolem_Idle_character.png",
+          "url": "/images/monsters/Monster_30091_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireGolem_Walk_character.png",
+          "url": "/images/monsters/Monster_30091_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\FireGolem_Attack1_character.png",
+          "url": "/images/monsters/Monster_30091_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30091.png",
+      "namePt": "Golem do Inferno",
+      "nameEn": "Hell Golem"
+    },
+    "30101": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Idle_character.png",
+          "url": "/images/monsters/Monster_30101_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Walk_character.png",
+          "url": "/images/monsters/Monster_30101_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_ChaosAttack1_character.png",
+          "url": "/images/monsters/Monster_30101_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30101.png",
+      "namePt": "Sacerdote do Inferno Ardente",
+      "nameEn": "Burning Hell Priest"
+    },
+    "30102": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Idle_character.png",
+          "url": "/images/monsters/Monster_30102_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Walk_character.png",
+          "url": "/images/monsters/Monster_30102_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_ChaosAttack1_character.png",
+          "url": "/images/monsters/Monster_30102_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30102.png",
+      "namePt": "Sacerdote do Inferno Congelante",
+      "nameEn": "Frozen Hell Priest"
+    },
+    "30103": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Idle_character.png",
+          "url": "/images/monsters/Monster_30103_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Walk_character.png",
+          "url": "/images/monsters/Monster_30103_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_ChaosAttack1_character.png",
+          "url": "/images/monsters/Monster_30103_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30103.png",
+      "namePt": "Sacerdote do Inferno Elétrico",
+      "nameEn": "Electric Hell Priest"
+    },
+    "30104": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Idle_character.png",
+          "url": "/images/monsters/Monster_30104_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_Walk_character.png",
+          "url": "/images/monsters/Monster_30104_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\Lich_ChaosAttack1_character.png",
+          "url": "/images/monsters/Monster_30104_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30104.png",
+      "namePt": "Sacerdote do Inferno do Caos",
+      "nameEn": "Chaos Hell Priest"
+    },
+    "30111": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\UndeadHand_Idle_character.png",
+          "url": "/images/monsters/Monster_30111_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\UndeadHand_Walk_character.png",
+          "url": "/images/monsters/Monster_30111_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\heroes\\UndeadHand_Attack_character.png",
+          "url": "/images/monsters/Monster_30111_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30111.png",
+      "namePt": "Dedo da Morte",
+      "nameEn": "Finger of Death"
+    },
+    "30901": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Idle_Full.png",
+          "url": "/images/monsters/Monster_30901_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Walk_Full.png",
+          "url": "/images/monsters/Monster_30901_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Landing_merged.png",
+          "url": "/images/monsters/Monster_30901_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30901.png",
+      "namePt": "Arconte Morkar",
+      "nameEn": "Archon Morkar"
+    },
+    "30902": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Idle_Full.png",
+          "url": "/images/monsters/Monster_30902_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Walk_Full.png",
+          "url": "/images/monsters/Monster_30902_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Landing_merged.png",
+          "url": "/images/monsters/Monster_30902_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30902.png",
+      "namePt": "Arconte Morkar",
+      "nameEn": "Archon Morkar"
+    },
+    "30903": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Idle_Full.png",
+          "url": "/images/monsters/Monster_30903_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Walk_Full.png",
+          "url": "/images/monsters/Monster_30903_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Landing_merged.png",
+          "url": "/images/monsters/Monster_30903_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30903.png",
+      "namePt": "Arconte Morkar",
+      "nameEn": "Archon Morkar"
+    },
+    "30904": {
+      "copied": true,
+      "frames": [
+        {
+          "frame": "idle",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Idle_Full.png",
+          "url": "/images/monsters/Monster_30904_idle.png"
+        },
+        {
+          "frame": "walk",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Walk_Full.png",
+          "url": "/images/monsters/Monster_30904_walk.png"
+        },
+        {
+          "frame": "attack",
+          "source": "C:\\tbh-site\\public\\game-assets\\monsters\\Sorcerer_Landing_merged.png",
+          "url": "/images/monsters/Monster_30904_attack.png"
+        }
+      ],
+      "main": "/images/monsters/Monster_30904.png",
+      "namePt": "Arconte Morkar",
+      "nameEn": "Archon Morkar"
+    }
+  }
+}

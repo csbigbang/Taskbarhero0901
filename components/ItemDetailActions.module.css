@@ -1,0 +1,24 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: 3px solid #344b68;
+  background: rgba(1, 7, 15, 0.88);
+  padding: 14px;
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.75), inset 0 0 0 2px rgba(255, 255, 255, 0.03);
+}
+.action {
+  color: #fff5c7;
+  border: 2px solid #405978;
+  background: linear-gradient(180deg, rgba(20, 31, 48, 0.94), rgba(4, 8, 15, 0.94));
+  padding: 10px 13px;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
+}
+.action:hover {
+  border-color: #ffd35d;
+  color: #ffd35d;
+}

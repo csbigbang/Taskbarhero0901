@@ -1,0 +1,524 @@
+.wrap {
+  display: grid;
+  gap: 18px;
+}
+
+.heroPanel,
+.controlPanel,
+.heroSelector,
+.scorePanel,
+.planPanel,
+.panelWide,
+.panelBox {
+  border: 3px solid #344b68;
+  background: rgba(1, 7, 15, 0.9);
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.72), inset 0 0 0 2px rgba(255, 255, 255, 0.035);
+}
+
+.heroPanel {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  gap: 20px;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(111, 19, 14, 0.94), rgba(40, 8, 10, 0.94) 36%, rgba(3, 9, 17, 0.96) 37%, rgba(3, 9, 17, 0.92));
+  position: relative;
+  overflow: hidden;
+}
+
+.heroPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+.heroPanel > * {
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffd35d;
+  border: 1px solid rgba(255, 211, 93, 0.45);
+  background: rgba(0, 0, 0, 0.42);
+  padding: 6px 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.heroPanel h1 {
+  margin: 14px 0 10px;
+  color: #fff5c7;
+  font-size: clamp(32px, 4.8vw, 58px);
+  line-height: 1.02;
+  text-shadow: 4px 4px 0 #000;
+}
+
+.heroPanel p {
+  max-width: 780px;
+  color: #eaf3ff;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.heroBadge {
+  border: 3px solid #ffd35d;
+  background: radial-gradient(circle at 50% 35%, rgba(255, 221, 93, 0.18), rgba(0, 0, 0, 0.72));
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 150px;
+}
+
+.heroBadge strong {
+  color: #ffd35d;
+  font-size: 28px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.heroBadge span {
+  color: #fff5c7;
+  font-size: 13px;
+}
+
+.controlPanel {
+  padding: 18px;
+  display: grid;
+  gap: 16px;
+}
+
+.dropZone {
+  min-height: 112px;
+  border: 3px dashed #566b86;
+  background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 12px, rgba(0, 0, 0, 0.12) 12px, rgba(0, 0, 0, 0.12) 24px), rgba(0, 0, 0, 0.38);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 18px;
+}
+
+.dropZone input {
+  display: none;
+}
+
+.dropZone span {
+  display: inline-block;
+  color: #1b1400;
+  background: linear-gradient(180deg, #ffe98a, #e89a19);
+  border: 3px solid #fff0a3;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.65);
+  padding: 12px 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.dropZone small {
+  display: block;
+  color: #dcecff;
+  margin-top: 12px;
+}
+
+.settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.settingsGrid > div {
+  border: 2px solid #344b68;
+  background: rgba(0, 0, 0, 0.32);
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.settingsGrid label {
+  color: #ffd35d;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.settingsGrid select,
+.settingsGrid input {
+  width: 100%;
+  color: #fff5c7;
+  border: 2px solid #405978;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 10px;
+  font-family: inherit;
+}
+
+.settingsGrid small {
+  color: #bcd7f2;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  color: #fff5c7;
+  border: 2px solid #405978;
+  background: linear-gradient(180deg, rgba(20, 31, 48, 0.94), rgba(4, 8, 15, 0.94));
+  padding: 11px 14px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
+}
+
+.actions button:first-child {
+  color: #201500;
+  border-color: #fff0a3;
+  background: linear-gradient(180deg, #ffe98a, #e89a19);
+}
+
+.actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.notice,
+.error {
+  border: 2px solid #405978;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 12px;
+  color: #fff5c7;
+}
+
+.error {
+  border-color: #b91c1c;
+  color: #fecaca;
+}
+
+.heroSelector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  padding: 12px;
+}
+
+.heroButton,
+.heroButtonActive {
+  text-align: left;
+  color: #eaf3ff;
+  border: 2px solid #405978;
+  background: rgba(0, 0, 0, 0.38);
+  padding: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+}
+
+.heroButtonActive {
+  border-color: #ffd35d;
+  box-shadow: inset 0 0 0 2px rgba(255, 211, 93, 0.18);
+}
+
+.heroButton strong,
+.heroButtonActive strong {
+  color: #fff5c7;
+  font-size: 17px;
+}
+
+.heroButton span,
+.heroButtonActive span {
+  color: #bcd7f2;
+  font-size: 12px;
+}
+
+.heroButton em,
+.heroButtonActive em {
+  color: #ffd35d;
+  font-style: normal;
+  justify-self: end;
+}
+
+.resultGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr 1fr 1fr;
+  gap: 14px;
+}
+
+.scorePanel {
+  padding: 18px;
+  text-align: center;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+}
+
+.scorePanel span,
+.planPanel span {
+  color: #ffd35d;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.scorePanel strong {
+  color: #ffd35d;
+  font-size: 64px;
+  line-height: 0.9;
+  text-shadow: 4px 4px 0 #000;
+}
+
+.scorePanel em {
+  color: #fff5c7;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.scorePanel p,
+.planPanel p,
+.softText {
+  color: #dcecff;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.planPanel {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.planPanel h2 {
+  color: #fff5c7;
+  margin: 0;
+  font-size: 23px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.problemLine {
+  border: 1px solid #405978;
+  background: rgba(0, 0, 0, 0.38);
+  padding: 9px;
+  color: #eaf3ff;
+}
+
+.problemLine strong {
+  color: #ffd35d;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 16px;
+}
+
+.panelWide,
+.panelBox {
+  padding: 16px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.titleRow h2,
+.panelBox h2 {
+  margin: 0;
+  color: #fff5c7;
+  font-size: 26px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.titleRow span {
+  border: 1px solid #405978;
+  color: #ffd35d;
+  padding: 6px 9px;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.slotGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.slotCard {
+  border: 2px solid #405978;
+  background: rgba(0, 0, 0, 0.34);
+  padding: 11px;
+  display: grid;
+  gap: 10px;
+}
+
+.slotCard.manter {
+  border-color: rgba(74, 222, 128, 0.45);
+}
+
+.slotCard.comparar {
+  border-color: rgba(250, 204, 21, 0.58);
+}
+
+.slotCard.trocar,
+.slotCard.vazio {
+  border-color: rgba(248, 113, 113, 0.58);
+}
+
+.slotHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #ffd35d;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.slotHead em {
+  font-style: normal;
+  color: #fff5c7;
+}
+
+.slotCard p {
+  color: #dcecff;
+  margin: 0;
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+.miniItem {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.itemIcon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.55));
+}
+
+.miniItem strong {
+  display: block;
+  color: #fff5c7;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miniItem span {
+  display: block;
+  color: #a8c5e4;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miniItem em {
+  color: #ffd35d;
+  font-style: normal;
+  font-size: 13px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.sideColumn {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.farmList {
+  display: grid;
+  gap: 9px;
+}
+
+.farmRow {
+  border: 2px solid #405978;
+  background: rgba(0, 0, 0, 0.32);
+  padding: 10px;
+  text-decoration: none;
+  display: grid;
+  gap: 4px;
+}
+
+.farmRow strong {
+  color: #fff5c7;
+}
+
+.farmRow span {
+  color: #bcd7f2;
+  font-size: 12px;
+}
+
+.todoList {
+  margin: 0;
+  padding-left: 22px;
+  color: #dcecff;
+  line-height: 1.8;
+}
+
+.todoList li::marker {
+  color: #ffd35d;
+}
+
+.threeColumns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.panelBox {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.emptyBox {
+  border: 2px solid #405978;
+  color: #dcecff;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 14px;
+}
+
+@media (max-width: 1120px) {
+  .heroPanel,
+  .resultGrid,
+  .mainGrid,
+  .threeColumns,
+  .settingsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroBadge {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 760px) {
+  .slotGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .miniItem {
+    grid-template-columns: 34px 1fr;
+  }
+
+  .miniItem em {
+    grid-column: 2;
+    text-align: left;
+  }
+}

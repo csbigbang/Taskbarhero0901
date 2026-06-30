@@ -1,0 +1,34 @@
+{
+  "name": "tbh-database-br",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "assets:import": "node scripts/import-game-assets.mjs",
+    "assets:import:win": "node scripts/import-game-assets.mjs \"C:\\imagens-thb\\Assets\"",
+    "market:refresh": "node scripts/refresh-steam-market.mjs",
+    "market:discover": "node scripts/discover-steam-market.mjs",
+    "market:link": "node scripts/map-steam-market.mjs",
+    "market:sync": "node scripts/sync-steam-market-prices.mjs",
+    "market:all": "npm run market:discover && npm run market:link && npm run market:sync"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0",
+    "dotenv": "^17.4.2",
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.3.0",
+    "typescript": "^5.8.0"
+  }
+}
