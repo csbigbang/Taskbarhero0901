@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BackToTop } from "@/components/BackToTop";
 import { Sidebar } from "@/components/Sidebar";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import "./tbh-polish.css";
 import "./tbh-user-images.css";
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
         <BackToTop />
+        <Analytics />
       </body>
     </html>
   );
