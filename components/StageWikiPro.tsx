@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./StageWikiPro.module.css";
 import { OFFICIAL_MONSTERS, OFFICIAL_MONSTER_NAMES_PT, OFFICIAL_STAGES } from "@/lib/tbh-official-stage-data";
@@ -18,9 +18,9 @@ const DIFFICULTIES = ["Normal", "Nightmare", "Hell", "Torment"] as const;
 const ACTS = [1, 2, 3] as const;
 
 const ACT_MAPS: Record<number, string> = {
-  1: "/game-assets/stages/Act1_Bg.png",
-  2: "/game-assets/stages/Act2_Bg.png",
-  3: "/game-assets/stages/Act3_Bg.png",
+  1: "/tbh-real/stages/Act1_Bg.png",
+  2: "/tbh-real/stages/Act2_Bg.png",
+  3: "/tbh-real/stages/Act3_Bg.png",
 };
 
 const DIFFICULTY_LABELS: Record<string, string> = {
@@ -49,52 +49,13 @@ const NODE_POSITIONS = [
   { x: 50, y: 5 },
 ];
 
-
-const STAGE_MONSTER_FALLBACK: Record<number, Record<number, string[]>> = {
-  1: {
-    1: ["10011", "10021"],
-    2: ["10021", "10031"],
-    3: ["10042", "10043"],
-    4: ["10042", "10051"],
-    5: ["10051", "10052"],
-    6: ["10021", "10042", "10052"],
-    7: ["10043", "10051"],
-    8: ["10051", "10052", "10053"],
-    9: ["10052", "10053", "10901"],
-    10: ["10901", "10902", "10903", "10904"],
-  },
-  2: {
-    1: ["20011", "20021"],
-    2: ["20021", "20022"],
-    3: ["20031", "20041"],
-    4: ["20041", "20042"],
-    5: ["20051", "20061"],
-    6: ["20061", "20062"],
-    7: ["20071", "20081"],
-    8: ["20081", "20091"],
-    9: ["20091", "20111"],
-    10: ["20901", "20902", "20903", "20904"],
-  },
-  3: {
-    1: ["20111", "30041"],
-    2: ["30041", "30042"],
-    3: ["30042", "30043"],
-    4: ["30043", "30044"],
-    5: ["30061", "30071"],
-    6: ["30071", "30081"],
-    7: ["30081", "30082"],
-    8: ["30082", "30083"],
-    9: ["30101", "30102", "30103", "30104"],
-    10: ["30111", "30082", "30083"],
-  },
-};
-
-
 const MONSTER_NAMES: Record<string, string> = {
   "10011": "Slime",
   "10021": "Goblin",
   "10022": "Chefe Goblin",
+  "10023": "Assassino Goblin",
   "10031": "Mago Goblin",
+  "10041": "Orc Básico",
   "10042": "Guerreiro Orc",
   "10043": "Orc de Elite",
   "10051": "Esqueleto",
@@ -144,8 +105,8 @@ const CHEST_NAMES: Record<string, string> = {
   NORMAL_MONSTER_BOX: "Baú de Monstro",
   NORMAL_BOSS_BOX: "Baú de Chefe",
   STAGE_BOSS_BOX: "Baú de Chefe",
-  FIRST_CLEAR: "Primeira conclusão",
-  ACT_BOSS_BOX: "Baú de Chefe do ato",
+  FIRST_CLEAR: "Primeira Conclusão",
+  ACT_BOSS_BOX: "Baú de Chefe do Ato",
 };
 
 function pick(row: AnyRow | undefined, keys: string[], fallback: any = undefined) {
@@ -173,12 +134,6 @@ function difficultyLabel(value: string) {
   return DIFFICULTY_LABELS[value] ?? value;
 }
 
-function stageNamePt(row: AnyRow) {
-  const act = getStageAct(row);
-  const no = getStageNo(row);
-  return STAGE_NAMES_PT[act]?.[no - 1] ?? `Ato ${act}-${no}`;
-}
-
 function stageKey(row: AnyRow) {
   return String(pick(row, ["stage_key", "StageKey", "stageKey", "key", "Key", "id", "ID", "stage_id", "StageID"], ""));
 }
@@ -186,9 +141,8 @@ function stageKey(row: AnyRow) {
 function getStageAct(row: AnyRow) {
   const direct = asNumber(pick(row, ["act", "Act", "act_no", "ActNo"]), 0);
   if (direct) return direct;
-  const key = stageKey(row);
-  if (key.length >= 3) return asNumber(key.slice(0, 1), 1);
-  return 1;
+  const key = stageKey(row).replace(/\D/g, "");
+  return key.length >= 1 ? asNumber(key.slice(0, 1), 1) : 1;
 }
 
 function getStageNo(row: AnyRow) {
@@ -202,8 +156,7 @@ function getStageNo(row: AnyRow) {
 
 function getStageLevel(row: AnyRow) {
   const direct = asNumber(pick(row, ["stage_level", "StageLevel", "required_level", "RequiredLevel", "level", "Level", "lv", "Lv"]), 0);
-  if (direct) return direct;
-  return getStageNo(row);
+  return direct || getStageNo(row);
 }
 
 function getStageDifficulty(row: AnyRow) {
@@ -220,9 +173,10 @@ function getStageDifficulty(row: AnyRow) {
 function getStageTitle(row: AnyRow) {
   const ptName = pick(row, ["name_pt_br", "stage_name_pt_br", "name_pt", "display_name_pt_br", "name_ptbr"], "");
   if (ptName) return String(ptName);
-
+  const act = getStageAct(row);
+  const no = getStageNo(row);
   const raw = String(pick(row, ["name", "Name", "stage_name", "StageName", "title", "Title", "name_en_us", "stage_name_en_us"], "") ?? "").trim();
-  if (!raw || /^act\s*\d+[-–]\d+$/i.test(raw) || /^stage\s*\d+/i.test(raw)) return stageNamePt(row);
+  if (!raw || /^act\s*\d+[-–]\d+$/i.test(raw) || /^stage\s*\d+/i.test(raw)) return STAGE_NAMES_PT[act]?.[no - 1] ?? `Ato ${act}-${no}`;
   return raw;
 }
 
@@ -231,17 +185,17 @@ function monsterName(id: any) {
   return OFFICIAL_MONSTER_NAMES_PT[key] ?? MONSTER_NAMES[key] ?? `Monstro #${key}`;
 }
 
-function monsterSprite(id: any) {
-  const key = String(id ?? "");
-  return `/images/monsters/Monster_${key}.png`;
-}
-
 function findMonster(monsters: AnyRow[], id: any) {
   const key = String(id ?? "");
   return (
     monsters.find((m) => String(pick(m, ["monster_key", "MonsterKey", "key", "Key", "id", "ID"], "")) === key) ??
     OFFICIAL_MONSTERS.find((m) => String(m.monster_key) === key)
   );
+}
+
+function monsterSprite(id: any, variant: "idle" | "base" = "idle") {
+  const key = String(id ?? "").trim();
+  return variant === "idle" ? `/images/monsters/Monster_${key}_idle.png` : `/images/monsters/Monster_${key}.png`;
 }
 
 function extractMonsterIds(value: any) {
@@ -257,13 +211,7 @@ function extractMonsterIds(value: any) {
   return Array.from(new Set(ids));
 }
 
-function fallbackMonsterIds(stage: AnyRow) {
-  const act = getStageAct(stage);
-  const no = getStageNo(stage);
-  return STAGE_MONSTER_FALLBACK[act]?.[no] ?? [];
-}
-
-function getMonsterIds(stage: AnyRow, drops: AnyRow[]) {
+function getMonsterIds(stage: AnyRow, drops: AnyRow[] = []) {
   const raw = pick(stage, ["monsters", "Monsters", "monster_keys", "MonsterKeys", "mobs", "Mobs", "mob_keys", "MobKeys", "monster_list", "MonsterList"], "");
   let ids = extractMonsterIds(raw);
 
@@ -271,24 +219,13 @@ function getMonsterIds(stage: AnyRow, drops: AnyRow[]) {
     ids = drops.flatMap((d) => extractMonsterIds(pick(d, ["monster_key", "MonsterKey", "mob_key", "MobKey", "source_key", "SourceKey"], "")));
   }
 
-  if (!ids.length) {
-    ids = fallbackMonsterIds(stage);
-  }
-
   return Array.from(new Set(ids)).slice(0, 8);
 }
 
 function getBossId(stage: AnyRow) {
-  const no = getStageNo(stage);
-  const type = String(pick(stage, ["stage_type", "StageType", "type", "Type"], "")).toUpperCase();
-  const isBossStage = no === 10 || type.includes("BOSS") || type.includes("ACTBOSS");
-  if (!isBossStage) return "";
-
   const boss = pick(stage, ["boss_monster_key", "BossMonsterKey", "boss_key", "BossKey", "boss", "Boss", "boss_id", "BossID"], "");
   if (boss) return String(boss);
-
-  const act = getStageAct(stage);
-  return `${act}090${act}`;
+  return "";
 }
 
 function dropStageKey(row: AnyRow) {
@@ -307,47 +244,20 @@ function getRate(row: AnyRow) {
   return pick(row, ["source_rate", "SourceRate", "rate", "Rate", "weight", "Weight", "drop_rate", "DropRate", "chance", "Chance"], "");
 }
 
-function uniqueDrops(rows: AnyRow[]) {
-  const map = new Map<string, AnyRow>();
-  for (const row of rows) {
-    const id = `${sourceType(row)}:${dropKey(row)}:${getRate(row)}`;
-    if (!map.has(id)) map.set(id, row);
-  }
-  return Array.from(map.values());
+function chestIcon(type: string) {
+  const raw = String(type ?? "").toUpperCase();
+  if (raw.includes("ACT")) return "/tbh-real/ui/Chest_ActBoss_Possessed.png";
+  if (raw.includes("BOSS") || raw.includes("FIRST")) return "/tbh-real/ui/Chest_NormalBoss_Possessed.png";
+  return "/tbh-real/ui/Chest_Normal_Possessed.png";
 }
 
-function stageIndexFromLevel(level: number) {
-  return Math.max(0, Math.min(9, level - 1));
-}
-
-function localStagesForActMode(stages: AnyRow[], act: number, difficulty: string) {
-  return stages
-    .filter((s) => getStageAct(s) === act && getStageDifficulty(s) === difficulty)
-    .sort((a, b) => getStageNo(a) - getStageNo(b));
-}
-
-function fallbackStages() {
-  const rows: AnyRow[] = [];
-  for (const act of ACTS) {
-    for (const difficulty of DIFFICULTIES) {
-      for (let lv = 1; lv <= 10; lv++) {
-        rows.push({
-          stage_key: `${act}${DIFFICULTIES.indexOf(difficulty) + 1}${String(lv).padStart(2, "0")}`,
-          act,
-          difficulty,
-          stage_no: lv,
-          stage_level: lv,
-          name: STAGE_NAMES_PT[act]?.[lv - 1] ?? `Ato ${act}-${lv}`,
-          wave_count: 10,
-          mobs_per_wave: 1,
-          mob_types: 2,
-          monsters: (STAGE_MONSTER_FALLBACK[act]?.[lv] ?? []).join("|"),
-          boss_monster_key: lv === 10 ? (act === 1 ? "10904" : act === 2 ? "20904" : "30111") : "",
-        });
-      }
-    }
-  }
-  return rows;
+function lootPriority(row: AnyRow) {
+  const type = sourceType(row).toUpperCase();
+  if (type.includes("MONSTER")) return 1;
+  if (type.includes("BOSS")) return 2;
+  if (type.includes("FIRST")) return 3;
+  if (type.includes("ACT")) return 4;
+  return 9;
 }
 
 function stageLootRows(stage: AnyRow) {
@@ -371,6 +281,43 @@ function stageLootRows(stage: AnyRow) {
   return rows.filter((row) => dropKey(row));
 }
 
+function compactLootRows(stage: AnyRow, liveDrops: AnyRow[]) {
+  const source = stageLootRows(stage).length ? stageLootRows(stage) : liveDrops;
+  const map = new Map<string, AnyRow>();
+  for (const row of source) {
+    const type = sourceType(row).toUpperCase();
+    const key = dropKey(row);
+    if (!key) continue;
+    const bucket = type.includes("MONSTER") ? "MONSTER" : type.includes("BOSS") ? "BOSS" : type.includes("FIRST") ? "FIRST" : type.includes("ACT") ? "ACT" : type;
+    if (!map.has(bucket)) map.set(bucket, row);
+  }
+  return Array.from(map.values()).sort((a, b) => lootPriority(a) - lootPriority(b)).slice(0, 4);
+}
+
+function monsterSpawnPercent(stage: AnyRow, id: any) {
+  const raw = String(pick(stage, ["monsters", "Monsters", "monster_keys", "MonsterKeys", "mobs", "Mobs", "mob_keys", "MobKeys", "monster_list", "MonsterList"], ""));
+  const entries = raw
+    .split(/[\s,;|]+/)
+    .map((token) => token.trim())
+    .filter(Boolean)
+    .map((token) => {
+      const [key, weight] = token.split("_");
+      return { key, weight: Number(weight || 1000) || 1000 };
+    })
+    .filter((entry) => /^\d{4,}$/.test(entry.key));
+
+  const total = entries.reduce((sum, entry) => sum + entry.weight, 0);
+  const found = entries.find((entry) => entry.key === String(id));
+  if (!found || !total) return "100%";
+  return `${Math.max(1, Math.round((found.weight / total) * 100))}%`;
+}
+
+function monsterStat(monster: AnyRow | undefined, keys: string[], fallback = "-") {
+  const value = pick(monster, keys, fallback);
+  const text = String(value ?? "").trim();
+  return text || fallback;
+}
+
 function translateElement(value: any) {
   const raw = String(value ?? "").toLowerCase();
   if (raw.includes("fire") || raw.includes("fogo")) return "Fogo";
@@ -382,38 +329,246 @@ function translateElement(value: any) {
   return raw ? raw.charAt(0).toUpperCase() + raw.slice(1) : "Físico";
 }
 
+function stageIndexFromNo(no: number) {
+  return Math.max(0, Math.min(9, no - 1));
+}
+
+function localStagesForActMode(stages: AnyRow[], act: number, difficulty: string) {
+  return stages
+    .filter((s) => getStageAct(s) === act && getStageDifficulty(s) === difficulty)
+    .sort((a, b) => getStageNo(a) - getStageNo(b));
+}
+
+function getStageKind(stage: AnyRow) {
+  const raw = String(pick(stage, ["stage_type", "StageType", "type", "Type"], "NORMAL")).toUpperCase();
+  if (raw.includes("ACTBOSS")) return "Chefe do Ato";
+  if (raw.includes("BOSS")) return "Chefe";
+  return "Normal";
+}
+
 function RealImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
   const [failed, setFailed] = useState(false);
   if (failed) return null;
   return <img src={src} alt={alt} className={className} loading="lazy" onError={() => setFailed(true)} />;
 }
 
-function MonsterIcon({ id, large = false }: { id: any; large?: boolean }) {
+function MonsterSprite({ id, className }: { id: any; className?: string }) {
+  const [variant, setVariant] = useState<"idle" | "base" | "off">("idle");
+  if (variant === "off") return <span className={styles.mobFallback}>?</span>;
   return (
-    <div className={large ? styles.monsterIconLarge : styles.monsterIcon}>
-      <RealImage src={monsterSprite(id)} alt={monsterName(id)} className={styles.monsterSprite} />
+    <img
+      src={monsterSprite(id, variant)}
+      alt={monsterName(id)}
+      className={className}
+      loading="lazy"
+      onError={() => setVariant(variant === "idle" ? "base" : "off")}
+    />
+  );
+}
+
+function StageTooltip({ stage, difficulty, monsters }: { stage: AnyRow; difficulty: string; monsters: AnyRow[] }) {
+  const act = getStageAct(stage);
+  const no = getStageNo(stage);
+  const level = getStageLevel(stage);
+  const mobs = getMonsterIds(stage).slice(0, 4);
+  const bossId = getBossId(stage);
+  const title = getStageTitle(stage);
+  const waves = pick(stage, ["wave_amount", "WaveAmount", "waves", "Ondas", "wave_count", "OndaCount", "Onda", "wave"], "—");
+  const mobsPerWave = pick(stage, ["wave_monster_amount", "WaveMonsterAmount", "mobs_per_wave", "MobsPerOnda", "mob_per_wave", "MobPerOnda"], "—");
+  const mobTypes = mobs.length || pick(stage, ["mob_types", "MobTypes", "monster_types", "MonsterTypes"], "—");
+  const focusMob = bossId || mobs[0] || "";
+  const focusMonster = findMonster(monsters, focusMob);
+
+  return (
+    <div className={`${styles.stageTooltip} ${getStageKind(stage) !== "Normal" ? styles.stageTooltipBoss : ""}`}>
+      <div className={styles.tooltipTop}>
+        <div className={styles.tooltipPortrait}>{focusMob ? <MonsterSprite id={focusMob} className={styles.tooltipPortraitSprite} /> : null}</div>
+        <div className={styles.tooltipTitleBlock}>
+          <span>ATO {act} | FASE {no}</span>
+          <b>{difficultyLabel(difficulty)} | Nv. {level}</b>
+          <strong>{title}</strong>
+          {focusMob ? <em>{monsterName(focusMob)}</em> : null}
+        </div>
+      </div>
+
+      <div className={styles.tooltipStatsGrid}>
+        <span>Ondas <b>{waves || "—"}</b></span>
+        <span>Mobs / onda <b>{mobsPerWave || "—"}</b></span>
+        <span>Tipos <b>{mobTypes}</b></span>
+        <span>Tipo <b>{getStageKind(stage)}</b></span>
+      </div>
+
+      <div className={styles.tooltipMobs}>
+        {mobs.map((id) => {
+          const monster = findMonster(monsters, id);
+          return (
+            <a href={`/monsters/${id}`} key={id} className={styles.tooltipMob} title={monsterName(id)}>
+              <MonsterSprite id={id} className={styles.tooltipMobSprite} />
+              <span>{monsterName(id)}</span>
+              <small>{monsterStat(monster, ["max_life", "MaxLife", "hp", "HP", "health", "Health"])} HP</small>
+            </a>
+          );
+        })}
+        {bossId ? (
+          <a href={`/monsters/${bossId}`} className={`${styles.tooltipMob} ${styles.tooltipBossMob}`} title={monsterName(bossId)}>
+            <MonsterSprite id={bossId} className={styles.tooltipMobSprite} />
+            <span>{monsterName(bossId)}</span>
+            <small>{monsterStat(focusMonster, ["max_life", "MaxLife", "hp", "HP", "health", "Health"])} HP</small>
+          </a>
+        ) : null}
+      </div>
     </div>
+  );
+}
+
+function StageSelectedCard({ stage, difficulty, drops, monsters }: { stage: AnyRow; difficulty: string; drops: AnyRow[]; monsters: AnyRow[] }) {
+  const act = getStageAct(stage);
+  const no = getStageNo(stage);
+  const level = getStageLevel(stage);
+  const monsterIds = getMonsterIds(stage, drops).slice(0, 4);
+  const bossId = getBossId(stage);
+  const waves = pick(stage, ["wave_amount", "WaveAmount", "waves", "Ondas", "wave_count", "OndaCount", "Onda", "wave"], "—");
+  const mobsPerWave = pick(stage, ["wave_monster_amount", "WaveMonsterAmount", "mobs_per_wave", "MobsPerOnda", "mob_per_wave", "MobPerOnda"], "—");
+
+  return (
+    <aside className={styles.selectedCard} aria-label="Fase selecionada">
+      <div className={styles.selectedCardHead}>
+        <div>
+          <span>ATO {act} | FASE {no}</span>
+          <b>{difficultyLabel(difficulty)} | Nv. {level}</b>
+          <strong>{getStageTitle(stage)}</strong>
+        </div>
+        <a href={`/stages/${encodeURIComponent(stageKey(stage))}`}>abrir ↗</a>
+      </div>
+
+      <div className={styles.selectedStats}>
+        <span>Ondas <b>{waves || "—"}</b></span>
+        <span>Mobs / onda <b>{mobsPerWave || "—"}</b></span>
+        <span>Tipos <b>{monsterIds.length || "—"}</b></span>
+        <span>Tipo <b>{getStageKind(stage)}</b></span>
+      </div>
+
+      <div className={styles.selectedMobs}>
+        {monsterIds.map((id) => (
+          <a href={`/monsters/${id}`} key={id} title={monsterName(id)}>
+            <MonsterSprite id={id} className={styles.selectedMobSprite} />
+            <span>{monsterName(id)}</span>
+          </a>
+        ))}
+        {bossId ? (
+          <a href={`/monsters/${bossId}`} className={styles.selectedBossMob} title={monsterName(bossId)}>
+            <MonsterSprite id={bossId} className={styles.selectedMobSprite} />
+            <span>{monsterName(bossId)}</span>
+          </a>
+        ) : null}
+      </div>
+    </aside>
+  );
+}
+
+function StageMiniPanel({ stage, difficulty, drops, monsters }: { stage: AnyRow; difficulty: string; drops: AnyRow[]; monsters: AnyRow[] }) {
+  const act = getStageAct(stage);
+  const no = getStageNo(stage);
+  const level = getStageLevel(stage);
+  const monsterIds = getMonsterIds(stage, drops);
+  const bossId = getBossId(stage);
+  const lootRows = compactLootRows(stage, drops);
+  const waves = pick(stage, ["wave_amount", "WaveAmount", "waves", "Ondas", "wave_count", "OndaCount", "Onda", "wave"], "—");
+  const mobsPerWave = pick(stage, ["wave_monster_amount", "WaveMonsterAmount", "mobs_per_wave", "MobsPerOnda", "mob_per_wave", "MobPerOnda"], "—");
+
+  return (
+    <article className={styles.detailPanel}>
+      <div className={styles.detailHead}>
+        <div>
+          <span>ATO {act}-{no} | Nv. {level}</span>
+          <h2>{getStageTitle(stage)}</h2>
+          <p>{difficultyLabel(difficulty)} · {getStageKind(stage)}</p>
+        </div>
+        <a href={`/stages/${encodeURIComponent(stageKey(stage))}`}>Página completa ↗</a>
+      </div>
+
+      <div className={styles.stageDataGrid}>
+        <div><span>Ondas</span><b>{waves || "—"}</b></div>
+        <div><span>Mobs / onda</span><b>{mobsPerWave || "—"}</b></div>
+        <div><span>Tipos</span><b>{monsterIds.length || "—"}</b></div>
+        <div><span>Tipo</span><b>{getStageKind(stage)}</b></div>
+      </div>
+
+      <section className={styles.detailBlock}>
+        <h3>Monstros da fase</h3>
+        <div className={styles.mobCardGrid}>
+          {monsterIds.length ? monsterIds.slice(0, 6).map((id) => {
+            const monster = findMonster(monsters, id);
+            return (
+              <a href={`/monsters/${id}`} key={id} className={styles.mobCard}>
+                <MonsterSprite id={id} className={styles.mobCardSprite} />
+                <span>{monsterName(id)}</span>
+                <small>{monsterSpawnPercent(stage, id)} · HP {monsterStat(monster, ["max_life", "MaxLife", "hp", "HP", "health", "Health"])}</small>
+              </a>
+            );
+          }) : <p className={styles.empty}>Nenhum monstro encontrado.</p>}
+        </div>
+      </section>
+
+      {bossId ? (
+        <section className={styles.detailBlock}>
+          <h3>Chefe</h3>
+          <a href={`/monsters/${bossId}`} className={styles.bossCard}>
+            <MonsterSprite id={bossId} className={styles.bossSprite} />
+            <span>
+              <b>{monsterName(bossId)}</b>
+              <small>Chefe vinculado à fase</small>
+            </span>
+          </a>
+        </section>
+      ) : null}
+
+      <section className={styles.detailBlock}>
+        <h3>Baús e saque</h3>
+        <div className={styles.lootGrid}>
+          {lootRows.length ? lootRows.map((row, index) => {
+            const type = sourceType(row).toUpperCase();
+            const key = dropKey(row);
+            const name = CHEST_NAMES[type] ?? type.replace(/_/g, " ");
+            const rate = getRate(row);
+            return (
+              <a key={`${type}-${key}-${index}`} href={`/drops?stage=${encodeURIComponent(stageKey(stage))}&drop=${encodeURIComponent(key)}`} className={styles.lootCard}>
+                <RealImage src={chestIcon(type)} alt={name} className={styles.lootSprite} />
+                <span>
+                  <b>{name}</b>
+                  <small>{key ? `Chave ${key}` : "Saque da fase"}{rate ? ` · taxa ${rate}` : ""}</small>
+                </span>
+              </a>
+            );
+          }) : <p className={styles.empty}>Drops não encontrados no cache local.</p>}
+        </div>
+      </section>
+
+      <div className={styles.actions}>
+        <a href={`/drops?stage=${encodeURIComponent(stageKey(stage))}`}>Ver drops</a>
+        <a href={`/farm?stage=${encodeURIComponent(stageKey(stage))}`}>Farmar</a>
+        {bossId ? <a href={`/monsters/${bossId}`}>Abrir chefe</a> : null}
+      </div>
+    </article>
   );
 }
 
 export default function StageWikiPro(props: Props) {
   const [stages, setStages] = useState<AnyRow[]>(OFFICIAL_STAGES);
   const [drops, setDrops] = useState<AnyRow[]>(props.drops ?? props.dropRows ?? []);
-  const [monsters, setMonsters] = useState<AnyRow[]>(props.monsters?.length ? props.monsters : OFFICIAL_MONSTERS);
+  const monsters = props.monsters?.length ? props.monsters : OFFICIAL_MONSTERS;
   const [difficulty, setDifficulty] = useState<string>("Normal");
   const [act, setAct] = useState<number>(1);
   const [selectedKey, setSelectedKey] = useState<string>("");
   const [hoverKey, setHoverKey] = useState<string>("");
 
   useEffect(() => {
-    // Dados oficiais embutidos extraídos do jogo.
-    // Só aceita dados externos se vierem completos, para evitar cache incompleto.
     if ((props.stages?.length ?? 0) >= 120) setStages(props.stages ?? OFFICIAL_STAGES);
   }, [props.stages]);
 
   const visibleStages = useMemo(() => {
-    const live = localStagesForActMode(stages.length ? stages : fallbackStages(), act, difficulty);
-    return live.length ? live : localStagesForActMode(fallbackStages(), act, difficulty);
+    const source = stages.length ? stages : OFFICIAL_STAGES;
+    return localStagesForActMode(source, act, difficulty);
   }, [stages, act, difficulty]);
 
   const selected = useMemo(() => {
@@ -421,13 +576,16 @@ export default function StageWikiPro(props: Props) {
     return byKey ?? visibleStages[0] ?? null;
   }, [visibleStages, selectedKey]);
 
-  const previewStage = useMemo(() => {
-    return visibleStages.find((s) => stageKey(s) === hoverKey) ?? selected;
-  }, [visibleStages, hoverKey, selected]);
+  const hoverStage = useMemo(() => {
+    if (!hoverKey) return null;
+    return visibleStages.find((s) => stageKey(s) === hoverKey) ?? null;
+  }, [visibleStages, hoverKey]);
 
   useEffect(() => {
-    if (selected) setSelectedKey(stageKey(selected));
-  }, [act, difficulty, selected?.stage_key]);
+    if (visibleStages.length && !visibleStages.some((stage) => stageKey(stage) === selectedKey)) {
+      setSelectedKey(stageKey(visibleStages[0]));
+    }
+  }, [visibleStages, selectedKey]);
 
   useEffect(() => {
     if (!selected) return;
@@ -435,9 +593,8 @@ export default function StageWikiPro(props: Props) {
     const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (!url || !anon) return;
     const key = stageKey(selected);
-    if (!key) return;
-    const hasLocal = drops.some((d) => dropStageKey(d) === key);
-    if (hasLocal) return;
+    if (!key || drops.some((d) => dropStageKey(d) === key)) return;
+
     const supabase = createClient(url, anon, { auth: { persistSession: false } });
     let cancelled = false;
     async function run() {
@@ -450,193 +607,102 @@ export default function StageWikiPro(props: Props) {
     };
   }, [selectedKey]);
 
-  const stageDrops = useMemo(() => (selected ? drops.filter((d) => dropStageKey(d) === stageKey(selected)) : []), [drops, selected]);
-  const lootRows = useMemo(() => (selected ? uniqueDrops([...stageLootRows(selected), ...stageDrops]).slice(0, 8) : []), [selected, stageDrops]);
-  const monsterIds = useMemo(() => (selected ? getMonsterIds(selected, stageDrops) : []), [selected, stageDrops]);
-  const bossId = selected ? getBossId(selected) : "";
-
   if (!selected) {
     return (
       <section className={styles.stageWrap}>
-        <div className={styles.heroPanel}>
-          <p>Não foi possível carregar as fases.</p>
-        </div>
+        <div className={styles.emptyPanel}>Não foi possível carregar as fases.</div>
       </section>
     );
   }
 
-  const selectedNo = getStageNo(selected);
-  const selectedLevel = getStageLevel(selected);
-  const waves = pick(selected, ["wave_amount", "WaveAmount", "waves", "Ondas", "wave_count", "OndaCount", "Onda", "wave"], 10);
-  const mobsPerOnda = pick(selected, ["wave_monster_amount", "WaveMonsterAmount", "mobs_per_wave", "MobsPerOnda", "mob_per_wave", "MobPerOnda"], 1);
-  const mobTypes = pick(selected, ["mob_types", "MobTypes", "monster_types", "MonsterTypes"], monsterIds.length || 2);
-
-  const previewNo = previewStage ? getStageNo(previewStage) : selectedNo;
-  const previewLevel = previewStage ? getStageLevel(previewStage) : selectedLevel;
-  const previewWaves = previewStage ? pick(previewStage, ["wave_amount", "WaveAmount", "waves", "Ondas", "wave_count", "OndaCount", "Onda", "wave"], 10) : waves;
-  const previewMobs = previewStage ? pick(previewStage, ["wave_monster_amount", "WaveMonsterAmount", "mobs_per_wave", "MobsPerOnda", "mob_per_wave", "MobPerOnda"], 1) : mobsPerOnda;
-  const previewMobIds = previewStage ? getMonsterIds(previewStage, stageDrops) : monsterIds;
-  const previewMob = previewMobIds[0] || "";
-  const previewPos = NODE_POSITIONS[stageIndexFromLevel(previewNo)];
+  const selectedDrops = drops.filter((d) => dropStageKey(d) === stageKey(selected));
+  const tooltipStage = hoverStage;
+  const tooltipNo = tooltipStage ? getStageNo(tooltipStage) : 1;
+  const tooltipPos = NODE_POSITIONS[stageIndexFromNo(tooltipNo)] ?? NODE_POSITIONS[0];
+  const tooltipStyle = tooltipStage
+    ? {
+        left: `${tooltipPos.x >= 62 ? tooltipPos.x - 24 : tooltipPos.x + 19}%`,
+        top: `${Math.min(76, Math.max(18, tooltipPos.y - 8))}%`,
+      }
+    : undefined;
 
   return (
     <section className={styles.stageWrap}>
-      <div className={styles.heroPanel}>
-        <div>
-          <span className={styles.kicker}>Fases e Rotas</span>
+      <header className={styles.stageHeader}>
+        <div className={styles.stageHeaderTitle}>
+          <span>Database</span>
           <h1>Fases</h1>
-          <p>3 atos | 4 dificuldades | 120 fases — monstros, chefes e tabelas de saque.</p>
+          <p>Mapa interativo com bandeiras, mobs, chefes e baús por dificuldade.</p>
         </div>
-        <div className={styles.statSummary}>
-          <div><strong>3</strong><span>Atos</span></div>
-          <div><strong>4</strong><span>Modos</span></div>
-          <div><strong>120</strong><span>Fases</span></div>
+        <div className={styles.headerStats}>
+          <b>3</b><span>Atos</span>
+          <b>4</b><span>Dificuldades</span>
+          <b>120</b><span>Fases</span>
         </div>
-      </div>
+      </header>
 
       <div className={styles.mainGrid}>
-        <aside className={styles.mapPanel}>
-          <label className={styles.modeSelector}>
-            <select value={difficulty} onChange={(event) => setDifficulty(event.target.value)}>
-              {DIFFICULTIES.map((mode) => (
-                <option key={mode} value={mode}>{difficultyLabel(mode)}</option>
+        <section className={styles.mapPanel}>
+          <div className={styles.mapToolbar}>
+            <label className={styles.modeSelector}>
+              <select value={difficulty} onChange={(event) => setDifficulty(event.target.value)} aria-label="Selecionar dificuldade">
+                {DIFFICULTIES.map((mode) => (
+                  <option key={mode} value={mode}>{difficultyLabel(mode)}</option>
+                ))}
+              </select>
+              <b>▼</b>
+            </label>
+
+            <div className={styles.actTabs} aria-label="Selecionar ato">
+              {ACTS.map((n) => (
+                <button key={n} type="button" className={act === n ? styles.actActive : ""} onClick={() => setAct(n)}>ATO {n}</button>
               ))}
-            </select>
-            <b>▼</b>
-          </label>
-
-          <div className={styles.actTabs}>
-            {ACTS.map((n) => (
-              <button key={n} type="button" className={act === n ? styles.actActive : ""} onClick={() => setAct(n)}>ATO {n}</button>
-            ))}
-          </div>
-
-          <div className={styles.mapBox}>
-            <RealImage src={ACT_MAPS[act]} alt={`Ato ${act}`} className={styles.actMapImage} />
-            {visibleStages.map((stage) => {
-              const no = getStageNo(stage);
-              const pos = NODE_POSITIONS[stageIndexFromLevel(no)];
-              const active = stageKey(stage) === stageKey(selected);
-              return (
-                <button
-                  key={stageKey(stage)}
-                  type="button"
-                  title={`Ato ${act}-${no}`}
-                  className={`${styles.stageNode} ${active ? styles.stageNodeActive : ""} ${no === 10 ? styles.stageNodeBoss : ""}`}
-                  style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
-                  onMouseEnter={() => setHoverKey(stageKey(stage))}
-                  onMouseLeave={() => setHoverKey("")}
-                  onFocus={() => setHoverKey(stageKey(stage))}
-                  onBlur={() => setHoverKey("")}
-                  onClick={() => setSelectedKey(stageKey(stage))}
-                >
-                  <span>{act}-{no}</span>
-                </button>
-              );
-            })}
-            {previewStage && (
-              <div
-                className={styles.stageTooltip}
-                style={{
-                  left: `${Math.min(70, Math.max(28, previewPos.x + 18))}%`,
-                  top: `${Math.min(72, Math.max(18, previewPos.y - 8))}%`,
-                }}
-              >
-                <strong>{getStageTitle(previewStage)}</strong>
-                <div className={styles.tooltipBody}>
-                  {previewMob ? <MonsterIcon id={previewMob} large /> : null}
-                  <div>
-                    <b>ATO {act} | FASE {previewNo}</b>
-                    <span>{difficultyLabel(difficulty)} | Nv.{previewLevel}</span>
-                    <em>{previewMob ? monsterName(previewMob) : "Dados da fase"}</em>
-                  </div>
-                </div>
-                <div className={styles.tooltipStats}>
-                  <span>Ondas <b>{previewWaves}</b></span>
-                  <span>Mobs / onda <b>{previewMobs || "—"}</b></span>
-                  <span>Tipos <b>{previewMobIds.length || 2}</b></span>
-                </div>
-              </div>
-            )}
-          </div>
-          <p className={styles.mapHint}>Ato {act} | {difficultyLabel(difficulty)} — clique em um nó para inspecionar.</p>
-        </aside>
-
-        <article className={styles.detailPanel}>
-          <div className={styles.detailHead}>
-            <div>
-              <span className={styles.kicker}>ATO {act}-{selectedNo} | Nv. {selectedLevel}</span>
-              <h2>{getStageTitle(selected)}</h2>
-              <p>{String(pick(selected, ["name_en", "NameEN", "desc", "description", "Description"], "Dados extraídos do jogo."))}</p>
             </div>
-            <a className={styles.smallButton} href={`/stages/${encodeURIComponent(stageKey(selected))}`}>Página completa ↗</a>
           </div>
 
-          <div className={styles.metrics}>
-            <div><span>Ondas</span><strong>{waves}</strong></div>
-            <div><span>Mobs / onda</span><strong>{mobsPerOnda || "—"}</strong></div>
-            <div><span>Tipos de mobs</span><strong>{mobTypes}</strong></div>
-            {bossId ? <div><span>Chefe</span><strong>{bossId}</strong></div> : null}
-          </div>
+          <div className={styles.stageMapLayout}>
+            <div className={styles.mapFrame} onMouseLeave={() => setHoverKey("")}>
+              <RealImage src={ACT_MAPS[act]} alt={`Mapa do Ato ${act}`} className={styles.actMapImage} />
+              <div className={styles.mapOverlayLabel}>ATO {act}</div>
 
-          <section className={styles.block}>
-            <h3>Monstros</h3>
-            <div className={styles.monsterTable}>
-              <div className={styles.tableHeader}><span>Monstro</span><span>Aparição</span><span>Elemento</span><span>Chave</span></div>
-              {monsterIds.length ? monsterIds.map((id, index) => {
-                const mob = findMonster(monsters, id);
-                const element = translateElement(pick(mob, ["element", "Element", "damage_type", "DamageType"], "Físico"));
+              {visibleStages.map((stage) => {
+                const no = getStageNo(stage);
+                const pos = NODE_POSITIONS[stageIndexFromNo(no)];
+                const active = stageKey(stage) === stageKey(selected);
+                const hovered = stageKey(stage) === hoverKey;
+                const boss = getStageKind(stage) !== "Normal" || no === 10;
                 return (
-                  <a href={`/monsters/${id}`} className={styles.monsterRow} key={`${id}-${index}`}>
-                    <span className={styles.mobIdentity}><MonsterIcon id={id} /> {monsterName(id)}</span>
-                    <span>100%</span>
-                    <span className={styles.badge}>{String(element).toUpperCase()}</span>
-                    <span>{id}</span>
-                  </a>
+                  <button
+                    key={stageKey(stage)}
+                    type="button"
+                    aria-label={`Ato ${act} fase ${no}: ${getStageTitle(stage)}`}
+                    title={`Ato ${act}-${no} · ${getStageTitle(stage)}`}
+                    className={`${styles.stageNode} ${active ? styles.stageNodeActive : ""} ${hovered ? styles.stageNodeHover : ""} ${boss ? styles.stageNodeBoss : ""}`}
+                    style={{ left: `${pos.x}%`, top: `${pos.y}%` } as CSSProperties}
+                    onMouseEnter={() => setHoverKey(stageKey(stage))}
+                    onFocus={() => setHoverKey(stageKey(stage))}
+                    onBlur={() => setHoverKey("")}
+                    onClick={() => setSelectedKey(stageKey(stage))}
+                  >
+                    <span className={styles.stageBase} />
+                    <span className={styles.stageFlag} />
+                    <small>{act}-{no}</small>
+                  </button>
                 );
-              }) : <p className={styles.empty}>Nenhum monstro encontrado para esta fase.</p>}
-            </div>
-          </section>
+              })}
 
-          {bossId && (
-            <section className={styles.block}>
-              <h3>Chefe</h3>
-              <a href={`/monsters/${bossId}`} className={styles.bossCard}>
-                <MonsterIcon id={bossId} large />
-                <div>
-                  <strong>{monsterName(bossId)}</strong>
-                  <span>Chefe · Monstro #{bossId}</span>
+              {tooltipStage ? (
+                <div className={styles.tooltipWrap} style={tooltipStyle}>
+                  <StageTooltip stage={tooltipStage} difficulty={difficulty} monsters={monsters} />
                 </div>
-                <em>abrir chefe ↗</em>
-              </a>
-            </section>
-          )}
-
-          <section className={styles.block}>
-            <h3>Baús e Saque</h3>
-            <div className={styles.lootList}>
-              {lootRows.length ? lootRows.map((row, index) => {
-                const type = sourceType(row).toUpperCase();
-                const key = dropKey(row);
-                const name = CHEST_NAMES[type] ?? type.replace(/_/g, " ");
-                const rate = getRate(row);
-                return (
-                  <a key={`${type}-${key}-${index}`} className={styles.lootRow} href={`/drops?stage=${encodeURIComponent(stageKey(selected))}&drop=${encodeURIComponent(key)}`}>
-                    <span className={styles.lootIcon}>▣</span>
-                    <span><strong>{name}</strong><small>Chave {key}{rate ? ` · taxa ${rate}` : ""}</small></span>
-                    <em>abrir ↗</em>
-                  </a>
-                );
-              }) : <p className={styles.empty}>Drops desta fase não encontrados no cache local.</p>}
+              ) : null}
             </div>
-          </section>
 
-          <div className={styles.actions}>
-            <a href={`/drops?stage=${encodeURIComponent(stageKey(selected))}`}>Ver drops</a>
-            <a href={`/farm/optimizer?stage=${encodeURIComponent(stageKey(selected))}`}>Farmar</a>
-            {bossId && <a href={`/monsters/${bossId}`}>Chefe</a>}
+            <StageSelectedCard stage={selected} difficulty={difficulty} drops={selectedDrops} monsters={monsters} />
           </div>
-        </article>
+
+          <p className={styles.mapHint}>Passe o mouse na bandeira para ver os mobs. Clique para fixar a fase.</p>
+        </section>
       </div>
     </section>
   );

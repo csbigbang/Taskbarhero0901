@@ -28,7 +28,7 @@ export async function getItems(options?: { q?: string; grade?: string; type?: st
 
   let req = supabase()
     .from("tbh_items_full")
-    .select("item_key,item_type,grade,parts,gear_type,level,is_steam_item,icon_path,name_pt_br,name_en_us,description_pt_br,description_en_us")
+    .select("item_key,item_type,grade,parts,gear_type,level,is_steam_item,icon_path,name_pt_br,name_en_us")
     .order("item_key", { ascending: true })
     .limit(options?.limit ?? 200);
 

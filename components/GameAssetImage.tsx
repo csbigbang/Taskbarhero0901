@@ -47,6 +47,10 @@ function normalizeKey(value?: string | null) {
 function isTrustedUrl(url: string) {
   return (
     url.startsWith("/images/items/") ||
+    url.startsWith("/images/item-sprites/") ||
+    url.startsWith("/images/monsters/") ||
+    url.startsWith("/images/rarities/") ||
+    url.startsWith("/images/ui/") ||
     url.startsWith("/images/bg/") ||
     url.startsWith("/game-assets/")
   );

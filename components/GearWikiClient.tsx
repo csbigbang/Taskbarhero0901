@@ -39,22 +39,36 @@ type Props = {
   initialQ?: string;
 };
 
-const GRADES = ["ALL", "COMMON", "UNCOMMON", "RARE", "LEGENDARY", "IMMORTAL", "ARCANA", "BEYOND", "CELESTIAL", "DIVINE", "COSMIC"];
+type HoveredGear = { item: GearWikiItem; price?: GearWikiPrice };
+
+const GRADE_META = [
+  { key: "ALL", label: "Todas", icon: "", color: "#c3d5eb" },
+  { key: "COMMON", label: "Comum", icon: "/tbh-real/rarities/common.png", color: "#c3d5eb" },
+  { key: "UNCOMMON", label: "Incomum", icon: "/tbh-real/rarities/uncommon.png", color: "#6dff95" },
+  { key: "RARE", label: "Raro", icon: "/tbh-real/rarities/rare.png", color: "#60b4ff" },
+  { key: "LEGENDARY", label: "Lendário", icon: "/tbh-real/rarities/legendary.png", color: "#ffbd53" },
+  { key: "IMMORTAL", label: "Imortal", icon: "/tbh-real/rarities/immortal.png", color: "#ff5a5a" },
+  { key: "ARCANA", label: "Arcana", icon: "/tbh-real/rarities/arcana.png", color: "#c67aff" },
+  { key: "BEYOND", label: "Superior", icon: "/tbh-real/rarities/beyond.png", color: "#63ecff" },
+  { key: "CELESTIAL", label: "Celestial", icon: "/tbh-real/rarities/celestial.png", color: "#b5e7ff" },
+  { key: "DIVINE", label: "Divino", icon: "/tbh-real/rarities/divine.png", color: "#fff06a" },
+  { key: "COSMIC", label: "Cósmico", icon: "/tbh-real/rarities/cosmic.png", color: "#ff6ee0" },
+] as const;
 
 const SLOT_GROUPS = [
-  { key: "ALL", label: "Todos", icon: "⚔" },
-  { key: "WEAPON", label: "Armas", icon: "⚔" },
-  { key: "OFFHAND", label: "Off-hand", icon: "◈" },
-  { key: "ARMOR", label: "Armadura", icon: "▣" },
-  { key: "ACCESSORY", label: "Acessórios", icon: "◆" },
-  { key: "SWORD", label: "Sword", icon: "⚔" },
-  { key: "BOW", label: "Bow", icon: "➹" },
-  { key: "STAFF", label: "Staff", icon: "✦" },
-  { key: "CROSSBOW", label: "Crossbow", icon: "⌁" },
-  { key: "AXE", label: "Axe", icon: "⚒" },
-  { key: "RING", label: "Ring", icon: "◎" },
-  { key: "BRACER", label: "Bracer", icon: "▰" },
-];
+  { key: "ALL", label: "Todos", icon: "" },
+  { key: "WEAPON", label: "Armas", icon: "/images/item-sprites/SWORD_300001.png" },
+  { key: "OFFHAND", label: "Off-hand", icon: "/images/item-sprites/SHIELD_400001.png" },
+  { key: "ARMOR", label: "Armadura", icon: "/images/item-sprites/ARMOR_510001.png" },
+  { key: "ACCESSORY", label: "Acessórios", icon: "/images/item-sprites/RING_620001.png" },
+  { key: "SWORD", label: "Espada", icon: "/images/item-sprites/SWORD_300001.png" },
+  { key: "BOW", label: "Arco", icon: "/images/item-sprites/BOW_310001.png" },
+  { key: "STAFF", label: "Cajado", icon: "/images/item-sprites/STAFF_320001.png" },
+  { key: "CROSSBOW", label: "Besta", icon: "/images/item-sprites/CROSSBOW_340001.png" },
+  { key: "AXE", label: "Machado", icon: "/images/item-sprites/AXE_350001.png" },
+  { key: "RING", label: "Anel", icon: "/images/item-sprites/RING_620001.png" },
+  { key: "BRACER", label: "Bracelete", icon: "/images/item-sprites/BRACER_630001.png" },
+] as const;
 
 const GRADE_POWER: Record<string, number> = {
   COMMON: 10,
@@ -90,29 +104,6 @@ const CATEGORY_TO_SPRITE: Record<string, string> = {
   "61": "EARING",
   "62": "RING",
   "63": "BRACER",
-};
-
-const TYPE_LABEL: Record<string, string> = {
-  SWORD: "Sword",
-  BOW: "Bow",
-  STAFF: "Staff",
-  SCEPTER: "Scepter",
-  CROSSBOW: "Crossbow",
-  AXE: "Axe",
-  SHIELD: "Shield",
-  ARROW: "Arrow",
-  ORB: "Orb",
-  TOME: "Tome",
-  BOLT: "Bolt",
-  HATCHET: "Hatchet",
-  HELMET: "Helmet",
-  ARMOR: "Armor",
-  GLOVES: "Gloves",
-  BOOTS: "Boots",
-  AMULET: "Amulet",
-  EARING: "Earring",
-  RING: "Ring",
-  BRACER: "Bracer",
 };
 
 const TYPE_LABEL_PT: Record<string, string> = {
@@ -151,31 +142,38 @@ const GRADE_LABEL_PT: Record<string, string> = {
   COSMIC: "Cósmico",
 };
 
+const SLOT_BG: Record<string, string> = {
+  COMMON: "/tbh-real/items/ItemSlot_GradeBg_NORMAL.png",
+  UNCOMMON: "/tbh-real/items/ItemSlot_GradeBg_UNCOMMON.png",
+  RARE: "/tbh-real/items/ItemSlot_GradeBg_RARE.png",
+  LEGENDARY: "/tbh-real/items/ItemSlot_GradeBg_LEGENDARY.png",
+  IMMORTAL: "/tbh-real/items/ItemSlot_GradeBg_IMMORTAL.png",
+  ARCANA: "/tbh-real/items/ItemSlot_GradeBg_ARCANA.png",
+  BEYOND: "/tbh-real/items/ItemSlot_GradeBg_BEYOND.png",
+  CELESTIAL: "/tbh-real/items/ItemSlot_GradeBg_CELESTIAL.png",
+  DIVINE: "/tbh-real/items/ItemSlot_GradeBg_DIVINE.png",
+  COSMIC: "/tbh-real/items/ItemSlot_GradeBg_COSMIC.png",
+};
+
 function normalize(value: unknown) {
   return String(value ?? "").trim();
 }
-
 function upper(value: unknown) {
   return normalize(value).toUpperCase();
 }
-
 function itemName(item: GearWikiItem) {
   return normalize(item.name_en_us) || normalize(item.name_pt_br) || `Equipamento ${item.item_key}`;
 }
-
 function itemId(item: GearWikiItem) {
   return normalize(item.item_key).match(/\d{4,}/)?.[0] || normalize(item.item_key);
 }
-
 function itemLevel(item: GearWikiItem) {
   const raw = normalize(item.level).match(/\d+/)?.[0];
   return raw ? Number(raw) : 0;
 }
-
 function itemGrade(item: GearWikiItem) {
   return upper(item.grade) || "COMMON";
 }
-
 function spriteNameFromItemId(value: string | number | null | undefined): string | null {
   const raw = normalize(value).match(/\d{6,}/)?.[0];
   if (!raw || raw.length < 6) return null;
@@ -187,12 +185,10 @@ function spriteNameFromItemId(value: string | number | null | undefined): string
   if (!/^\d{2}$/.test(base)) return null;
   return `${prefix}_${category}00${base}`;
 }
-
 function typeFromItem(item: GearWikiItem) {
   const byId = spriteNameFromItemId(item.item_key)?.split("_")[0];
   return upper(item.gear_type) || upper(item.parts) || byId || "GEAR";
 }
-
 function slotBucket(item: GearWikiItem) {
   const type = typeFromItem(item);
   if (["SWORD", "BOW", "STAFF", "SCEPTER", "CROSSBOW", "AXE"].includes(type)) return "WEAPON";
@@ -201,25 +197,21 @@ function slotBucket(item: GearWikiItem) {
   if (["AMULET", "EARING", "EARRING", "RING", "BRACER"].includes(type)) return "ACCESSORY";
   return type;
 }
-
 function priceNumber(price?: GearWikiPrice) {
   const value = price?.lowest_price_brl ?? price?.median_price_brl;
   const num = typeof value === "number" ? value : Number(String(value ?? "").replace(",", "."));
   return Number.isFinite(num) ? num : 0;
 }
-
 function formatBrl(value: number) {
   if (!value) return "sem preço";
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
-
 function score(item: GearWikiItem, price?: GearWikiPrice) {
   const grade = GRADE_POWER[itemGrade(item)] ?? 20;
   const level = Math.min(itemLevel(item), 100) * 0.42;
   const market = Math.min(priceNumber(price) * 3, 24);
   return Math.round(Math.min(100, grade * 0.55 + level * 0.35 + market));
 }
-
 function traitLines(item: GearWikiItem, scoreValue: number) {
   const type = typeFromItem(item);
   const lv = Math.max(1, itemLevel(item));
@@ -229,37 +221,29 @@ function traitLines(item: GearWikiItem, scoreValue: number) {
   const survival = Math.max(5, Math.round(lv * 0.85 + scoreValue / 3));
 
   if (["SWORD", "BOW", "STAFF", "SCEPTER", "CROSSBOW", "AXE", "HATCHET"].includes(type)) {
-    return [`Attack Damage +${damage}%`, `Critical Damage +${Math.max(5, scoreValue - 18)}%`, `Attack Speed +${speed}%`];
+    return [`Dano de Ataque +${damage}%`, `Dano Crítico +${Math.max(5, scoreValue - 18)}%`, `Vel. de Ataque +${speed}%`];
   }
   if (["SHIELD", "ARMOR", "HELMET", "GLOVES", "BOOTS"].includes(type)) {
-    return [`Defense +${survival}`, `Damage Reduction +${Math.max(2, Math.round(scoreValue / 12))}%`, `HP +${Math.max(20, survival * 3)}`];
+    return [`Defesa +${survival}`, `Redução de Dano +${Math.max(2, Math.round(scoreValue / 12))}%`, `HP +${Math.max(20, survival * 3)}`];
   }
-  return [`Cooldown Reduction +${Math.max(2, Math.round(scoreValue / 16))}%`, `Critical Chance +${Math.max(3, Math.round(scoreValue / 2))}%`, `Attack Damage +${Math.max(5, Math.round(scoreValue * 0.9))}%`];
+  return [`Redução de Recarga +${Math.max(2, Math.round(scoreValue / 16))}%`, `Chance Crítica +${Math.max(3, Math.round(scoreValue / 2))}%`, `Dano de Ataque +${Math.max(5, Math.round(scoreValue * 0.9))}%`];
 }
-
-
-type HoveredGear = { item: GearWikiItem; price?: GearWikiPrice };
-
 function cleanItemTitle(item: GearWikiItem) {
   const name = itemName(item).replace(/\s+/g, " ").trim();
   return name.replace(/\s+Variant\s+[ABC]$/i, "");
 }
-
 function displayType(item: GearWikiItem) {
   const key = typeFromItem(item);
-  return TYPE_LABEL_PT[key] || TYPE_LABEL[key] || key;
+  return TYPE_LABEL_PT[key] || key;
 }
-
 function displayGrade(grade: string) {
   return GRADE_LABEL_PT[grade] || grade;
 }
-
 function variantLetter(item: GearWikiItem) {
   const name = itemName(item);
   const match = name.match(/\s([ABC])$/i);
   return match?.[1]?.toUpperCase() || "A";
 }
-
 function gradeLabel(grade: string) {
   return `Grau ${displayGrade(grade)}`;
 }
@@ -279,16 +263,17 @@ function GearPreview({ item, price }: { item: GearWikiItem; price?: GearWikiPric
   const type = displayType(item);
 
   return (
-    <aside className={`${styles.previewPanel} ${styles[`grade${grade}`] || ""}`}>
+    <aside className={`${styles.previewPanel} ${styles[`grade${grade}`] || ""}`} style={{ ["--slot-bg" as string]: `url(${SLOT_BG[grade] || SLOT_BG.COMMON})` }}>
       <div className={styles.tooltipTitle}>{cleanItemTitle(item)}</div>
       <div className={styles.tooltipTop}>
         <div className={styles.tooltipIconBox}>
+          <div className={styles.slotBg} />
           <GearSprite item={item} big />
         </div>
         <div className={styles.tooltipMeta}>
           <strong>{gradeLabel(grade)}</strong>
           <span>{type} · Variante {variantLetter(item)}</span>
-          <span>Requer Nível {itemLevel(item) || "?"}</span>
+          <span>Requer nível {itemLevel(item) || "?"}</span>
         </div>
       </div>
 
@@ -326,8 +311,10 @@ function GearCard({ item, price, onHover }: { item: GearWikiItem; price?: GearWi
       className={`${styles.gearCard} ${styles[`grade${grade}`] || ""}`}
       onMouseEnter={() => onHover(item, price)}
       onFocus={() => onHover(item, price)}
+      style={{ ["--slot-bg" as string]: `url(${SLOT_BG[grade] || SLOT_BG.COMMON})` }}
     >
       <div className={styles.iconSlot}>
+        <div className={styles.slotBg} />
         <GearSprite item={item} />
       </div>
       <div className={styles.cardBody}>
@@ -396,52 +383,48 @@ export default function GearWikiClient({ items, prices, initialGrade = "ALL", in
     return { withPrice, cosmic, divine };
   }, [items, prices]);
 
-
-  function handleHover(item: GearWikiItem, price: GearWikiPrice | undefined) {
-    setHovered({ item, price });
-  }
-
   const preview = hovered || (visible[0] ? { item: visible[0].item, price: visible[0].price } : null);
 
   return (
     <main className={styles.gearShell}>
       <section className={styles.heroPanel}>
         <div>
-          <span className={styles.kicker}>GEAR DATABASE</span>
+          <span className={styles.kicker}>TBH Database · Gear</span>
           <h1>Equipamentos</h1>
-          <p>Equipamentos em grid com tooltip animado, sprite real, raridade, level, preço em R$ e acesso rápido ao item.</p>
+          <p>Sprites reais do jogo, raridade, nível e preço em R$.</p>
         </div>
         <div className={styles.heroStats}>
-          <div><strong>{items.length.toLocaleString("pt-BR")}</strong><span>gear</span></div>
+          <div><strong>{items.length.toLocaleString("pt-BR")}</strong><span>equipamentos</span></div>
           <div><strong>{stats.withPrice.toLocaleString("pt-BR")}</strong><span>com preço</span></div>
-          <div><strong>{stats.divine + stats.cosmic}</strong><span>top grades</span></div>
+          <div><strong>{stats.divine + stats.cosmic}</strong><span>divino/cósmico</span></div>
         </div>
       </section>
 
       <section className={styles.filtersPanel}>
-        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar gear, ID, ring, bow, sword, divine..." />
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar equipamento, ID, espada, arco, divino..." />
         <select value={sort} onChange={(e) => setSort(e.target.value)}>
           <option value="score">Melhor score</option>
-          <option value="level">Maior level</option>
+          <option value="level">Maior nível</option>
           <option value="price">Maior preço</option>
           <option value="name">Nome A-Z</option>
         </select>
-        <input value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} placeholder="Preço máx. R$" inputMode="decimal" />
+        <input value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} placeholder="Preço máximo em R$" inputMode="decimal" />
       </section>
 
       <section className={styles.gradeTabs} aria-label="Raridades">
-        {GRADES.map((g) => (
-          <button key={g} type="button" className={grade === g ? styles.activeTab : ""} onClick={() => setGrade(g)}>
-            <span className={styles.gradeDot} data-grade={g.toLowerCase()} />
-            {g === "ALL" ? "Todas" : g}
+        {GRADE_META.map((g) => (
+          <button key={g.key} type="button" className={grade === g.key ? styles.activeTab : ""} onClick={() => setGrade(g.key)} style={{ ["--grade-color" as string]: g.color }}>
+            {g.icon ? <img src={g.icon} alt="" className={styles.tabIcon} loading="lazy" /> : <span className={styles.tabBadge}>•</span>}
+            <span>{g.label}</span>
           </button>
         ))}
       </section>
 
-      <section className={styles.slotTabs} aria-label="Slots">
+      <section className={styles.slotTabs} aria-label="Categorias de equipamento">
         {SLOT_GROUPS.map((s) => (
           <button key={s.key} type="button" className={slot === s.key ? styles.activeSlot : ""} onClick={() => setSlot(s.key)}>
-            <span>{s.icon}</span>{s.label}
+            {s.icon ? <img src={s.icon} alt="" className={styles.tabIcon} loading="lazy" /> : <span className={styles.tabBadge}>•</span>}
+            <span>{s.label}</span>
           </button>
         ))}
       </section>
@@ -451,13 +434,13 @@ export default function GearWikiClient({ items, prices, initialGrade = "ALL", in
           <strong>{prepared.length.toLocaleString("pt-BR")}</strong> resultado(s)
           <span> · exibindo {visible.length.toLocaleString("pt-BR")} para manter a página leve</span>
         </div>
-        <Link href="/database">Abrir Banco de Dados ↗</Link>
+        <Link href="/database">Abrir TBH Database ↗</Link>
       </section>
 
       <section className={styles.gearWorkspace}>
         <div className={styles.gearGrid}>
           {visible.map(({ item, price }) => (
-            <GearCard key={String(item.item_key)} item={item} price={price} onHover={handleHover} />
+            <GearCard key={String(item.item_key)} item={item} price={price} onHover={(item, price) => setHovered({ item, price })} />
           ))}
         </div>
         <div className={styles.previewRail}>

@@ -1,0 +1,47 @@
+/* TBH Database - escala geral 80%
+   Reduz a interface inteira sem alterar os assets.
+*/
+
+:root {
+  --tbh-site-scale: 0.80;
+}
+
+@media (min-width: 900px) {
+  html {
+    background: #02060d;
+  }
+
+  body {
+    zoom: var(--tbh-site-scale);
+    overflow-x: hidden;
+  }
+
+  /* Mantém o fundo cobrindo a tela mesmo com o zoom do body */
+  .wallpaper-layer,
+  .scanlines {
+    zoom: calc(1 / var(--tbh-site-scale));
+  }
+
+  /* Evita que o botão de voltar ao topo fique pequeno demais */
+  .back-to-top {
+    zoom: calc(1 / var(--tbh-site-scale));
+  }
+}
+
+/* Fallback para navegador sem suporte a zoom */
+@supports not (zoom: 1) {
+  @media (min-width: 900px) {
+    body {
+      transform: scale(var(--tbh-site-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--tbh-site-scale));
+      min-height: calc(100vh / var(--tbh-site-scale));
+    }
+
+    .wallpaper-layer,
+    .scanlines {
+      transform: scale(calc(1 / var(--tbh-site-scale)));
+      transform-origin: top left;
+    }
+  }
+}

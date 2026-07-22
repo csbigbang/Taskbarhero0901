@@ -1,0 +1,220 @@
+/* TBH Database - camada profissional
+   Regras:
+   - TBH Database é fan site não oficial.
+   - Sem placeholder/fallback visual.
+   - Assets de UI vêm do pacote real extraído do jogo.
+*/
+
+:root {
+  --tbh-real-tile: url("/tbh-real/ui/Background.png");
+  --tbh-real-window: url("/tbh-real/ui/window.png");
+  --tbh-real-button: url("/tbh-real/ui/Button.png");
+  --tbh-real-frame-blue: url("/tbh-real/ui/frame-blue.png");
+  --tbh-real-frame-gold: url("/tbh-real/ui/frame-gold.png");
+  --tbh-real-frame-red: url("/tbh-real/ui/frame-red.png");
+  --tbh-real-frame-green: url("/tbh-real/ui/frame-green.png");
+  --tbh-real-frame-purple: url("/tbh-real/ui/frame-purple.png");
+  --tbh-real-frame-dark: url("/tbh-real/ui/frame-dark.png");
+  --tbh-real-title-bg: url("/tbh-real/ui/UI_Title_Bg.png");
+  --tbh-real-title-decor: url("/tbh-real/ui/UI_Title_Bg_Decor.png");
+  --tbh-pixel-text: #fff1c4;
+  --tbh-pixel-muted: #a9c0d8;
+  --tbh-pixel-gold: #ffd86a;
+  --tbh-pixel-blue: #5fcfff;
+}
+
+html body {
+  font-family: var(--font-pixel), monospace !important;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+a,
+p,
+span,
+strong,
+em,
+small,
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-pixel), monospace;
+}
+
+.wallpaper-layer {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.86), rgba(0,0,0,.46) 20%, rgba(0,0,0,.34) 50%, rgba(0,0,0,.46) 80%, rgba(0,0,0,.86)),
+    linear-gradient(180deg, rgba(2,5,11,.45), rgba(2,5,11,.88)),
+    url("/images/bg/tbh-main-bg.png") center / cover fixed no-repeat !important;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+.game-asset-fallback,
+.item-icon-fallback,
+.asset-placeholder,
+.placeholder,
+[data-placeholder="true"],
+[class*="fallback"],
+[class*="placeholder"] {
+  display: none !important;
+}
+
+.header.tbhdb-header,
+.sidebar.tbhdb-sidebar,
+.page-frame,
+.panel,
+.card,
+.small-card,
+.metricCard,
+.toolCard,
+[class*="Panel"],
+[class*="Card"] {
+  background-image:
+    linear-gradient(180deg, rgba(7, 13, 24, .96), rgba(3, 7, 13, .98)),
+    var(--tbh-real-tile) !important;
+  background-repeat: repeat !important;
+  background-size: auto, 32px 32px !important;
+}
+
+.header.tbhdb-header {
+  border-bottom: 8px solid transparent !important;
+  border-image: var(--tbh-real-frame-blue) 8 fill stretch !important;
+  box-shadow: 0 5px 0 #000 !important;
+}
+
+.logo.tbhdb-logo,
+.tbhdb-sidebar-brand,
+.page-frame,
+.panel,
+.card,
+.small-card,
+.metricCard,
+.toolCard {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-real-frame-blue) 8 fill stretch !important;
+  box-shadow: 5px 5px 0 #000 !important;
+}
+
+.logo.tbhdb-logo,
+.tbhdb-sidebar-brand {
+  border-image: var(--tbh-real-frame-gold) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(64, 39, 8, .96), rgba(14, 9, 3, .98)),
+    var(--tbh-real-tile) !important;
+}
+
+.tbhdb-logo-copy strong,
+.tbhdb-sidebar-brand strong {
+  color: var(--tbh-pixel-text) !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+.tbhdb-logo-copy em,
+.tbhdb-sidebar-brand span,
+.footer p {
+  color: var(--tbh-pixel-gold) !important;
+}
+
+.tbhdb-nav-link,
+.tbhdb-sidebar-link,
+.btn,
+button,
+.searchButton,
+.ctaButton,
+[class*="Button"] {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-real-frame-dark) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(12, 21, 35, .96), rgba(4, 9, 17, .98)),
+    var(--tbh-real-tile) !important;
+  color: var(--tbh-pixel-text) !important;
+  text-shadow: 2px 2px 0 #000 !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.tbhdb-nav-link:hover,
+.tbhdb-nav-link.active,
+.tbhdb-sidebar-link:hover,
+.tbhdb-sidebar-link.active,
+.btn:hover,
+button:hover,
+.searchButton:hover,
+.ctaButton:hover {
+  border-image: var(--tbh-real-frame-gold) 8 fill stretch !important;
+  color: var(--tbh-pixel-gold) !important;
+  filter: brightness(1.08);
+  transform: translate(-1px, -1px);
+}
+
+input,
+select,
+textarea,
+.searchInput {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-real-frame-dark) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 14, .98), rgba(1, 4, 8, .98)),
+    var(--tbh-real-tile) !important;
+  color: var(--tbh-pixel-text) !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+h1,
+h2,
+h3,
+.heroTitle {
+  color: var(--tbh-pixel-text) !important;
+  text-shadow: 4px 4px 0 #000 !important;
+  letter-spacing: 0 !important;
+}
+
+p {
+  color: #dbe7f5 !important;
+  line-height: 1.7;
+}
+
+.page-banner,
+.heroBadge,
+.kicker,
+.eyebrow {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-real-frame-gold) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(108, 69, 16, .96), rgba(32, 19, 5, .98)),
+    var(--tbh-real-tile) !important;
+  color: var(--tbh-pixel-gold) !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+.item-icon,
+.iconSlot,
+.tooltipIconBox,
+.metricIcon,
+.toolIcon,
+.tbhdb-nav-icon,
+.tbhdb-sidebar-icon {
+  border: 2px solid rgba(180, 213, 246, .52) !important;
+  background:
+    radial-gradient(circle, rgba(255, 216, 106, .12), transparent 62%),
+    rgba(1, 5, 10, .92) !important;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.45), 3px 3px 0 #000 !important;
+}
+
+.footer {
+  border-top: 8px solid transparent !important;
+  border-image: var(--tbh-real-frame-blue) 8 fill stretch !important;
+}
+
+.fan-disclaimer,
+.tbh-legal-note {
+  color: #d6e5f6 !important;
+  font-size: 10px !important;
+  line-height: 1.6 !important;
+}

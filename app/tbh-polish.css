@@ -1,0 +1,408 @@
+/* TBH Database - polimento visual final
+   Camada carregada depois do globals.css para limpar overrides antigos. */
+:root {
+  --tbh-bg: #050914;
+  --tbh-panel: rgba(7, 13, 24, .97);
+  --tbh-panel-2: rgba(10, 18, 31, .97);
+  --tbh-border: #55789f;
+  --tbh-border-soft: rgba(89, 123, 159, .72);
+  --tbh-gold: #ffd36b;
+  --tbh-gold-2: #a86d1a;
+  --tbh-text: #fff0c2;
+  --tbh-muted: #aebfd4;
+  --tbh-cyan: #5ccfff;
+}
+
+body {
+  background: var(--tbh-bg) !important;
+}
+
+.wallpaper-layer {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.38) 22%, rgba(0,0,0,.32) 50%, rgba(0,0,0,.38) 78%, rgba(0,0,0,.82)),
+    linear-gradient(180deg, rgba(4,8,16,.35), rgba(4,8,16,.82)),
+    url('/images/bg/tbh-main-bg.png') center / cover fixed no-repeat !important;
+}
+
+.scanlines {
+  opacity: .16 !important;
+}
+
+/* Header limpo */
+.header.tbhdb-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 30 !important;
+  background: linear-gradient(180deg, rgba(5, 10, 18, .98), rgba(3, 7, 13, .98)) !important;
+  border-bottom: 2px solid rgba(88, 123, 159, .8) !important;
+  box-shadow: 0 5px 0 #000, 0 0 28px rgba(92,207,255,.08) !important;
+}
+
+.header-inner.tbhdb-header-inner {
+  width: min(1460px, calc(100% - 34px)) !important;
+  display: grid !important;
+  grid-template-columns: 310px minmax(260px, 430px) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 10px 0 !important;
+}
+
+.logo.tbhdb-logo {
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: 116px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  align-items: center !important;
+  padding: 8px 10px !important;
+  border: 2px solid #d0a248 !important;
+  background: linear-gradient(180deg, rgba(50, 31, 9, .98), rgba(15, 10, 4, .98)) !important;
+  box-shadow: 4px 4px 0 #000 !important;
+  text-decoration: none !important;
+}
+
+.tbhdb-logo-art {
+  display: grid !important;
+  place-items: center !important;
+  min-width: 0 !important;
+}
+
+.tbhdb-logo-art img {
+  display: block !important;
+  width: 108px !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+}
+
+.tbhdb-logo-copy strong {
+  display: block !important;
+  color: #fff1c0 !important;
+  font-size: 14px !important;
+  line-height: 1.15 !important;
+}
+
+.tbhdb-logo-copy em {
+  display: block !important;
+  color: #ffd36b !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+  line-height: 1.4 !important;
+}
+
+.tbhdb-search-wrap {
+  min-width: 0 !important;
+}
+
+.tbhdb-nav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  justify-content: flex-end !important;
+}
+
+.tbhdb-nav-link {
+  min-height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 10px !important;
+  border: 2px solid var(--tbh-border) !important;
+  background: linear-gradient(180deg, rgba(14, 25, 40, .98), rgba(5, 10, 18, .98)) !important;
+  color: #eaf3ff !important;
+  text-decoration: none !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.tbhdb-nav-link:hover,
+.tbhdb-nav-link.active {
+  border-color: var(--tbh-gold) !important;
+  color: #fff0c2 !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+.tbhdb-nav-icon,
+.tbhdb-sidebar-icon {
+  width: 28px !important;
+  height: 28px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(126, 159, 194, .62) !important;
+  background: rgba(2, 7, 13, .94) !important;
+  overflow: hidden !important;
+}
+
+.tbhdb-nav-icon img,
+.tbhdb-sidebar-icon img {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+}
+
+/* Layout e sidebar */
+.app-shell {
+  width: min(1640px, calc(100% - 34px)) !important;
+  grid-template-columns: 365px minmax(0, 1fr) !important;
+  gap: 22px !important;
+}
+
+.sidebar.tbhdb-sidebar {
+  background: linear-gradient(180deg, rgba(7, 13, 24, .97), rgba(3, 8, 15, .98)) !important;
+  border: 2px solid var(--tbh-border) !important;
+  box-shadow: 5px 5px 0 #000 !important;
+  padding: 14px !important;
+}
+
+.tbhdb-sidebar-brand {
+  display: grid !important;
+  gap: 8px !important;
+  padding: 12px !important;
+  border: 2px solid #d0a248 !important;
+  background: linear-gradient(180deg, rgba(48, 30, 9, .97), rgba(15, 9, 4, .98)) !important;
+  box-shadow: 4px 4px 0 #000 !important;
+}
+
+.tbhdb-sidebar-brand img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 270px !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+}
+
+.tbhdb-sidebar-brand strong {
+  color: #fff0c2 !important;
+  font-size: 21px !important;
+  line-height: 1.1 !important;
+}
+
+.tbhdb-sidebar-brand span {
+  color: #ffd36b !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.tbhdb-sidebar-group {
+  padding: 14px 0 !important;
+  border-top: 1px solid rgba(100, 133, 169, .42) !important;
+}
+
+.tbhdb-sidebar-group h3 {
+  margin: 0 0 9px !important;
+  color: var(--tbh-gold) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: .08em !important;
+}
+
+.tbhdb-sidebar-link {
+  display: grid !important;
+  grid-template-columns: 40px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 50px !important;
+  margin-bottom: 8px !important;
+  padding: 7px 10px !important;
+  border: 2px solid rgba(77, 105, 137, .82) !important;
+  background: linear-gradient(180deg, rgba(12, 22, 36, .95), rgba(5, 11, 20, .96)) !important;
+  color: #e6f0fb !important;
+  text-decoration: none !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.tbhdb-sidebar-link:hover,
+.tbhdb-sidebar-link.active {
+  border-color: var(--tbh-gold) !important;
+  color: #fff0c2 !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+.tbhdb-sidebar-link > span:nth-child(2) {
+  font-size: 15px !important;
+  line-height: 1.22 !important;
+  white-space: normal !important;
+}
+
+.tbhdb-sidebar-link em {
+  padding: 3px 6px !important;
+  border: 1px solid rgba(125, 158, 191, .45) !important;
+  color: #9eb6cf !important;
+  background: rgba(2, 7, 13, .72) !important;
+  font-size: 9px !important;
+  font-style: normal !important;
+}
+
+/* Conteúdo: visual pixelado, limpo, sem placeholder chamativo */
+.page-frame,
+.panel,
+.card,
+.small-card,
+.market-card,
+.farm-card,
+.drop-card,
+.stage-card,
+.item-card {
+  background: linear-gradient(180deg, var(--tbh-panel-2), var(--tbh-panel)) !important;
+  border: 2px solid var(--tbh-border) !important;
+  box-shadow: 5px 5px 0 #000 !important;
+}
+
+.page-banner {
+  background: linear-gradient(180deg, rgba(44, 29, 10, .96), rgba(12, 8, 3, .98)) !important;
+  color: #fff0c2 !important;
+  border-bottom: 2px solid #d0a248 !important;
+}
+
+.eyebrow,
+.badge,
+.stage-badge {
+  background: linear-gradient(180deg, #6d4712, #231506) !important;
+  border: 2px solid #d0a248 !important;
+  color: #ffe08c !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.btn,
+button.btn,
+.searchbar button,
+.copy-btn,
+.asset-tab,
+.copyBox button {
+  border: 2px solid var(--tbh-border) !important;
+  background: linear-gradient(180deg, rgba(16, 29, 45, .98), rgba(6, 12, 22, .98)) !important;
+  color: #fff0c2 !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.btn.primary,
+.searchbar button[type='submit'] {
+  border-color: #d0a248 !important;
+  background: linear-gradient(180deg, #765017, #261706) !important;
+}
+
+img,
+.real-menu-icon,
+.item-icon img,
+.asset-thumb img {
+  image-rendering: pixelated !important;
+}
+
+.game-asset-fallback,
+.item-icon-fallback,
+.asset-placeholder,
+.placeholder,
+[data-placeholder='true'] {
+  display: none !important;
+}
+
+.item-icon,
+.asset-thumb,
+.homeFeatureIcon,
+.farm-real-icon {
+  border: 2px solid rgba(91, 122, 158, .9) !important;
+  background: rgba(2, 7, 13, .94) !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.item-icon img,
+.homeFeatureIcon img,
+.farm-real-icon img {
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+}
+
+.footer {
+  background: rgba(5, 10, 18, .96) !important;
+  border-color: rgba(85, 120, 159, .75) !important;
+}
+
+@media (max-width: 1180px) {
+  .header-inner.tbhdb-header-inner {
+    grid-template-columns: 310px minmax(260px, 1fr) !important;
+  }
+
+  .tbhdb-nav {
+    grid-column: 1 / -1 !important;
+    justify-content: flex-start !important;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sidebar.tbhdb-sidebar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner.tbhdb-header-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .logo.tbhdb-logo {
+    grid-template-columns: 100px 1fr !important;
+  }
+
+  .tbhdb-nav {
+    justify-content: flex-start !important;
+  }
+}
+
+
+/* Ajuste 80% real do menu lateral: largura e legibilidade */
+@media (min-width: 1180px) {
+  .app-shell {
+    width: min(1640px, calc(100% - 34px)) !important;
+    grid-template-columns: 365px minmax(0, 1fr) !important;
+    gap: 22px !important;
+  }
+
+  .sidebar.tbhdb-sidebar {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tbhdb-sidebar-icon,
+  .sidebar-icon.tbhdb-sidebar-icon {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .tbhdb-sidebar-link em {
+    min-width: 54px !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 1179px) {
+  .app-shell {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Stage 7 — menu lateral completo, sem rolagem interna */
+@media (min-width: 1180px) {
+  .sidebar.tbhdb-sidebar {
+    position: relative !important;
+    top: auto !important;
+    align-self: start !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overscroll-behavior: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  .sidebar.tbhdb-sidebar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}

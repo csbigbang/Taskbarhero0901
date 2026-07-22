@@ -11,12 +11,67 @@ type Props = {
   initialHero?: HeroKey | string;
 };
 
+type HeroAnimationConfig = {
+  sheet: string;
+  frames: number;
+  steps: number;
+  duration: string;
+};
+
+const HERO_ANIMATIONS: Record<HeroKey, HeroAnimationConfig> = {
+  knight: {
+    sheet: "/game-assets/heroes/animated/knight-idle-strip.png",
+    frames: 9,
+    steps: 8,
+    duration: "1.05s",
+  },
+  ranger: {
+    sheet: "/game-assets/heroes/animated/ranger-idle-strip.png",
+    frames: 9,
+    steps: 8,
+    duration: "1.05s",
+  },
+  sorcerer: {
+    sheet: "/game-assets/heroes/animated/sorcerer-idle-strip.png",
+    frames: 9,
+    steps: 8,
+    duration: "1.05s",
+  },
+  priest: {
+    sheet: "/game-assets/heroes/animated/priest-idle-strip.png",
+    frames: 9,
+    steps: 8,
+    duration: "1.05s",
+  },
+  hunter: {
+    sheet: "/game-assets/heroes/animated/hunter-idle-strip.png",
+    frames: 9,
+    steps: 8,
+    duration: "1.05s",
+  },
+  slayer: {
+    sheet: "/game-assets/heroes/animated/slayer-idle-strip.png",
+    frames: 12,
+    steps: 11,
+    duration: "1.3s",
+  },
+};
+
 function cn(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
 }
 
 function heroStyle(hero: HeroData): CSSProperties {
-  return { "--hero-color": hero.color, "--hero-accent": hero.accent } as CSSProperties;
+  const animation = HERO_ANIMATIONS[hero.key];
+
+  return {
+    "--hero-color": hero.color,
+    "--hero-accent": hero.accent,
+    "--hero-sheet": `url(${animation.sheet})`,
+    "--hero-sheet-size": `${animation.frames * 100}% 100%`,
+    "--hero-step-count": String(animation.steps),
+    "--hero-duration": animation.duration,
+  } as CSSProperties;
 }
 
 function stat(hero: HeroData, label: string, fallback = "-") {
@@ -67,13 +122,13 @@ function ptWeapon(value: string) {
 
 function HeroFigure({ hero, size = "card" }: { hero: HeroData; size?: "card" | "tooltip" | "detail" }) {
   return (
-    <span className={cn(styles.figure, styles[`figure_${size}`])} style={heroStyle(hero)}>
-      <img
-        src={hero.heroIcon}
-        alt={ptName(hero)}
-        loading="lazy"
-        draggable={false}
-      />
+    <span
+      className={cn(styles.figure, styles[`figure_${size}`])}
+      style={heroStyle(hero)}
+      role="img"
+      aria-label={ptName(hero)}
+    >
+      <span className={styles.spriteSheet} aria-hidden="true" />
       <i aria-hidden="true" />
     </span>
   );

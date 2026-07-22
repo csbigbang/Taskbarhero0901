@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./ProgressSimulator.module.css";
+import ItemSmartImage from "@/components/ItemSmartImage";
 
 type Goal = "dano" | "farm" | "boss" | "sobrevivencia" | "custo";
 type Profile = "free" | "balanceado" | "premium";
@@ -344,9 +345,7 @@ async function getFarmHints(keys: string[], items: ProgressItem[]) {
 }
 
 function ItemIcon({ item }: { item: ProgressItem }) {
-  const [failed, setFailed] = useState(false);
-  if (!item.icon_path || failed) return null;
-  return <img src={`/images/items/${item.icon_path}.png`} alt="" onError={() => setFailed(true)} />;
+  return <ItemSmartImage itemKey={item.item_key} iconPath={item.icon_path} alt="" />;
 }
 
 export function ProgressSimulator() {

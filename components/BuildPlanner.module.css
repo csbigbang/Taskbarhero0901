@@ -1,6 +1,12 @@
 .planner {
   display: grid;
-  gap: 18px;
+  gap: 16px;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, rgba(10, 8, 7, .92), rgba(8, 7, 9, .94)),
+    url("/tbh-real/backgrounds/builds-ranger-desert.jpg") right bottom / 420px auto no-repeat;
+  border: 4px solid #8eb8e0;
+  box-shadow: 5px 5px 0 #000;
 }
 
 .controlPanel {
@@ -25,13 +31,13 @@
 
 .field select,
 .field input {
-  min-height: 44px;
+  min-height: 40px;
   color: #fff3cf;
-  background: rgba(7, 12, 22, .96);
-  border: 3px solid #53657d;
-  padding: 0 12px;
+  background: rgba(9, 12, 18, .98);
+  border: 3px solid #5a6980;
+  padding: 0 10px;
   outline: none;
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 3px 3px 0 #000;
 }
 
 .field select:focus,
@@ -46,10 +52,10 @@
 }
 
 .summaryBox {
-  padding: 14px;
+  padding: 12px;
   color: #dbe7ff;
-  background: linear-gradient(180deg, rgba(12, 19, 31, .97), rgba(7, 11, 19, .97));
-  border: 3px solid #43546b;
+  background: linear-gradient(180deg, rgba(15, 18, 26, .98), rgba(7, 10, 16, .98));
+  border: 3px solid #4d5f77;
   box-shadow: 4px 4px 0 #000;
 }
 
@@ -73,12 +79,12 @@
 }
 
 .toolButton {
-  min-height: 40px;
+  min-height: 36px;
   color: #201200;
-  background: linear-gradient(180deg, #ffe27c, #e59519);
+  background: linear-gradient(180deg, #ffe27c, #d99519);
   border: 3px solid #fff1b6;
-  box-shadow: 4px 4px 0 #000;
-  padding: 8px 12px;
+  box-shadow: 3px 3px 0 #000;
+  padding: 6px 10px;
   cursor: pointer;
   font-weight: 900;
 }
@@ -105,14 +111,14 @@
 .sideCard {
   position: relative;
   display: grid;
-  grid-template-columns: 76px 1fr auto;
-  gap: 12px;
+  grid-template-columns: 68px 1fr auto;
+  gap: 10px;
   align-items: start;
   min-width: 0;
-  padding: 13px;
-  background: linear-gradient(180deg, rgba(14, 24, 39, .98), rgba(8, 13, 23, .98));
+  padding: 11px;
+  background: linear-gradient(180deg, rgba(12, 17, 26, .98), rgba(7, 10, 16, .98));
   border: 3px solid var(--rarity-color, #53657d);
-  box-shadow: 5px 5px 0 #000;
+  box-shadow: 4px 4px 0 #000;
   overflow: hidden;
 }
 
@@ -126,8 +132,8 @@
 }
 
 .iconBox {
-  width: 64px;
-  height: 64px;
+  width: 58px;
+  height: 58px;
   display: grid;
   place-items: center;
   background: #060a11;
@@ -136,8 +142,8 @@
 }
 
 .iconBox img {
-  max-width: 52px;
-  max-height: 52px;
+  max-width: 46px;
+  max-height: 46px;
   image-rendering: pixelated;
 }
 
@@ -146,27 +152,31 @@
 }
 
 .cardMain h3 {
-  margin: 0 0 5px;
+  margin: 0 0 4px;
   color: #fff2c4;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.1;
+  word-break: break-word;
 }
 
 .cardMain p {
   margin: 0;
   color: #c7d2e1;
-  line-height: 1.45;
+  line-height: 1.35;
+  font-size: 12px;
+  word-break: break-word;
 }
 
 .gradeBadge {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  min-height: 24px;
   color: #090a0d;
   background: var(--rarity-color, #a7adb7);
   border: 2px solid #fff2bc;
   box-shadow: 3px 3px 0 #000;
-  padding: 5px 8px;
-  font-size: 11px;
+  padding: 4px 7px;
+  font-size: 10px;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -182,13 +192,13 @@
 .pills a {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  min-height: 24px;
   color: #dbe7ff;
   background: #070c15;
   border: 2px solid #42536b;
   box-shadow: 2px 2px 0 #000;
-  padding: 5px 8px;
-  font-size: 12px;
+  padding: 4px 7px;
+  font-size: 11px;
 }
 
 .pills a {
@@ -212,8 +222,10 @@
 }
 
 .sidePanel {
-  padding: 16px;
-  background: rgba(7, 12, 20, .88);
+  padding: 14px;
+  background:
+    linear-gradient(180deg, rgba(13, 11, 10, .96), rgba(9, 9, 12, .96)),
+    url("/tbh-real/backgrounds/builds-ranger-desert.jpg") center bottom / cover no-repeat;
   border: 3px solid #45566d;
   box-shadow: 5px 5px 0 #000;
 }
@@ -246,9 +258,9 @@
 }
 
 .notice {
-  padding: 13px;
+  padding: 12px;
   color: #ffe9ab;
-  background: rgba(61, 30, 8, .82);
+  background: linear-gradient(180deg, rgba(61, 30, 8, .92), rgba(32, 16, 6, .94));
   border: 3px solid #ffd45a;
   box-shadow: 4px 4px 0 #000;
 }
@@ -281,5 +293,136 @@
   .gradeBadge {
     grid-column: 1 / -1;
     width: fit-content;
+  }
+}
+
+
+.controlPanel {
+  padding: 10px;
+  background: rgba(7, 10, 16, .84);
+  border: 3px solid #415169;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.notice strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #fff0b8;
+}
+
+.notice span {
+  display: block;
+  line-height: 1.35;
+}
+
+.cardMain,
+.buildCard,
+.sideCard,
+.columns > div,
+.sidePanel {
+  min-width: 0;
+}
+
+.sidePanel h2,
+.columns h2 {
+  margin: 0 0 10px;
+  color: #fff0b8;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.smallText {
+  margin-top: 10px;
+  line-height: 1.35;
+  text-shadow: 1px 1px 0 #000;
+}
+
+@media (max-width: 1100px) {
+  .controlPanel,
+  .summaryGrid,
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .planner {
+    background:
+      linear-gradient(180deg, rgba(10, 8, 7, .94), rgba(8, 7, 9, .96)),
+      url("/tbh-real/backgrounds/builds-ranger-desert.jpg") center bottom / cover no-repeat;
+  }
+}
+
+@media (max-width: 720px) {
+  .controlPanel,
+  .summaryGrid,
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .planner {
+    padding: 10px;
+  }
+
+  .buildCard,
+  .sideCard {
+    grid-template-columns: 58px 1fr;
+  }
+
+  .gradeBadge {
+    grid-column: 1 / -1;
+    width: fit-content;
+  }
+}
+
+
+/* Hotfix: evita o campo "Orçamento por item" sair do painel */
+.controlPanel {
+  grid-template-columns:
+    minmax(135px, 1fr)
+    minmax(145px, 1fr)
+    minmax(135px, .9fr)
+    minmax(145px, .9fr)
+    minmax(155px, .75fr);
+  overflow: hidden;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field select,
+.field input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.field input[type="number"] {
+  appearance: textfield;
+}
+
+.field input[type="number"]::-webkit-outer-spin-button,
+.field input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+@media (max-width: 1280px) {
+  .controlPanel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .controlPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .field label {
+    white-space: normal;
   }
 }

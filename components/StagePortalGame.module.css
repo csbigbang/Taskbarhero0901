@@ -1,0 +1,950 @@
+.stagePage {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  color: #eef4ff;
+}
+
+.pageHeader {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 118px;
+  padding: 28px 30px 24px;
+  overflow: hidden;
+  border: 3px solid #303b4e;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(14,19,29,.98), rgba(5,8,14,.99));
+  background-size: 20px 20px, 20px 20px, auto;
+  box-shadow: 6px 6px 0 rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.pageHeader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("/game-assets/stages/UI_Title_Bg_Decor.png") right center / auto 100% no-repeat;
+  opacity: .22;
+}
+
+.pageHeader > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pageHeader > div:first-child > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #e4b94f;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.pageHeader h1 {
+  margin: 0;
+  color: #fff0bd;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: .95;
+  text-shadow: 4px 4px 0 #000;
+}
+
+.pageHeader p {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: #c6d0df;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.headerStats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.headerStats span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 11px 12px;
+  border: 2px solid #41516a;
+  background: rgba(2,6,12,.76);
+  color: #cbd8ed;
+  font-size: 9px;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.headerStats b {
+  color: #ffe35c;
+  font-size: 18px;
+}
+
+.portalShell {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 3px solid #333e50;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(10,14,22,.98), rgba(3,6,11,.99));
+  background-size: 22px 22px, 22px 22px, auto;
+  box-shadow: 7px 7px 0 rgba(0,0,0,.62), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.portalShell::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(204,170,97,.14);
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.difficultyTabs,
+.actTabs {
+  display: grid;
+  gap: 7px;
+}
+
+.difficultyTabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.difficultyTabs button {
+  min-width: 0;
+  height: 42px;
+  border: 0;
+  background: var(--difficulty-image) center / 100% 100% no-repeat;
+  color: #fff0c2;
+  font: inherit;
+  font-size: 9px;
+  text-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  image-rendering: pixelated;
+  filter: brightness(.88);
+}
+
+.difficultyTabs button:hover,
+.difficultyTabs button:focus-visible {
+  background-image: var(--difficulty-hover);
+  filter: brightness(1.08);
+  outline: none;
+}
+
+.difficultyTabs .difficultyActive {
+  color: #fff7d5;
+  filter: brightness(1.16) drop-shadow(0 0 5px rgba(255,217,102,.24));
+}
+
+.actTabs {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.actTabs button {
+  height: 42px;
+  border: 0;
+  background: url("/game-assets/stages/TabButton_Large_DeActive_Active.png") center / 100% 100% no-repeat;
+  color: #cbd5e5;
+  font: inherit;
+  font-size: 9px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.actTabs button:hover,
+.actTabs button:focus-visible,
+.actTabs .actActive {
+  background-image: url("/game-assets/stages/TabButton_Large_Active.png");
+  color: #fff2c5;
+  outline: none;
+  filter: brightness(1.08);
+}
+
+.portalBody {
+  display: grid;
+  grid-template-columns: minmax(330px, 410px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.mapPanel {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 410px);
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 318 / 576;
+  justify-self: center;
+  overflow: hidden;
+  padding: 0;
+  background: #090b0e;
+  image-rendering: pixelated;
+  filter: drop-shadow(5px 7px 0 rgba(0,0,0,.70));
+}
+
+.mapPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background: url("/game-assets/stages/Ui_Portal_Frame_Transparent.png") center / 100% 100% no-repeat;
+  image-rendering: pixelated;
+}
+
+.mapTopLabel {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 4.6%;
+  z-index: 9;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 38px;
+  margin: 0;
+  padding: 4px 8px;
+  color: #fff0c2;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.mapTopLabel img {
+  width: 26px;
+  height: 30px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.mapTopLabel span {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.mapTopLabel strong {
+  color: #eac46c;
+  font-size: 9px;
+}
+
+.mapViewport {
+  position: absolute;
+  left: 6.289%;
+  top: 12.5%;
+  z-index: 2;
+  width: 87.421%;
+  height: 69.271%;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  background: #090b0e;
+  box-shadow: none;
+}
+
+.mapViewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 22px rgba(0,0,0,.28),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.mapImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.stageNode {
+  position: absolute;
+  z-index: 5;
+  width: 42px;
+  height: 46px;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.stageNode small {
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  z-index: 5;
+  display: none;
+  min-width: max-content;
+  transform: translateX(-50%);
+  padding: 3px 5px;
+  border: 1px solid #78694c;
+  background: rgba(4,5,8,.90);
+  color: #fff0c2;
+  font-size: 7px;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #000;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.stageNode:hover small,
+.stageNode:focus-visible small,
+.stageNodeHovered small,
+.stageNodeSelected small {
+  display: block;
+}
+
+.hoverMarker,
+.activeBase,
+.activeFlag {
+  position: absolute;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.hoverMarker {
+  left: 5px;
+  bottom: 5px;
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 238, 176, .82);
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0;
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,.62),
+    0 0 9px rgba(255,221,121,.72);
+  filter: none;
+}
+
+.stageNode:hover .hoverMarker,
+.stageNode:focus-visible .hoverMarker,
+.stageNodeHovered .hoverMarker {
+  opacity: .88;
+}
+
+.activeBase {
+  left: 6px;
+  bottom: 6px;
+  width: 30px;
+  height: 30px;
+  background: url("/game-assets/stages/StageIcon_Occupied_Base.png") center / contain no-repeat;
+  filter: drop-shadow(0 0 7px rgba(31,255,102,.58)) drop-shadow(2px 3px 0 #000);
+}
+
+.activeFlag {
+  left: 13px;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+  background-image: url("/game-assets/stages/StageIcon_Occupied_Flag.png");
+  background-repeat: no-repeat;
+  background-size: 48px 48px;
+  transform: scale(1.45);
+  transform-origin: 50% 100%;
+  animation: flagWave 1.35s steps(1) infinite;
+  filter: drop-shadow(1px 2px 0 #000);
+}
+
+.stageNodeSelected {
+  z-index: 9;
+}
+
+.stageNodeSelected:hover .activeBase,
+.stageNodeSelected:focus-visible .activeBase {
+  filter: drop-shadow(0 0 10px rgba(31,255,102,.82)) drop-shadow(2px 3px 0 #000);
+}
+
+.mapFooter {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 3.4%;
+  z-index: 9;
+  display: grid;
+  gap: 4px;
+  align-content: center;
+  min-height: 62px;
+  padding: 0 10px;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.mapFooter span {
+  color: #e7ba5f;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.mapFooter strong {
+  color: #fff0c2;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.stageInspector {
+  --portal-decor: url("/game-assets/stages/Ui_Portal_Bg_Decor_Normal.png");
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 15px;
+  min-width: 0;
+  min-height: 630px;
+  padding: 30px 32px 28px;
+  overflow: hidden;
+  border: 2px solid #3f4b5c;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255,255,255,.055), transparent 34%),
+    linear-gradient(180deg, rgba(13,17,25,.98), rgba(3,6,11,.99));
+  box-shadow: 5px 6px 0 rgba(0,0,0,.72), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.inspectorDecor {
+  position: absolute;
+  inset: 6px;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--portal-decor) center / 100% 100% no-repeat;
+  image-rendering: pixelated;
+  opacity: .86;
+}
+
+.stageInspector > :not(.inspectorDecor) {
+  position: relative;
+  z-index: 1;
+}
+
+.inspectorHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  padding: 4px 4px 15px;
+  border-bottom: 2px solid rgba(105,119,142,.45);
+}
+
+.inspectorHeader span,
+.inspectorHeader b {
+  display: block;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.inspectorHeader > div > span {
+  color: #ffc95b;
+  font-size: 10px;
+}
+
+.inspectorHeader b {
+  margin-top: 5px;
+  color: #92baff;
+  font-size: 10px;
+}
+
+.inspectorHeader h2 {
+  margin: 10px 0 0;
+  color: #fff0c2;
+  font-size: clamp(25px, 3vw, 38px);
+  line-height: 1;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.fixedBadge,
+.previewBadge {
+  padding: 7px 9px;
+  border: 1px solid #665b48;
+  background: rgba(4,7,11,.82);
+  font-size: 8px;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.fixedBadge {
+  color: #82ff97;
+  border-color: #357347;
+}
+
+.previewBadge {
+  color: #ffd260;
+}
+
+.stageMetrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.stageMetrics div {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #3e4a5c;
+  background: rgba(1,4,8,.66);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.stageMetrics span,
+.stageMetrics strong {
+  display: block;
+}
+
+.stageMetrics span {
+  color: #9eacc1;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.stageMetrics strong {
+  margin-top: 6px;
+  overflow: hidden;
+  color: #ffe05b;
+  font-size: 15px;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.inspectorSection {
+  display: grid;
+  gap: 9px;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitle span {
+  color: #e8bd5d;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.sectionTitle i {
+  flex: 1;
+  height: 1px;
+  background: rgba(101,116,140,.48);
+}
+
+.monsterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
+  gap: 10px;
+  align-items: stretch;
+}
+
+.monsterCard {
+  min-width: 0;
+  min-height: 152px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 8px;
+  padding: 12px 10px 10px;
+  border: 1px solid #3d495a;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255,255,255,.05), transparent 42%),
+    rgba(1,4,8,.72);
+  color: #fff0c2;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.monsterCard:hover {
+  border-color: #e0b855;
+  background: rgba(224,184,85,.075);
+}
+
+.monsterAnimation {
+  display: block;
+  flex: none;
+  aspect-ratio: var(--monster-ratio);
+  background-image: var(--monster-sheet);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: calc(var(--monster-frames) * 100%) 100%;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.82));
+  animation: monsterIdleCycle var(--monster-duration) steps(var(--monster-steps), end) infinite;
+  will-change: background-position;
+}
+
+.monsterSprite {
+  width: 112px;
+  max-height: 96px;
+}
+
+.monsterCard strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monsterCard small {
+  color: #9dadc5;
+  font-size: 8px;
+}
+
+.monsterFallback {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 48px;
+  border: 1px solid #3d495a;
+  color: #e0b855;
+  background: #05080d;
+}
+
+.bossPanel {
+  display: grid;
+  grid-template-columns: 156px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  min-height: 146px;
+  padding: 12px 18px;
+  border: 2px solid #6f2630;
+  background:
+    linear-gradient(90deg, rgba(112,18,28,.48), rgba(5,8,13,.78)),
+    url("/game-assets/monsters/StageTooltip_Bg_ActBoss.png") center / 100% 100% no-repeat;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.bossSprite {
+  width: 156px;
+  max-height: 128px;
+  filter: drop-shadow(0 0 8px rgba(255,76,95,.24)) drop-shadow(3px 4px 0 rgba(0,0,0,.86));
+}
+
+.bossPanel span,
+.bossPanel strong,
+.bossPanel small {
+  display: block;
+}
+
+.bossPanel span {
+  color: #ff8190;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.bossPanel strong {
+  margin-top: 6px;
+  color: #fff0c2;
+  font-size: 22px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.bossPanel small {
+  margin-top: 5px;
+  color: #bdc9dc;
+  font-size: 10px;
+}
+
+.chestGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.chestCard {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 66px;
+  padding: 8px;
+  border: 1px solid #3d495a;
+  background: rgba(1,4,8,.62);
+  color: #fff0c2;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.chestCard:hover {
+  border-color: #e0b855;
+  background: rgba(224,184,85,.075);
+}
+
+.chestSprite {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-image: var(--chest-sheet);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: calc(var(--chest-frames) * 100%) 100%;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 5px rgba(255,205,84,.18)) drop-shadow(2px 3px 0 rgba(0,0,0,.82));
+  animation: chestIdleCycle 1.7s steps(var(--chest-steps), end) infinite;
+  will-change: background-position;
+}
+
+.chestSprite_normal {
+  filter: drop-shadow(0 0 5px rgba(255,173,67,.24)) drop-shadow(2px 3px 0 rgba(0,0,0,.82));
+}
+
+.chestSprite_boss {
+  filter: drop-shadow(0 0 6px rgba(83,132,255,.32)) drop-shadow(2px 3px 0 rgba(0,0,0,.82));
+}
+
+.chestSprite_act {
+  filter: drop-shadow(0 0 6px rgba(255,72,91,.32)) drop-shadow(2px 3px 0 rgba(0,0,0,.82));
+}
+
+.chestCard:hover .chestSprite {
+  animation-duration: .9s;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.chestCard strong,
+.chestCard small {
+  display: block;
+}
+
+.chestCard strong {
+  overflow: hidden;
+  font-size: 8px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chestCard small {
+  margin-top: 4px;
+  color: #9dadc5;
+  font-size: 7px;
+}
+
+.inspectorActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.startButton,
+.secondaryButton {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  color: #fff0c2;
+  font-size: 9px;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.startButton {
+  min-width: 170px;
+  border: 1px solid #d4992f;
+  background: url("/game-assets/stages/StageStart_NormalStage.png") center / 100% 100% no-repeat;
+}
+
+.secondaryButton {
+  border: 1px solid #4b586d;
+  background: url("/game-assets/stages/Button_Small_Active.png") center / 100% 100% no-repeat;
+}
+
+.startButton:hover,
+.secondaryButton:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.helpText {
+  margin: 0;
+  color: #9daabe;
+  font-size: 9px;
+  text-align: center;
+}
+
+.emptyState {
+  padding: 24px;
+  border: 2px solid #3f4b5c;
+  background: #070b12;
+  color: #cbd8ed;
+}
+
+
+@keyframes monsterIdleCycle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes chestIdleCycle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes flagWave {
+  0%, 11.10% { background-position: 0 0; }
+  11.11%, 22.21% { background-position: -16px 0; }
+  22.22%, 33.32% { background-position: -32px 0; }
+  33.33%, 44.43% { background-position: 0 -16px; }
+  44.44%, 55.54% { background-position: -16px -16px; }
+  55.55%, 66.65% { background-position: -32px -16px; }
+  66.66%, 77.76% { background-position: 0 -32px; }
+  77.77%, 88.87% { background-position: -16px -32px; }
+  88.88%, 100% { background-position: -32px -32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activeFlag,
+  .monsterAnimation,
+  .chestSprite {
+    animation: none;
+  }
+
+  .startButton,
+  .secondaryButton {
+    transition: none;
+  }
+}
+
+@media (max-width: 1120px) {
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .portalBody {
+    grid-template-columns: 360px minmax(0, 1fr);
+  }
+
+  .monsterGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .chestGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 880px) {
+  .pageHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .headerStats {
+    justify-content: flex-start;
+  }
+
+  .portalBody {
+    grid-template-columns: 1fr;
+  }
+
+  .mapPanel {
+    width: min(100%, 430px);
+    margin: 0 auto;
+  }
+
+  .stageInspector {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .portalShell {
+    padding: 10px;
+  }
+
+  .difficultyTabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stageMetrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monsterGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bossPanel {
+    grid-template-columns: 88px 1fr;
+  }
+
+  .bossSprite {
+    width: 84px;
+    height: 72px;
+  }
+
+  .stageInspector {
+    padding: 24px 18px 20px;
+  }
+
+  .mapPanel {
+    min-height: 0;
+    padding: 30px 24px 24px;
+  }
+}
+
+
+/* Stage 12: o mapa mantém dimensões fixas durante o hover.
+   Isso impede que o painel lateral redimensione e distorça a moldura. */
+@media (max-width: 1100px) {
+  .mapPanel {
+    width: min(100%, 390px);
+  }
+}
+
+@media (max-width: 520px) {
+  .mapPanel {
+    width: 100%;
+  }
+
+  .mapTopLabel {
+    left: 13%;
+    right: 13%;
+  }
+
+  .stageNode small {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mapPanel {
+    padding: 0;
+  }
+}

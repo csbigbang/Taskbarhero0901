@@ -1,0 +1,13 @@
+﻿node_modules
+.next
+.git
+.vercel
+*.zip
+*.bak
+*.log
+supabase/csv
+public/game-assets/misc/NotoSansSC-Regular-SDF-Atlas.png
+public/game-assets/misc/NotoSansTC-Regular-SDF-Atlas.png
+public/game-assets/misc/NotoSansKR-Bold-SDF-Atlas.png
+public/game-assets/misc/NotoSansKR-Medium-SDF-Atlas.png
+public/game-assets/misc/NotoSansKR-Regular-SDF-Atlas.png

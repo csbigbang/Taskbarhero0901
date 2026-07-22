@@ -1,0 +1,452 @@
+.itemsPage {
+  width: min(1280px, calc(100vw - 34px));
+  margin: 0 auto;
+  padding: 18px 0 56px;
+  display: grid;
+  gap: 16px;
+  color: #fff1c4;
+  font-family: var(--font-pixel), monospace;
+}
+
+.hero,
+.filtersPanel,
+.gridSection {
+  position: relative;
+  border: 4px solid #4f6380;
+  background:
+    linear-gradient(180deg, rgba(8, 13, 22, .96), rgba(3, 7, 13, .985)),
+    url("/game/ui/Background.png") repeat;
+  background-size: auto, 32px 32px;
+  box-shadow: 5px 5px 0 #000;
+}
+
+.hero {
+  min-height: 190px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 18px;
+  align-items: end;
+  padding: 24px;
+  background:
+    linear-gradient(90deg, rgba(12, 10, 9, .96) 0%, rgba(12, 10, 9, .82) 45%, rgba(12, 10, 9, .42) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .55)),
+    url("/tbh-real/backgrounds/header-characters.jpg") center 42% / cover no-repeat;
+  border-color: #d9a84c;
+}
+
+.hero::after,
+.filtersPanel::after,
+.gridSection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: .35;
+}
+
+.hero > *,
+.filtersPanel > *,
+.gridSection > * {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 22px;
+  align-items: center;
+  padding: 0 9px;
+  margin-bottom: 9px;
+  color: #ffe47a;
+  border: 3px solid #e3b856;
+  background: linear-gradient(180deg, rgba(71, 43, 9, .96), rgba(23, 14, 4, .98));
+  text-transform: uppercase;
+  font-size: 9px;
+  text-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #fff0bd;
+  font-size: clamp(44px, 7vw, 86px);
+  line-height: .86;
+  text-transform: uppercase;
+  text-shadow: 5px 5px 0 #000;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: #f3ead0;
+  line-height: 1.58;
+  font-size: 13px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.heroStats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.heroStats div {
+  min-height: 76px;
+  padding: 14px 12px;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  border: 3px solid #6f88aa;
+  background: rgba(5, 9, 16, .86);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.heroStats strong {
+  display: block;
+  color: #ffe36b;
+  font-size: 26px;
+  line-height: 1;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.heroStats span {
+  display: block;
+  margin-top: 6px;
+  color: #dbe8f8;
+  font-size: 9px;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+.filtersPanel {
+  padding: 18px;
+}
+
+.rarityGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.rarityChip {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px 5px 7px;
+  color: #fff1c4;
+  text-decoration: none;
+  border: 3px solid #53667f;
+  background:
+    linear-gradient(180deg, rgba(13, 22, 35, .98), rgba(5, 10, 18, .99)),
+    url("/game/ui/Background.png") repeat;
+  box-shadow: 3px 3px 0 #000;
+  text-shadow: 2px 2px 0 #000;
+  font-size: 10px;
+  transition: transform .08s ease, filter .12s ease, border-color .12s ease;
+}
+
+.rarityChip:hover,
+.rarityChip.active {
+  border-color: #ffe36b;
+  color: #ffe36b;
+  transform: translate(-1px, -1px);
+  filter: brightness(1.1);
+}
+
+.rarityIcon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,.24);
+  background: radial-gradient(circle, rgba(255, 227, 107, .14), rgba(0,0,0,.42) 68%);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.42);
+}
+
+.rarityIcon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+.itemsPage :global(.searchbar) {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(170px, 220px) minmax(150px, 210px) auto auto;
+  gap: 10px;
+  align-items: stretch;
+  margin: 0;
+}
+
+.itemsPage :global(.search-input-wrap),
+.itemsPage :global(.searchbar select),
+.itemsPage :global(.searchbar input) {
+  min-width: 0;
+}
+
+.itemsPage :global(.search-input-wrap) {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  border: 3px solid #53667f;
+  background: rgba(4, 8, 15, .96);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.itemsPage :global(.search-cursor) {
+  width: 42px;
+  text-align: center;
+  color: #ffd65e;
+  font-size: 12px;
+}
+
+.itemsPage :global(.searchbar input),
+.itemsPage :global(.searchbar select) {
+  width: 100%;
+  min-height: 46px;
+  border: 3px solid #53667f;
+  background: rgba(4, 8, 15, .96);
+  color: #fff1c4;
+  padding: 0 12px;
+  outline: 0;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.itemsPage :global(.searchbar .search-input-wrap input) {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  height: 100%;
+}
+
+.itemsPage :global(.btn) {
+  min-height: 46px;
+  border: 3px solid #d7ab4b;
+  background: linear-gradient(180deg, #f4c75d, #bd7520);
+  color: #1c1000;
+  padding: 0 14px;
+  box-shadow: 3px 3px 0 #000;
+  text-shadow: none;
+}
+
+.itemsPage :global(.btn.ghost) {
+  border-color: #6f88aa;
+  background: linear-gradient(180deg, #1d2b3d, #0a111d);
+  color: #fff1c4;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.resultLine {
+  margin: 14px 0 0;
+  color: #dbe8f8;
+  font-size: 12px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.gridSection {
+  padding: 18px;
+}
+
+.itemGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+  gap: 14px;
+}
+
+.itemsPage :global(.item-card) {
+  position: relative;
+  min-height: 138px;
+  padding: 13px;
+  overflow: hidden;
+  border: 3px solid #52647e;
+  background:
+    linear-gradient(180deg, rgba(11, 17, 28, .98), rgba(5, 9, 16, .99)),
+    url("/game/ui/Background.png") repeat;
+  background-size: auto, 32px 32px;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.itemsPage :global(.item-card:hover) {
+  transform: translate(-1px, -1px);
+  filter: brightness(1.08);
+  border-color: #ffe36b;
+}
+
+.itemsPage :global(.item-card-top) {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.itemsPage :global(.item-icon) {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #6f88aa;
+  background:
+    radial-gradient(circle, rgba(255, 227, 107, .12), rgba(0,0,0,.50) 68%),
+    url("/game/ui/ItemSlot_Bg.png") center / cover no-repeat;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.42), 3px 3px 0 #000;
+}
+
+.itemsPage :global(.item-icon img) {
+  max-width: 46px;
+  max-height: 46px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+.itemsPage :global(.item-card-main) {
+  min-width: 0;
+}
+
+.itemsPage :global(.row-between) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.itemsPage :global(.item-card h3) {
+  margin: 0;
+  color: #fff0bd;
+  font-size: 16px;
+  line-height: 1.15;
+  text-shadow: 2px 2px 0 #000;
+  word-break: break-word;
+}
+
+.itemsPage :global(.item-card p) {
+  margin: 5px 0 0;
+  color: #b9c8dc;
+  font-size: 11px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.itemsPage :global(.grade) {
+  flex: 0 0 auto;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 7px;
+  border: 2px solid rgba(255,255,255,.30);
+  color: #080a0e;
+  background: #a7adb7;
+  box-shadow: 2px 2px 0 #000;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.itemsPage :global(.grade-uncommon) { background: #4ade80; }
+.itemsPage :global(.grade-rare) { background: #5aa7ff; }
+.itemsPage :global(.grade-legendary) { background: #ffaf2a; }
+.itemsPage :global(.grade-immortal) { background: #ff4d4d; color: #fff; text-shadow: 1px 1px 0 #000; }
+.itemsPage :global(.grade-arcana) { background: #b56cff; color: #fff; text-shadow: 1px 1px 0 #000; }
+.itemsPage :global(.grade-beyond) { background: #39e5ef; }
+.itemsPage :global(.grade-celestial) { background: #74c8ff; }
+.itemsPage :global(.grade-divine) { background: #ffe45e; }
+.itemsPage :global(.grade-cosmic) { background: #ff7ad9; color: #fff; text-shadow: 1px 1px 0 #000; }
+
+.itemsPage :global(.pill-row) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.itemsPage :global(.pill) {
+  min-height: 22px;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 6px;
+  border: 1px solid rgba(130, 158, 194, .65);
+  background: rgba(3, 7, 13, .72);
+  color: #dbe8f8;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.itemsPage :global(.item-card-actions) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 11px;
+}
+
+.itemsPage :global(.item-card-actions a) {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 2px solid #6f88aa;
+  background: #0a111d;
+  color: #fff1c4;
+  box-shadow: 2px 2px 0 #000;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.itemsPage :global(.item-card-actions a:hover) {
+  border-color: #ffe36b;
+  color: #ffe36b;
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .itemsPage :global(.searchbar) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .itemsPage {
+    width: min(100% - 20px, 1280px);
+  }
+
+  .hero,
+  .filtersPanel,
+  .gridSection {
+    padding: 14px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .heroStats,
+  .itemsPage :global(.searchbar),
+  .itemGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loadWarning {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 2px solid #d6a642;
+  background: rgba(54, 34, 7, .9);
+  color: #ffe7a1;
+  box-shadow: 3px 3px 0 #000;
+  line-height: 1.55;
+}

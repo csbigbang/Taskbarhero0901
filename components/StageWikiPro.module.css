@@ -1,475 +1,1100 @@
 .stageWrap {
   width: 100%;
   display: grid;
-  gap: 18px;
+  gap: 14px;
+  color: #eef5ff;
 }
 
-.heroPanel,
+.stageHeader,
 .mapPanel,
-.detailPanel {
-  border: 3px solid #43546f;
-  background: linear-gradient(180deg, rgba(9, 16, 29, .94), rgba(5, 10, 18, .96));
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 6px 6px 0 rgba(0,0,0,.45);
-}
-
-.heroPanel {
-  min-height: 118px;
-  padding: 22px 28px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
+.detailPanel,
+.emptyPanel {
+  position: relative;
+  border: 3px solid #293445;
   background:
-    linear-gradient(180deg, rgba(114, 18, 18, .82) 0 36%, rgba(8, 14, 24, .96) 36% 100%);
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(16, 21, 31, .97), rgba(7, 10, 17, .98));
+  background-size: 20px 20px, 20px 20px, auto;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, .58), inset 0 0 0 1px rgba(255, 255, 255, .04);
 }
 
-.kicker {
-  display: inline-block;
-  color: #ffdf4a;
-  font-size: 12px;
-  letter-spacing: .08em;
+.stageHeader {
+  min-height: 104px;
+  padding: 26px 28px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: visible;
+}
+
+.stageHeader::before {
+  content: "FASES";
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-left: 10px solid #ffca2f;
+  border-right: 10px solid #ffca2f;
+  background: linear-gradient(180deg, #a92331, #5d0b13);
+  color: #ffe16b;
+  font-family: var(--font-pixel), monospace;
+  font-size: 13px;
+  text-shadow: 2px 2px 0 #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.stageHeaderTitle span,
+.detailHead span,
+.detailBlock h3,
+.mapOverlayLabel,
+.mapHint,
+.modeSelector select,
+.actTabs button,
+.headerStats,
+.actions a,
+.detailHead a,
+.stageDataGrid span,
+.stageDataGrid b,
+.mobCard span,
+.mobCard small,
+.lootCard span,
+.lootCard small,
+.tooltipTitleBlock span,
+.tooltipTitleBlock b,
+.tooltipTitleBlock strong,
+.tooltipTitleBlock em,
+.tooltipStatsGrid span,
+.tooltipMobs span,
+.tooltipMobs small {
+  font-family: var(--font-pixel), monospace;
+}
+
+.stageHeaderTitle span {
+  display: block;
+  color: #ffd86b;
+  font-size: 11px;
   text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
   margin-bottom: 8px;
 }
 
-.heroPanel h1,
-.detailHead h2 {
+.stageHeaderTitle h1 {
   margin: 0;
-  color: #fff4c8;
+  color: #fff2c4;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: .9;
   text-shadow: 4px 4px 0 #000;
-  line-height: .95;
 }
 
-.heroPanel h1 { font-size: clamp(44px, 6vw, 82px); }
-.detailHead h2 { font-size: clamp(30px, 3.2vw, 42px); margin-top: 10px; }
-
-.heroPanel p,
-.detailHead p,
-.mapHint,
-.empty {
-  color: #d8e4ff;
-  line-height: 1.75;
-  margin: 12px 0 0;
+.stageHeaderTitle p {
+  margin: 10px 0 0;
+  color: #cbd8ee;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
-.statSummary {
-  display: flex;
-  gap: 12px;
-  align-self: center;
-}
-
-.statSummary div,
-.metrics div {
-  min-width: 104px;
-  border: 2px solid #43546f;
-  background: rgba(4, 8, 16, .74);
-  padding: 14px 18px;
-  text-align: center;
-}
-
-.statSummary strong,
-.metrics strong {
-  display: block;
-  color: #ffe45c;
-  font-size: 28px;
-  line-height: 1;
-}
-
-.statSummary span,
-.metrics span {
-  display: block;
-  margin-top: 5px;
-  color: #d8e4ff;
-  font-family: var(--font-pixel), monospace;
+.headerStats {
+  display: grid;
+  grid-template-columns: repeat(3, auto auto);
+  gap: 5px 8px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 2px solid #41516a;
+  background: rgba(2, 6, 12, .72);
+  box-shadow: 3px 3px 0 #000;
+  color: #dbe6ff;
   font-size: 9px;
-  line-height: 1.35;
   text-transform: uppercase;
+}
+
+.headerStats b {
+  color: #ffe45d;
+  font-size: 18px;
+  text-shadow: 2px 2px 0 #000;
 }
 
 .mainGrid {
   display: grid;
-  grid-template-columns: minmax(340px, 500px) minmax(480px, 1fr);
-  gap: 18px;
+  grid-template-columns: minmax(330px, 390px) minmax(0, 1fr);
+  gap: 16px;
   align-items: start;
 }
 
 .mapPanel,
-.detailPanel { padding: 24px; }
+.detailPanel {
+  padding: 12px;
+}
+
+.mapToolbar {
+  display: grid;
+  grid-template-columns: 142px 1fr;
+  gap: 7px;
+  margin-bottom: 8px;
+}
 
 .modeSelector {
   position: relative;
   display: block;
-  margin-bottom: 10px;
 }
 
 .modeSelector select {
   width: 100%;
-  min-height: 42px;
+  height: 34px;
   appearance: none;
-  border: 3px solid #ffdc52;
-  color: #fff4c8;
-  background: linear-gradient(180deg, #8b3d14, #3b1608);
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,.05), 4px 4px 0 rgba(0,0,0,.45);
-  font-family: var(--font-pixel), monospace;
-  font-size: 12px;
+  border: 2px solid #271305;
+  color: #fff2bd;
+  background: linear-gradient(180deg, #c87518, #6b3108);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10), 3px 3px 0 #000;
   text-align: center;
   text-align-last: center;
   text-shadow: 2px 2px 0 #000;
+  font-size: 9px;
   cursor: pointer;
 }
 
 .modeSelector b {
   position: absolute;
-  right: calc(50% - 54px);
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #ffe45c;
-  font-size: 10px;
+  color: #ffe16b;
+  font-size: 9px;
   pointer-events: none;
 }
 
 .actTabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
 }
 
 .actTabs button,
 .actions a,
-.smallButton {
-  border: 2px solid #43546f;
-  background: linear-gradient(180deg, #122033, #08101d);
-  color: #fff4c8;
-  padding: 12px 18px;
+.detailHead a {
+  border: 2px solid #35445b;
+  background: linear-gradient(180deg, #192436, #070d17);
+  color: #fff1c4;
   text-decoration: none;
-  font-family: var(--font-pixel), monospace;
-  font-size: 11px;
-  font-weight: 800;
+  text-align: center;
+  font-size: 9px;
   text-shadow: 2px 2px 0 #000;
   cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
 }
 
-.actTabs .actActive,
-.actions a:hover,
-.smallButton:hover { border-color: #ffe45c; background: linear-gradient(180deg, #634209, #1b1304); }
+.actTabs button {
+  height: 34px;
+}
 
-.mapBox {
+.actTabs button:hover,
+.actions a:hover,
+.detailHead a:hover {
+  border-color: #ffe16b;
+  filter: brightness(1.12);
+}
+
+.actTabs .actActive {
+  color: #221000;
+  border-color: #ffe16b;
+  background: linear-gradient(180deg, #ffdd65, #bd7515);
+  text-shadow: none;
+}
+
+.mapFrame {
   position: relative;
-  border: 6px solid #5b361c;
-  background: #12151c;
   overflow: hidden;
-  min-height: 590px;
+  min-height: 520px;
+  border: 6px solid #46321d;
+  background: #05080d;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .82), 5px 5px 0 #000;
+}
+
+.mapFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  box-shadow: inset 0 0 38px rgba(0,0,0,.68), inset 0 0 0 1px rgba(255,255,255,.05);
+  background: radial-gradient(circle at 52% 50%, transparent 0 58%, rgba(0,0,0,.18) 100%);
 }
 
 .actMapImage {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: 590px;
+  min-height: 520px;
   object-fit: cover;
   image-rendering: pixelated;
+  filter: saturate(1.06) contrast(1.03) brightness(.96);
+}
+
+.mapOverlayLabel {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  z-index: 6;
+  color: #eb9647;
+  background: rgba(8, 8, 8, .62);
+  padding: 3px 7px;
+  font-size: 10px;
+  text-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 #000;
 }
 
 .stageNode {
   position: absolute;
-  transform: translate(-50%, -50%);
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 3px solid #5a4a28;
-  background: radial-gradient(circle, #fff4c2 0 28%, #715f31 32% 60%, #221909 62% 100%);
-  box-shadow: 0 3px 0 #000, 0 0 0 2px rgba(0,0,0,.6);
-  cursor: pointer;
-  display: grid;
-  place-items: center;
+  z-index: 8;
+  width: 42px;
+  height: 48px;
+  transform: translate(-50%, -70%);
+  border: 0;
+  background: transparent;
   padding: 0;
-  z-index: 2;
+  cursor: pointer;
+  outline: 0;
 }
 
-.stageNode span {
+.stageBase {
+  position: absolute;
+  left: 6px;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  background: url("/tbh-real/stages/StageIcon_Occupied_Base.png") center / contain no-repeat;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 #000);
+}
+
+.stageFlag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  background-image: url("/tbh-real/stages/stage-flag-wave.png");
+  background-repeat: no-repeat;
+  background-size: 168px 42px;
+  image-rendering: pixelated;
+  animation: flagWave .72s steps(4) infinite;
+  filter: drop-shadow(2px 3px 0 #000);
+  transform-origin: 13px 33px;
+}
+
+.stageNode small {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: -12px;
+  transform: translateX(-50%);
+  display: none;
+  min-width: max-content;
+  padding: 2px 5px;
+  border: 1px solid rgba(255, 226, 120, .38);
+  background: rgba(0,0,0,.78);
+  color: #fff0c7;
+  font-family: var(--font-pixel), monospace;
+  font-size: 7px;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.stageNode:hover,
+.stageNode:focus-visible,
+.stageNodeHover,
+.stageNodeActive {
+  z-index: 12;
+}
+
+.stageNode:hover .stageFlag,
+.stageNode:focus-visible .stageFlag,
+.stageNodeHover .stageFlag,
+.stageNodeActive .stageFlag {
+  filter: drop-shadow(0 0 6px rgba(255, 228, 92, .85)) drop-shadow(2px 3px 0 #000);
+  transform: translateY(-2px) scale(1.08);
+}
+
+.stageNode:hover .stageBase,
+.stageNode:focus-visible .stageBase,
+.stageNodeHover .stageBase,
+.stageNodeActive .stageBase {
+  background-image: url("/tbh-real/stages/StageIcon_Hover.png");
+  filter: drop-shadow(0 0 8px rgba(46, 255, 110, .8)) drop-shadow(2px 3px 0 #000);
+}
+
+.stageNodeBoss .stageBase {
+  filter: drop-shadow(0 0 7px rgba(255, 37, 63, .82)) drop-shadow(2px 3px 0 #000);
+}
+
+.stageNode:hover small,
+.stageNode:focus-visible small,
+.stageNodeActive small {
+  display: block;
+}
+
+@keyframes flagWave {
+  from { background-position-x: 0; }
+  to { background-position-x: -168px; }
+}
+
+.tooltipWrap {
+  position: absolute;
+  z-index: 30;
   transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.stageTooltip {
+  width: 330px;
+  min-height: 178px;
+  padding: 14px 16px 12px;
+  border: 2px solid rgba(90, 112, 145, .92);
+  background:
+    linear-gradient(180deg, rgba(4, 7, 13, .94), rgba(2, 3, 7, .98)),
+    url("/tbh-real/ui/StageTooltip_Bg_Normal.png") center / 100% 100%;
+  box-shadow: 8px 8px 0 rgba(0,0,0,.72), inset 0 0 0 1px rgba(255,255,255,.05);
   color: #fff;
+}
+
+.stageTooltipBoss {
+  border-color: rgba(255, 61, 79, .8);
+  background:
+    linear-gradient(180deg, rgba(30, 5, 10, .88), rgba(2, 3, 7, .98)),
+    url("/tbh-real/ui/StageTooltip_Bg_ActBoss.png") center / 100% 100%;
+}
+
+.tooltipTop {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(107, 126, 157, .55);
+}
+
+.tooltipPortrait {
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #3c4b62;
+  background: radial-gradient(circle, rgba(255,255,255,.12), rgba(0,0,0,.66) 64%);
+  overflow: hidden;
+}
+
+.tooltipPortraitSprite {
+  max-width: 150%;
+  max-height: 150%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(3px 4px 0 rgba(0,0,0,.72));
+}
+
+.tooltipTitleBlock span {
+  display: block;
+  color: #ffc85b;
+  font-size: 10px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.tooltipTitleBlock b {
+  display: block;
+  margin-top: 5px;
+  color: #8eb9ff;
   font-size: 10px;
   font-weight: 900;
-  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.tooltipTitleBlock strong {
+  display: block;
+  margin-top: 7px;
+  color: #fff0c8;
+  font-size: 18px;
+  line-height: 1.05;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.tooltipTitleBlock em {
+  display: block;
+  margin-top: 5px;
+  color: #ffffff;
+  font-size: 11px;
+  font-style: normal;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.tooltipStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(107, 126, 157, .45);
+}
+
+.tooltipStatsGrid span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #dbe7ff;
+  font-size: 9px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.tooltipStatsGrid b {
+  color: #ffe35e;
+}
+
+.tooltipMobs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding-top: 10px;
+}
+
+.tooltipMob {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  color: #fff1c8;
+  text-decoration: none;
+  text-align: center;
+}
+
+.tooltipMobSprite {
+  width: 46px;
+  height: 42px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.75));
+}
+
+.tooltipMob span {
+  max-width: 68px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 7px;
 }
 
-.stageNodeActive {
-  border-color: #33ff67;
-  background: radial-gradient(circle, #d8ffe5 0 28%, #1eee56 32% 62%, #064117 64% 100%);
-  box-shadow: 0 3px 0 #000, 0 0 12px rgba(51,255,103,.8);
-  z-index: 3;
+.tooltipMob small {
+  color: #9eb1d0;
+  font-size: 6px;
 }
 
-.stageNodeBoss {
-  border-color: #ff2d45;
-  background: radial-gradient(circle, #ffd3d9 0 28%, #d50622 32% 62%, #4c000c 64% 100%);
+.tooltipBossMob span,
+.tooltipBossMob small {
+  color: #ffd7dd;
 }
 
 .mapHint {
+  margin: 10px 0 0;
+  color: #9daac0;
+  font-size: 9px;
   text-align: center;
-  font-size: 12px;
-  opacity: .85;
+  text-shadow: 1px 1px 0 #000;
 }
 
 .detailPanel {
-  min-height: 620px;
+  min-height: 610px;
 }
 
 .detailHead {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 18px;
-  border-bottom: 2px solid rgba(120,139,170,.45);
-  padding-bottom: 18px;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(91, 109, 140, .55);
 }
 
-.metrics {
+.detailHead span {
+  display: block;
+  color: #ffd45d;
+  font-size: 10px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.detailHead h2 {
+  margin: 7px 0 0;
+  color: #fff0c7;
+  font-size: clamp(22px, 2.5vw, 31px);
+  line-height: .96;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.detailHead p {
+  margin: 8px 0 0;
+  color: #cbd8ee;
+  font-size: 12px;
+}
+
+.detailHead a {
+  flex: 0 0 auto;
+  padding: 9px 11px;
+}
+
+.stageDataGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin: 18px 0;
+  gap: 8px;
+  margin: 14px 0;
 }
 
-.metrics div { min-width: 0; }
-
-.block {
-  margin-top: 22px;
+.stageDataGrid div {
+  padding: 11px 12px;
+  border: 2px solid #3a4558;
+  background: rgba(4, 8, 15, .78);
+  box-shadow: 3px 3px 0 #000;
 }
 
-.block h3 {
+.stageDataGrid span {
+  display: block;
+  color: #9eb1d0;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.stageDataGrid b {
+  display: block;
+  margin-top: 5px;
+  color: #ffe35e;
+  font-size: 18px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.detailBlock {
+  margin-top: 16px;
+}
+
+.detailBlock h3 {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: #ffe45c;
-  font-family: var(--font-pixel), monospace;
-  font-size: 12px;
+  gap: 10px;
+  margin: 0 0 9px;
+  color: #ffd45d;
+  font-size: 10px;
   text-transform: uppercase;
-  margin: 0 0 12px;
+  text-shadow: 2px 2px 0 #000;
 }
 
-.block h3::after {
+.detailBlock h3::after {
   content: "";
   height: 2px;
   flex: 1;
-  background: rgba(120,139,170,.45);
+  background: rgba(91, 109, 140, .55);
 }
 
-.monsterTable,
-.lootList {
-  border: 2px solid #43546f;
-  background: rgba(3, 7, 13, .58);
-}
-
-.tableHeader,
-.monsterRow {
+.mobCardGrid {
   display: grid;
-  grid-template-columns: minmax(190px, 1fr) 100px 130px 100px;
-  align-items: center;
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
 }
 
-.tableHeader {
-  background: linear-gradient(180deg, #9d1d23, #5b0d13);
-  color: #ffed81;
-  padding: 12px 14px;
-  text-transform: uppercase;
-  font-family: var(--font-pixel), monospace;
-  font-size: 9px;
-}
-
-.monsterRow {
+.mobCard,
+.lootCard,
+.bossCard {
+  min-width: 0;
   color: #fff;
   text-decoration: none;
-  padding: 12px 14px;
-  border-top: 1px solid rgba(120,139,170,.28);
-}
-.monsterRow:hover { background: rgba(255,228,92,.06); }
-
-.mobIdentity {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 900;
+  border: 2px solid #3a4558;
+  background: rgba(4, 8, 15, .78);
+  box-shadow: 3px 3px 0 #000;
 }
 
-.badge {
-  display: inline-flex;
-  width: fit-content;
-  border: 1px solid #b7c7e8;
-  color: #fff;
-  padding: 3px 8px;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.monsterIcon,
-.monsterIconLarge {
+.mobCard {
+  min-height: 98px;
   display: grid;
-  place-items: center;
-  overflow: hidden;
-  border: 2px solid #43546f;
-  background: radial-gradient(circle, rgba(255,255,255,.12), rgba(0,0,0,.6) 62%);
-  flex: 0 0 auto;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+  padding: 8px 6px;
+  text-align: center;
 }
 
-.monsterIcon { width: 40px; height: 40px; }
-.monsterIconLarge { width: 74px; height: 74px; }
-.monsterSprite {
-  max-width: 170%;
-  max-height: 170%;
-  image-rendering: pixelated;
+.mobCard:hover,
+.lootCard:hover,
+.bossCard:hover {
+  border-color: #ffd45d;
+  background: rgba(255, 212, 93, .08);
+}
+
+.mobCardSprite {
+  width: 74px;
+  height: 58px;
   object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.8));
+}
+
+.mobCard span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff0c7;
+  font-size: 10px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.mobCard small {
+  color: #9eb1d0;
+  font-size: 8px;
 }
 
 .bossCard {
-  border: 2px solid #b71c37;
-  background: linear-gradient(90deg, rgba(96, 14, 26, .45), rgba(11, 16, 25, .9));
-  padding: 16px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  color: #fff;
-  text-decoration: none;
-}
-.bossCard strong { display: block; color: #ff4d5c; font-size: 22px; }
-.bossCard span { color: #cfd9ef; }
-.bossCard em { margin-left: auto; color: #ffed81; font-style: normal; font-size: 12px; }
-
-.lootList {
-  display: grid;
+  gap: 14px;
+  padding: 12px;
+  background: linear-gradient(90deg, rgba(104, 12, 23, .52), rgba(4, 8, 15, .78));
 }
 
-.lootRow {
+.bossSprite {
+  width: 86px;
+  height: 68px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(3px 4px 0 rgba(0,0,0,.8));
+}
+
+.bossCard span {
+  min-width: 0;
+}
+
+.bossCard b {
+  display: block;
+  color: #ff6574;
+  font-size: 18px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.bossCard small {
+  display: block;
+  margin-top: 4px;
+  color: #cbd8ee;
+}
+
+.lootGrid {
   display: grid;
-  grid-template-columns: 42px 1fr auto;
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.lootCard {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 10px;
   align-items: center;
-  padding: 12px 14px;
-  color: #fff;
-  text-decoration: none;
-  border-top: 1px solid rgba(120,139,170,.28);
+  padding: 10px;
 }
-.lootRow:first-child { border-top: 0; }
-.lootRow:hover { background: rgba(255,228,92,.06); }
-.lootRow strong { display: block; color: #fff4c8; }
-.lootRow small { display: block; color: #9fb0cd; margin-top: 4px; }
-.lootRow em { color: #ffed81; font-style: normal; font-size: 12px; }
-.lootIcon {
-  width: 36px;
-  height: 36px;
-  border: 2px solid #43546f;
-  display: grid;
-  place-items: center;
-  color: #ffed81;
+
+.lootSprite {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.lootCard b {
+  display: block;
+  color: #fff0c7;
+  font-size: 11px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.lootCard small {
+  display: block;
+  margin-top: 3px;
+  color: #9eb1d0;
+  font-size: 8px;
+  line-height: 1.4;
 }
 
 .actions {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 22px;
-}
-
-.empty { padding: 16px; }
-
-@media (max-width: 980px) {
-  .heroPanel { flex-direction: column; align-items: flex-start; }
-  .statSummary { align-self: stretch; flex-wrap: wrap; }
-  .mainGrid { grid-template-columns: 1fr; }
-  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tableHeader, .monsterRow { grid-template-columns: 1fr 80px; }
-  .tableHeader span:nth-child(3), .tableHeader span:nth-child(4), .monsterRow span:nth-child(3), .monsterRow span:nth-child(4) { display: none; }
-}
-
-
-/* Ajuste visual estilo wiki: mapa funcional com tooltip da fase */
-.stageTooltip {
-  position: absolute;
-  width: min(320px, 82%);
-  z-index: 8;
-  transform: translate(-50%, -50%);
-  border: 3px solid #f0b84b;
-  border-top-width: 5px;
-  background: linear-gradient(180deg, rgba(23, 18, 9, .98), rgba(2, 4, 8, .98));
-  box-shadow: 8px 8px 0 rgba(0,0,0,.72), 0 0 0 2px rgba(0,0,0,.8);
-  padding: 14px;
-  pointer-events: none;
-  color: #fff4c8;
-}
-
-.stageTooltip > strong {
-  display: block;
-  color: #ffd766;
-  font-size: 18px;
-  text-align: right;
-  text-shadow: 2px 2px 0 #000;
-  margin-bottom: 10px;
-}
-
-.tooltipBody {
-  display: grid;
-  grid-template-columns: 74px 1fr;
-  gap: 12px;
-  align-items: center;
-}
-
-.tooltipBody b,
-.tooltipBody span,
-.tooltipBody em,
-.tooltipStats span {
-  display: block;
-  font-family: var(--font-pixel), monospace;
-  font-size: 10px;
-  line-height: 1.65;
-  font-style: normal;
-}
-
-.tooltipBody b,
-.tooltipStats b {
-  color: #ffdf4a;
-}
-
-.tooltipBody span {
-  color: #b9d2ff;
-}
-
-.tooltipBody em {
-  color: #fff;
-}
-
-.tooltipStats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 2px solid rgba(150, 164, 190, .45);
+  flex-wrap: wrap;
+  margin-top: 16px;
 }
 
-.tooltipStats span {
-  color: #fff;
+.actions a {
+  padding: 10px 12px;
 }
 
-.mapBox {
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.75), 7px 7px 0 rgba(0,0,0,.55);
+.empty,
+.emptyPanel {
+  color: #aebbd4;
+  font-size: 12px;
 }
 
-.detailPanel {
-  background: linear-gradient(180deg, rgba(18,21,27,.98), rgba(12,15,21,.98));
+.empty {
+  padding: 12px;
+  border: 2px solid #3a4558;
+  background: rgba(4, 8, 15, .78);
 }
 
-.detailHead h2 {
-  font-size: clamp(24px, 2.5vw, 34px);
+.emptyPanel {
+  padding: 20px;
 }
 
-@media (max-width: 980px) {
-  .stageTooltip {
-    display: none;
+.mobFallback {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #ffd45d;
+  border: 2px solid #3a4558;
+  background: rgba(0,0,0,.4);
+  font-family: var(--font-pixel), monospace;
+}
+
+@media (max-width: 1180px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
   }
+
+  .mapFrame,
+  .actMapImage {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 760px) {
+  .stageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerStats {
+    grid-template-columns: repeat(3, auto auto);
+  }
+
+  .mapToolbar,
+  .stageDataGrid,
+  .mobCardGrid,
+  .lootGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mapFrame,
+  .actMapImage {
+    min-height: 430px;
+  }
+
+  .stageTooltip {
+    width: 280px;
+  }
+
+  .tooltipMobs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* /stages v10 - mapa vivo sem painel database */
+.mainGrid {
+  grid-template-columns: 1fr !important;
+}
+
+.mapPanel {
+  max-width: 920px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.stageMapLayout {
+  display: grid;
+  grid-template-columns: minmax(300px, 430px) minmax(280px, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.mapFrame {
+  width: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: 300 / 430 !important;
+  border-width: 4px !important;
+}
+
+.actMapImage {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: fill !important;
+}
+
+.stageNode {
+  width: 34px !important;
+  height: 40px !important;
+}
+
+.stageBase {
+  left: 5px !important;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.stageFlag {
+  width: 34px !important;
+  height: 34px !important;
+  background-size: 136px 34px !important;
+}
+
+@keyframes flagWave {
+  from { background-position-x: 0; }
+  to { background-position-x: -136px; }
+}
+
+.tooltipWrap {
+  z-index: 50 !important;
+}
+
+.stageTooltip {
+  width: 300px !important;
+  min-height: 0 !important;
+  padding: 12px !important;
+}
+
+.tooltipTop {
+  grid-template-columns: 64px 1fr !important;
+  gap: 10px !important;
+  padding-bottom: 8px !important;
+}
+
+.tooltipPortrait {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.tooltipTitleBlock strong {
+  font-size: 15px !important;
+}
+
+.tooltipStatsGrid {
+  padding: 8px 0 !important;
+}
+
+.tooltipMobs {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+}
+
+.tooltipMobSprite {
+  width: 42px !important;
+  height: 38px !important;
+}
+
+.selectedCard {
+  position: relative;
+  min-height: 0;
+  padding: 14px;
+  border: 2px solid #3d4b63;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(7, 10, 17, .96), rgba(2, 4, 8, .98));
+  background-size: 20px 20px, 20px 20px, auto;
+  box-shadow: 5px 5px 0 #000, inset 0 0 0 1px rgba(255,255,255,.04);
+  color: #fff0c7;
+}
+
+.selectedCardHead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(91, 109, 140, .55);
+}
+
+.selectedCardHead span,
+.selectedCardHead b,
+.selectedCardHead strong,
+.selectedCardHead a,
+.selectedStats span,
+.selectedMobs span {
+  font-family: var(--font-pixel), monospace;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.selectedCardHead span {
+  display: block;
+  color: #ffc85b;
+  font-size: 10px;
+}
+
+.selectedCardHead b {
+  display: block;
+  margin-top: 6px;
+  color: #8eb9ff;
+  font-size: 10px;
+}
+
+.selectedCardHead strong {
+  display: block;
+  margin-top: 8px;
+  color: #fff0c7;
+  font-size: 21px;
+  line-height: 1.05;
+}
+
+.selectedCardHead a {
+  padding: 7px 9px;
+  border: 2px solid #35445b;
+  background: linear-gradient(180deg, #192436, #070d17);
+  color: #fff1c4;
+  text-decoration: none;
+  font-size: 8px;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.selectedStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.selectedStats span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 9px;
+  border: 1px solid #3d4b63;
+  background: rgba(0,0,0,.32);
+  color: #dbe7ff;
+  font-size: 8px;
+}
+
+.selectedStats b {
+  color: #ffe35e;
+}
+
+.selectedMobs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.selectedMobs a {
+  min-width: 0;
+  min-height: 76px;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border: 1px solid #3d4b63;
+  background: rgba(0,0,0,.28);
+  color: #fff0c7;
+  text-align: center;
+  text-decoration: none;
+}
+
+.selectedMobs a:hover {
+  border-color: #ffd45d;
+  background: rgba(255, 212, 93, .08);
+}
+
+.selectedMobSprite {
+  width: 58px;
+  height: 46px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.8));
+}
+
+.selectedMobs span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff0c7;
+  font-size: 7px;
+}
+
+.selectedBossMob span {
+  color: #ff7c89 !important;
+}
+
+@media (max-width: 900px) {
+  .stageMapLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .mapFrame {
+    max-width: 430px !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .selectedMobs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stageTooltip {
+    width: 270px !important;
+  }
+}
+
+
+/* /stages v11 - usa o sprite oficial 3x3 da bandeira do jogo */
+.stageNode {
+  width: 30px !important;
+  height: 40px !important;
+  transform: translate(-50%, -72%) !important;
+}
+
+.stageBase {
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: url("/game-assets/stages/StageIcon_Occupied_Base.png") center / 30px 30px no-repeat !important;
+}
+
+.stageFlag {
+  left: 7px !important;
+  top: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-image: url("/game-assets/stages/StageIcon_Occupied_Flag.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 48px 48px !important;
+  animation: officialStageFlagWave .72s steps(1) infinite !important;
+  transform: scale(1.35) !important;
+  transform-origin: 50% 100% !important;
+  filter: drop-shadow(1px 2px 0 #000) !important;
+}
+
+.stageNode:hover .stageFlag,
+.stageNode:focus-visible .stageFlag,
+.stageNodeHover .stageFlag,
+.stageNodeActive .stageFlag {
+  transform: translateY(-1px) scale(1.45) !important;
+  filter: drop-shadow(0 0 4px rgba(255, 226, 116, .75)) drop-shadow(1px 2px 0 #000) !important;
+}
+
+.stageNode:hover .stageBase,
+.stageNode:focus-visible .stageBase,
+.stageNodeHover .stageBase,
+.stageNodeActive .stageBase {
+  background-image: url("/game-assets/stages/StageIcon_Hover.png") !important;
+}
+
+@keyframes officialStageFlagWave {
+  0%, 11.10% { background-position: 0 0; }
+  11.11%, 22.21% { background-position: -16px 0; }
+  22.22%, 33.32% { background-position: -32px 0; }
+  33.33%, 44.43% { background-position: 0 -16px; }
+  44.44%, 55.54% { background-position: -16px -16px; }
+  55.55%, 66.65% { background-position: -32px -16px; }
+  66.66%, 77.76% { background-position: 0 -32px; }
+  77.77%, 88.87% { background-position: -16px -32px; }
+  88.88%, 100% { background-position: -32px -32px; }
 }

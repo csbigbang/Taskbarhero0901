@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "@/components/ItemCompareTool.module.css";
+import ItemSmartImage from "@/components/ItemSmartImage";
 import {
   calculateItemScore,
   ComparableItem,
@@ -61,14 +62,11 @@ function iconName(item: ComparableItem) {
 }
 
 function ItemIcon({ item, big = false }: { item: ComparableItem; big?: boolean }) {
-  const [failed, setFailed] = useState(false);
   const name = iconName(item);
-
-  if (!name || failed) return null;
 
   return (
     <span className={`${styles.itemIcon} ${big ? styles.bigIcon : ""}`}>
-      <img src={`/images/items/${name}.png`} alt="" onError={() => setFailed(true)} loading="lazy" />
+      <ItemSmartImage itemKey={item.item_key} iconPath={name} alt="" />
     </span>
   );
 }

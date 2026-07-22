@@ -98,21 +98,21 @@
 
 .heroGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(245px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(290px, 1fr));
+  gap: 18px;
   padding: 24px 0 18px;
 }
 
 .heroCard {
   position: relative;
-  min-height: 260px;
+  min-height: 340px;
   border: 2px solid #444a54;
   background:
-    radial-gradient(circle at 50% 34%, color-mix(in srgb, var(--hero-color) 12%, transparent), transparent 42%),
-    #1a1d24;
+    radial-gradient(circle at 50% 28%, color-mix(in srgb, var(--hero-color) 14%, transparent), transparent 38%),
+    linear-gradient(180deg, rgba(29, 32, 40, .96), rgba(19, 22, 29, .98));
   color: #f5f1dc;
   cursor: pointer;
-  padding: 18px 16px 16px;
+  padding: 18px 18px 16px;
   display: grid;
   justify-items: center;
   align-content: start;
@@ -122,16 +122,18 @@
 }
 
 .heroCard:hover,
+.heroCard:focus-visible,
 .activeCard {
   border-color: #f0b02f;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 2px rgba(240,176,47,.28), 0 7px 0 rgba(0,0,0,.52);
   z-index: 20;
+  outline: none;
 }
 
 .heroCard strong {
-  margin-top: 12px;
+  margin-top: 16px;
   color: #fff3ca;
-  font-size: 23px;
+  font-size: 25px;
   text-shadow: 3px 3px 0 #000;
 }
 
@@ -144,10 +146,10 @@
 
 .cardStats {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 11px;
+  margin-top: 14px;
   color: #cdd8ef;
   font-size: 12px;
 }
@@ -163,59 +165,75 @@
   image-rendering: pixelated;
 }
 
-.figure img {
+.spriteSheet {
   position: relative;
   z-index: 2;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: var(--figure-width);
+  height: var(--figure-height);
+  background-image: var(--hero-sheet);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: var(--hero-sheet-size);
   image-rendering: pixelated;
-  filter: drop-shadow(4px 4px 0 rgba(0,0,0,.72));
+  filter: drop-shadow(6px 6px 0 rgba(0,0,0,.78));
   transform-origin: 50% 90%;
+  will-change: background-position, transform, filter;
 }
 
 .figure i {
   position: absolute;
   z-index: 1;
   left: 50%;
-  bottom: 8px;
+  bottom: 6px;
   width: 78%;
-  height: 18px;
+  height: 20px;
   transform: translateX(-50%);
   border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(0,0,0,.72), transparent 68%);
 }
 
 .figure_card {
-  width: 150px;
-  height: 130px;
+  --figure-width: 145px;
+  --figure-height: 180px;
+  width: 172px;
+  height: 198px;
+  align-items: end;
 }
 
 .figure_tooltip {
-  width: 92px;
-  height: 92px;
+  --figure-width: 88px;
+  --figure-height: 109px;
+  width: 98px;
+  height: 122px;
   border: 2px solid #3f5167;
   background: #151820;
 }
 
 .figure_detail {
-  width: 295px;
-  height: 345px;
+  --figure-width: 232px;
+  --figure-height: 288px;
+  width: 320px;
+  height: 364px;
   border: 2px solid #f0b02f;
   background:
     radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--hero-color) 20%, transparent), transparent 52%),
     #151820;
 }
 
-.figure_detail img {
-  width: 230px;
-  height: 300px;
+.heroCard:hover .figure_card .spriteSheet,
+.heroCard:focus-visible .figure_card .spriteSheet,
+.activeCard .figure_card .spriteSheet,
+.heroCard:hover .figure_tooltip .spriteSheet,
+.heroCard:focus-visible .figure_tooltip .spriteSheet,
+.detailPanel .figure_detail .spriteSheet {
+  animation: heroSpriteCycle var(--hero-duration) steps(var(--hero-step-count), end) infinite;
 }
 
-.heroCard:hover .figure_card img,
-.activeCard .figure_card img,
-.detailPanel:hover .figure_detail img {
-  animation: heroBounce 900ms steps(2, end) infinite;
+.heroCard:hover .spriteSheet,
+.heroCard:focus-visible .spriteSheet,
+.activeCard .spriteSheet,
+.detailPanel .figure_detail .spriteSheet {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--hero-accent) 55%, transparent)) drop-shadow(6px 8px 0 rgba(0,0,0,.82));
 }
 
 .tooltip {
@@ -254,7 +272,7 @@
 
 .tooltipTop {
   display: grid;
-  grid-template-columns: 94px 1fr;
+  grid-template-columns: 98px 1fr;
   gap: 12px;
   align-items: center;
 }
@@ -331,7 +349,7 @@
 
 .detailPanel {
   display: grid;
-  grid-template-columns: 335px 1fr;
+  grid-template-columns: 360px 1fr;
   gap: 28px;
   margin-top: 12px;
   border: 3px solid #343941;
@@ -425,13 +443,26 @@
   color: #fff3ca;
 }
 
-@keyframes heroBounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-3px) scale(1.03); }
+@keyframes heroSpriteCycle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCard,
+  .spriteSheet,
+  .tooltip {
+    transition: none;
+    animation: none !important;
+  }
 }
 
 @media (max-width: 1100px) {
-  .heroGrid { grid-template-columns: repeat(2, minmax(245px, 1fr)); }
+  .heroGrid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
   .detailPanel { grid-template-columns: 1fr; }
   .detailImageBox { justify-content: start; }
 }
@@ -444,4 +475,12 @@
   .detailStats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bottomGrid { grid-template-columns: 1fr; }
   .tooltip { display: none; }
+  .detailPanel { padding: 18px; }
+  .figure_detail {
+    --figure-width: 174px;
+    --figure-height: 216px;
+    width: 100%;
+    max-width: 250px;
+    height: 266px;
+  }
 }

@@ -1,0 +1,181 @@
+/* TBH Database - correção visual do header e fundo
+   Header: imagem dos personagens.
+   Fundo geral: imagem grande do jogo.
+   Fan site não oficial, feito por fãs, sem afiliação com os desenvolvedores de TBH: Task Bar Hero.
+*/
+
+:root {
+  --tbh-header-characters: url("/tbh-real/backgrounds/header-characters.jpg");
+  --tbh-page-background: url("/tbh-real/backgrounds/page-background.png");
+}
+
+/* Fundo real sempre visível atrás do conteúdo */
+html,
+body {
+  min-height: 100%;
+  background: #02060d !important;
+}
+
+body {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .66), rgba(0, 0, 0, .20) 24%, rgba(0, 0, 0, .08) 50%, rgba(0, 0, 0, .20) 76%, rgba(0, 0, 0, .66)),
+    linear-gradient(180deg, rgba(2, 6, 12, .10), rgba(2, 6, 12, .50)),
+    var(--tbh-page-background) center center / cover fixed no-repeat !important;
+}
+
+.wallpaper-layer {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .66), rgba(0, 0, 0, .20) 24%, rgba(0, 0, 0, .08) 50%, rgba(0, 0, 0, .20) 76%, rgba(0, 0, 0, .66)),
+    linear-gradient(180deg, rgba(2, 6, 12, .10), rgba(2, 6, 12, .50)),
+    var(--tbh-page-background) center center / cover fixed no-repeat !important;
+}
+
+.scanlines {
+  z-index: -1 !important;
+}
+
+/* Header com a imagem dos personagens no local certo */
+.header.tbhdb-header,
+.header {
+  min-height: 188px !important;
+  background:
+    linear-gradient(90deg, rgba(3, 7, 13, .95), rgba(3, 7, 13, .50) 22%, rgba(3, 7, 13, .36) 50%, rgba(3, 7, 13, .62) 78%, rgba(3, 7, 13, .95)),
+    linear-gradient(180deg, rgba(2, 5, 10, .14), rgba(2, 5, 10, .90)),
+    var(--tbh-header-characters) center 42% / cover no-repeat !important;
+  border-bottom: 4px solid #05080f !important;
+  box-shadow: 0 6px 0 #000, 0 0 30px rgba(0, 0, 0, .55) !important;
+}
+
+.header-inner.tbhdb-header-inner,
+.header-inner {
+  min-height: 178px !important;
+  align-items: center !important;
+}
+
+/* Deixa a imagem de fundo aparecer em volta dos painéis */
+.app-shell,
+.app-content,
+.homeShell,
+main {
+  background: transparent !important;
+}
+
+.page-frame,
+.panel,
+.card,
+.small-card,
+.metricCard,
+.toolCard,
+.sidebar,
+.tbhdb-sidebar {
+  background-color: rgba(4, 9, 17, .88) !important;
+}
+
+.homeShell {
+  padding-bottom: 48px;
+}
+
+/* Conteúdo continua legível */
+.logo.tbhdb-logo,
+.tbhdb-search-wrap,
+.tbhdb-nav-link,
+.links a,
+.sidebar,
+.page-frame,
+.panel,
+.card,
+.small-card,
+.metricCard,
+.toolCard {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Responsivo */
+@media (max-width: 980px) {
+  .header.tbhdb-header,
+  .header {
+    min-height: 240px !important;
+    background-position: center center !important;
+  }
+
+  .header-inner.tbhdb-header-inner,
+  .header-inner {
+    min-height: 230px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .header.tbhdb-header,
+  .header {
+    min-height: 280px !important;
+  }
+
+  .header-inner.tbhdb-header-inner,
+  .header-inner {
+    min-height: 270px !important;
+  }
+}
+
+
+/* =========================================================
+   FIX FINAL /gear:
+   remove o rosa/vermelho chapado e FORÇA a imagem dos personagens
+   dentro do banner de Equipamentos.
+   ========================================================= */
+
+body [class*="GearWikiClient_heroPanel"] {
+  border: 4px solid #d9a84c !important;
+  border-image: none !important;
+  background:
+    linear-gradient(90deg,
+      rgba(3, 6, 10, .78) 0%,
+      rgba(3, 6, 10, .56) 34%,
+      rgba(3, 6, 10, .30) 62%,
+      rgba(3, 6, 10, .12) 100%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .34)),
+    url("/tbh-real/backgrounds/header-characters.jpg") center 42% / cover no-repeat !important;
+  box-shadow: 5px 5px 0 #000 !important;
+  overflow: hidden !important;
+}
+
+/* Mata qualquer overlay rosa/vermelho antigo que tenha ficado em CSS anterior */
+body [class*="GearWikiClient_heroPanel"]::before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+body [class*="GearWikiClient_heroPanel"]::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px) !important;
+  background-size: 22px 22px !important;
+  opacity: .18 !important;
+}
+
+body [class*="GearWikiClient_heroPanel"] > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+body [class*="GearWikiClient_heroPanel"] h1,
+body [class*="GearWikiClient_heroPanel"] p,
+body [class*="GearWikiClient_kicker"] {
+  text-shadow: 5px 5px 0 #000 !important;
+}
+
+body [class*="GearWikiClient_heroStats"] div {
+  background: rgba(5, 9, 16, .86) !important;
+  border: 3px solid #6f88aa !important;
+  border-image: none !important;
+}
+

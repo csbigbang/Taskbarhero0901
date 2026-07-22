@@ -306,7 +306,6 @@ function BuildCard({ entry, compact = false }: { entry: { item: BuildPlannerItem
         <p>{clean(item.name_en_us, clean(item.market_hash_name, "sem nome EN"))}</p>
         <div className={styles.pills}>
           <span>{entry.slot}</span>
-          <span>ID: {item.item_key}</span>
           <span>{money(item.lowest_price_brl)}</span>
           <span>Pontuação: {entry.score}</span>
           <Link href={`/items/${encodeURIComponent(item.item_key)}`}>Detalhes</Link>

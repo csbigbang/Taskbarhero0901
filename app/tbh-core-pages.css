@@ -1,0 +1,322 @@
+/* TBH Database - pacote profissional base v1
+   Fan site não oficial, feito por fãs, sem afiliação com os desenvolvedores de TBH: Task Bar Hero.
+   Objetivo: melhorar /gear, /items, /drops, /stages e componentes comuns sem placeholders fake.
+*/
+
+:root {
+  --tbh-frame-blue: url("/tbh-real/ui/frame-blue.png");
+  --tbh-frame-gold: url("/tbh-real/ui/frame-gold.png");
+  --tbh-frame-red: url("/tbh-real/ui/frame-red.png");
+  --tbh-frame-green: url("/tbh-real/ui/frame-green.png");
+  --tbh-frame-purple: url("/tbh-real/ui/frame-purple.png");
+  --tbh-frame-dark: url("/tbh-real/ui/frame-dark.png");
+  --tbh-tile: url("/tbh-real/ui/Background.png");
+  --tbh-gold: #ffe36a;
+  --tbh-text: #fff1c4;
+  --tbh-blue-text: #dceaff;
+}
+
+body, button, input, select, textarea, a, p, span, strong, em, small, h1, h2, h3, h4 {
+  font-family: var(--font-pixel), monospace;
+}
+
+img { image-rendering: pixelated; }
+
+.game-asset-fallback,
+.item-icon-fallback,
+.asset-placeholder,
+.placeholder,
+[data-placeholder="true"],
+[class*="fallback"],
+[class*="placeholder"] {
+  display: none !important;
+}
+
+.page-frame,
+.panel,
+.small-card,
+.card,
+.metricCard,
+.toolCard {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-frame-blue) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(7, 13, 24, .92), rgba(3, 7, 13, .95)),
+    var(--tbh-tile) !important;
+  background-size: auto, 32px 32px !important;
+  box-shadow: 5px 5px 0 #000 !important;
+}
+
+.page-banner,
+.eyebrow,
+.badge,
+.stage-badge {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-frame-gold) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(100, 64, 15, .95), rgba(25, 15, 4, .98)),
+    var(--tbh-tile) !important;
+  color: var(--tbh-gold) !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+.page-body .panel h1,
+.page-frame h1,
+.panel h1 {
+  color: var(--tbh-text) !important;
+  text-shadow: 4px 4px 0 #000 !important;
+}
+
+.page-body .panel p,
+.panel p {
+  color: var(--tbh-blue-text) !important;
+  line-height: 1.65 !important;
+}
+
+/* Busca e filtros */
+.searchbar,
+.tbh-pro-searchbar {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 1fr) auto auto auto !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+  margin-top: 18px !important;
+}
+
+.search-input-wrap,
+.searchbar select,
+.searchbar input,
+.searchbar button,
+.searchbar a.btn {
+  min-height: 46px !important;
+}
+
+.search-input-wrap,
+.searchbar select {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-frame-dark) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(3, 8, 15, .95), rgba(1, 4, 8, .98)),
+    var(--tbh-tile) !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.searchbar input,
+.searchbar select {
+  color: var(--tbh-text) !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.searchbar .btn,
+.tbh-pro-card-actions a {
+  border: 8px solid transparent !important;
+  border-image: var(--tbh-frame-dark) 8 fill stretch !important;
+  background:
+    linear-gradient(180deg, rgba(10, 20, 34, .95), rgba(4, 8, 15, .98)),
+    var(--tbh-tile) !important;
+  color: var(--tbh-text) !important;
+  text-shadow: 2px 2px 0 #000 !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+.searchbar .btn.primary,
+.tbh-pro-card-actions a:hover {
+  border-image: var(--tbh-frame-gold) 8 fill stretch !important;
+  color: var(--tbh-gold) !important;
+}
+
+.searchbar .btn:hover,
+.tbh-pro-card-actions a:hover {
+  transform: translate(-1px, -1px);
+  filter: brightness(1.08);
+}
+
+/* Cards de itens */
+.grid.item-grid,
+.section .list {
+  gap: 14px !important;
+}
+
+.tbh-pro-item-card,
+.tbh-pro-drop-card {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 76px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: start !important;
+  min-height: 150px !important;
+  padding: 14px !important;
+  overflow: hidden !important;
+}
+
+.tbh-pro-drop-card {
+  grid-template-columns: 50px 76px minmax(0, 1fr) !important;
+}
+
+.tbh-pro-item-card:hover,
+.tbh-pro-drop-card:hover {
+  transform: translate(-2px, -2px);
+  filter: brightness(1.07);
+}
+
+.tbh-pro-item-icon-wrap,
+.tbh-pro-drop-icon,
+.tbh-pro-drop-source {
+  position: relative !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 64px !important;
+  height: 64px !important;
+  border: 2px solid rgba(190, 220, 255, .48) !important;
+  background:
+    radial-gradient(circle, rgba(255, 220, 95, .12), rgba(0, 0, 0, .46) 66%),
+    rgba(2, 6, 12, .95) !important;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.45), 3px 3px 0 #000 !important;
+  z-index: 2 !important;
+}
+
+.tbh-pro-drop-source {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.tbh-pro-drop-source img {
+  width: 30px !important;
+  height: 30px !important;
+  object-fit: contain !important;
+}
+
+.tbh-pro-drop-icon { text-decoration: none !important; }
+
+.tbh-pro-card-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  align-items: start !important;
+}
+
+.tbh-pro-overline {
+  display: block !important;
+  color: var(--tbh-gold) !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+.tbh-pro-item-main h3 {
+  margin: 5px 0 8px !important;
+  color: var(--tbh-text) !important;
+  font-size: 17px !important;
+  line-height: 1.22 !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+.tbh-pro-item-main h3 a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.tbh-pro-item-main p {
+  margin: 0 0 10px !important;
+  color: #c8d9ec !important;
+  font-size: 11px !important;
+  line-height: 1.55 !important;
+}
+
+.tbh-pro-pill-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-top: 8px !important;
+}
+
+.pill,
+.metaPill {
+  border: 1px solid rgba(142, 180, 220, .72) !important;
+  background: rgba(19, 38, 62, .86) !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  line-height: 1.15 !important;
+  padding: 5px 7px !important;
+  text-shadow: 1px 1px 0 #000 !important;
+}
+
+.grade {
+  border: 1px solid rgba(255, 255, 255, .28) !important;
+  background: rgba(3, 7, 13, .75) !important;
+  color: var(--tbh-gold) !important;
+  font-size: 9px !important;
+  padding: 5px 7px !important;
+  text-shadow: 1px 1px 0 #000 !important;
+}
+
+.tbh-pro-card-actions {
+  position: relative !important;
+  z-index: 4 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+}
+
+.tbh-pro-card-actions a {
+  min-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 10px !important;
+  text-decoration: none !important;
+  font-size: 10px !important;
+}
+
+.card-hit { z-index: 1 !important; }
+
+/* Raridade no contorno do card */
+.rarity-legendary, .rarity-divine { border-image: var(--tbh-frame-gold) 8 fill stretch !important; }
+.rarity-immortal { border-image: var(--tbh-frame-red) 8 fill stretch !important; }
+.rarity-uncommon, .rarity-beyond { border-image: var(--tbh-frame-green) 8 fill stretch !important; }
+.rarity-rare, .rarity-celestial { border-image: var(--tbh-frame-blue) 8 fill stretch !important; }
+.rarity-arcana, .rarity-cosmic { border-image: var(--tbh-frame-purple) 8 fill stretch !important; }
+
+/* Gear e estágios: ajustes globais úteis */
+[class*="GearWikiClient_heroPanel"],
+[class*="StageWikiPro_heroPanel"] {
+  border-image: var(--tbh-frame-red) 8 fill stretch !important;
+}
+
+[class*="GearWikiClient_kicker"] {
+  width: fit-content !important;
+  max-width: max-content !important;
+  min-height: 18px !important;
+  padding: 0 7px !important;
+  margin-bottom: 7px !important;
+  border-width: 4px !important;
+  font-size: 8px !important;
+}
+
+[class*="GearWikiClient_previewPanel"] {
+  background: linear-gradient(180deg, rgba(9,13,22,.99), rgba(3,6,12,.995)) !important;
+  border: 4px solid #b9964e !important;
+  border-image: none !important;
+  color: var(--tbh-text) !important;
+}
+
+@media (max-width: 920px) {
+  .searchbar,
+  .tbh-pro-searchbar {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tbh-pro-item-card,
+  .tbh-pro-drop-card {
+    grid-template-columns: 64px minmax(0, 1fr) !important;
+  }
+
+  .tbh-pro-drop-source {
+    display: none !important;
+  }
+}

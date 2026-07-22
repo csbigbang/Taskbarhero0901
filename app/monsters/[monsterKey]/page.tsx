@@ -1,10 +1,8 @@
 import { Suspense } from "react";
 import { MonsterBestiary } from "@/components/MonsterBestiary";
-import { getMonsterByKey, MONSTERS } from "@/lib/monster-codex-data";
+import { getMonsterByKey } from "@/lib/monster-codex-data";
 
-export function generateStaticParams() {
-  return MONSTERS.map((monster) => ({ monsterKey: String(monster.key) }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ monsterKey: string }> }) {
   const { monsterKey } = await params;

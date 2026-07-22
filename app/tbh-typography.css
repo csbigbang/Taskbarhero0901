@@ -1,0 +1,136 @@
+/*
+ * TBH Database — tipografia Unicode e legibilidade.
+ * Mantém a estética monoespaçada/pixelada sem depender de fontes CP437,
+ * que não possuem os glifos corretos de português do Brasil.
+ */
+:root {
+  --font-pixel: "Cascadia Mono", "Cascadia Code", Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+  --font-interface: "Segoe UI Variable Text", "Segoe UI", Inter, Arial, sans-serif;
+  --font-numeric: "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+
+html {
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-pixel) !important;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+  font-variant-ligatures: none;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea,
+optgroup {
+  font-family: var(--font-pixel) !important;
+  font-variant-ligatures: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+.logo,
+.tbhdb-nav,
+.tbhdb-sidebar,
+.btn,
+.eyebrow,
+.badge,
+.pill {
+  font-family: var(--font-pixel) !important;
+  font-variant-ligatures: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: balance;
+}
+
+p,
+li,
+dd,
+small {
+  overflow-wrap: break-word;
+}
+
+/* A camada de scanlines forte atravessava os glifos e prejudicava os acentos. */
+.scanlines {
+  opacity: .055 !important;
+  background-size: 100% 5px !important;
+}
+
+/* Assets do jogo não devem ser arrastados nem selecionados como imagens comuns. */
+img,
+.pixelated {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Foco de teclado visível e coerente com o tema. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold-2, #ffd66e);
+  outline-offset: 3px;
+}
+
+/* Leitura consistente dos números do banco e do mercado. */
+[data-number],
+.stat-number,
+.price,
+.price-value,
+.sidebar-link em,
+.tbhdb-sidebar-link em {
+  font-family: var(--font-numeric) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Texto principal mais legível sem descaracterizar a interface do jogo. */
+.footer p,
+.page-banner p,
+.section-lead,
+.description,
+.muted,
+.card p,
+.panel p {
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

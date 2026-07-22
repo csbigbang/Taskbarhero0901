@@ -33,6 +33,82 @@
   --pixel-shadow-lg: 7px 7px 0 var(--black);
 }
 
+.market-update-notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 3px solid #b79143;
+  background:
+    linear-gradient(180deg, rgba(38, 28, 13, .96), rgba(10, 10, 12, .98)),
+    url('/game-assets/ui/Ui_Popup_Bg.png') center / 240px 150px repeat;
+  color: #ffe8c2;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 6px 6px 0 rgba(0,0,0,.55);
+}
+
+.market-update-notice span {
+  display: block;
+  margin-bottom: 7px;
+  color: #ffe45c;
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.market-update-notice h2 {
+  margin: 0;
+  color: #fff4c8;
+  font-size: clamp(18px, 2.2vw, 28px);
+  line-height: 1.25;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.market-update-notice p {
+  max-width: 860px;
+  margin: 9px 0 0;
+  color: #dbe6ff;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.market-update-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(110px, 1fr));
+  gap: 9px;
+}
+
+.market-update-actions a {
+  display: inline-grid;
+  place-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 2px solid #43546f;
+  background: linear-gradient(180deg, #162235, #08101d);
+  color: #fff4c8;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.market-update-actions a:first-child {
+  border-color: #ffd45d;
+  background: linear-gradient(180deg, #b36616, #6e3209);
+}
+
+@media (max-width: 760px) {
+  .market-update-notice {
+    grid-template-columns: 1fr;
+  }
+
+  .market-update-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -2129,4 +2205,159 @@ main,
 
 .pixel-logo-button em {
   font-size: 10px;
+}
+
+/* Real assets v1 - troca base visual genérica por UI/sprites oficiais */
+body {
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.24) 26%, rgba(0,0,0,.16) 50%, rgba(0,0,0,.24) 74%, rgba(0,0,0,.72)),
+    linear-gradient(180deg, rgba(2,6,12,.32), rgba(2,6,12,.88)),
+    url('/game-assets/heroes/SelectHero_Bg.png') center top / cover fixed no-repeat !important;
+  background-color: #03070e !important;
+}
+
+.wallpaper-layer {
+  opacity: .82 !important;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(255,211,92,.12), transparent 26%),
+    radial-gradient(circle at 88% 28%, rgba(84,184,255,.10), transparent 28%),
+    url('/game-assets/heroes/SelectHero_Bg_Decor.png') center top / cover fixed no-repeat !important;
+}
+
+.header,
+.tbh-pro-header {
+  background:
+    linear-gradient(180deg, rgba(11,13,19,.96), rgba(4,7,13,.94)),
+    url('/game-assets/ui/UI_Title_Bg.png') center / 300px 300px repeat !important;
+  border-bottom-color: #1b2635 !important;
+}
+
+.official-logo-link {
+  min-width: 270px;
+  background:
+    linear-gradient(180deg, rgba(57, 28, 8, .95), rgba(17, 11, 8, .98)),
+    url('/game-assets/ui/Button_Orange_Large_Hover.png') center / 100% 100% no-repeat !important;
+  border-color: #e49e33 !important;
+}
+
+.official-logo-mark {
+  width: 92px !important;
+  height: 38px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.official-logo-mark img {
+  width: 92px !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  image-rendering: pixelated;
+}
+
+.official-logo-copy strong {
+  color: #fff0bb;
+}
+
+.official-logo-copy em {
+  color: #ffd35d;
+}
+
+.sidebar,
+.page-frame,
+.panel,
+.heroPanel,
+.playerPanel,
+.quickPanel,
+.card,
+.small-card {
+  background-image:
+    linear-gradient(180deg, rgba(14, 18, 25, .95), rgba(5, 8, 13, .98)),
+    url('/game-assets/ui/Ui_Popup_Bg.png') !important;
+  background-position: center, center !important;
+  background-size: auto, 210px 132px !important;
+  background-repeat: repeat, repeat !important;
+}
+
+.sidebar-card,
+.page-banner,
+.inventory-title {
+  background:
+    linear-gradient(180deg, rgba(129, 28, 30, .92), rgba(52, 10, 14, .95)),
+    url('/game-assets/ui/UI_Title_Bg.png') center / 220px 220px repeat !important;
+}
+
+.sidebar-icon,
+.pixel-asset-btn-icon,
+.homeFeatureIcon {
+  background:
+    linear-gradient(180deg, rgba(14,15,18,.92), rgba(3,4,7,.96)),
+    url('/game-assets/items/ItemSlot_Bg.png') center / contain no-repeat !important;
+  border-color: #675334 !important;
+}
+
+.real-menu-icon,
+.homeFeatureIcon img,
+.item-icon img,
+.monster-image img,
+img[src*="/game-assets/"],
+img[src*="/images/items/"],
+img[src*="/images/item-sprites/"],
+img[src*="/images/monsters/"] {
+  image-rendering: pixelated;
+}
+
+.pixel-main-nav .pixel-asset-btn:hover,
+.pixel-main-nav .pixel-asset-btn.active,
+.sidebar-link.pixel-sidebar-btn:hover,
+.sidebar-link.pixel-sidebar-btn.active {
+  background:
+    linear-gradient(180deg, rgba(73, 41, 12, .92), rgba(19, 13, 8, .98)),
+    url('/game-assets/ui/Button_Orange_Medium_Hover.png') center / 100% 100% no-repeat !important;
+  border-color: #ffd35d !important;
+}
+
+
+/* Sidebar branding real asset */
+.tbh-pro-sidebar-title.pixel-sidebar-title-card {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  align-items: start !important;
+}
+
+.tbh-pro-sidebar-brandblock {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px solid rgba(255, 226, 140, 0.75);
+  background: linear-gradient(180deg, rgba(42, 22, 7, .96), rgba(18, 11, 4, .98));
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.5), 3px 3px 0 #000;
+}
+
+.tbh-pro-sidebar-brandimg {
+  display: block !important;
+  width: 100% !important;
+  max-width: 190px !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+}
+
+.tbh-pro-sidebar-brandtext strong {
+  display: block;
+  font-size: 20px !important;
+  color: #fff2c5 !important;
+  line-height: 1.05;
+}
+
+.tbh-pro-sidebar-brandtext span {
+  display: block;
+  margin-top: 4px;
+  color: #ffd989 !important;
+  font-size: 12px !important;
+  line-height: 1.35;
 }

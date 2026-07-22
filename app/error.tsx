@@ -7,7 +7,7 @@ export default function ErrorPage({ error, reset }: { error: Error & { digest?: 
         <div className="container">
           <div className="notice">
             <strong>Erro ao carregar o banco</strong>
-            <span>{error.message}</span>
+            <span>Não foi possível carregar os dados agora. Tente novamente em alguns instantes.</span>
             <button className="btn primary" type="button" onClick={reset}>Tentar novamente</button>
           </div>
         </div>

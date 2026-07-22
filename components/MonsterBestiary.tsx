@@ -363,28 +363,28 @@ function MonsterTooltip({ monster }: { monster: MonsterCodexEntry }) {
       <span className={styles.tooltipIntro}>
         <span className={styles.tooltipSprite}><MonsterSprite monster={monster} animated /></span>
         <span>
-          <b>MONSTER</b>
+          <b>MONSTRO</b>
           <em>{monster.nameEn !== monster.namePt ? monster.nameEn : formatDamage(monster.damageType)}</em>
         </span>
       </span>
       <span className={styles.tooltipSection}>
-        <b>Combat Stats</b>
+        <b>Combate</b>
         <span><em>HP</em><strong>{compactNumber(monster.hp)}</strong><em>ATK</em><strong>{compactNumber(monster.attack)}</strong></span>
-        <span><em>Speed</em><strong>{compactNumber(monster.attackSpeed)}</strong><em>Move</em><strong>{compactNumber(monster.moveSpeed)}</strong></span>
+        <span><em>Vel.</em><strong>{compactNumber(monster.attackSpeed)}</strong><em>Mov.</em><strong>{compactNumber(monster.moveSpeed)}</strong></span>
       </span>
       <span className={styles.tooltipSection}>
-        <b>Attack</b>
-        <span><em>Kind</em><strong>{monster.delivery || "Baseattack"}</strong></span>
-        <span><em>Element</em><strong>{formatDamage(monster.damageType)}</strong></span>
-        <span><em>Range</em><strong>{compactNumber(monster.range)}</strong></span>
-        <span><em>Power</em><strong>{monsterPowerScore(monster)}%</strong></span>
+        <b>Ataque</b>
+        <span><em>Tipo</em><strong>{monster.delivery || "Baseattack"}</strong></span>
+        <span><em>Elemento</em><strong>{formatDamage(monster.damageType)}</strong></span>
+        <span><em>Alcance</em><strong>{compactNumber(monster.range)}</strong></span>
+        <span><em>Poder</em><strong>{monsterPowerScore(monster)}%</strong></span>
       </span>
       <span className={styles.tooltipSection}>
-        <b>Rewards</b>
+        <b>Recompensas</b>
         <span><em>Gold</em><strong>{compactNumber(monster.gold)}</strong><em>Exp</em><strong>{compactNumber(monster.exp)}</strong></span>
       </span>
       <span className={styles.tooltipSection}>
-        <b>Appears In</b>
+        <b>Aparece em</b>
         <span className={styles.stageTags}>
           {stages.map((stage) => <i key={stage}>{stage}</i>)}
           {extra > 0 ? <i>+{extra} fases</i> : null}
@@ -398,7 +398,7 @@ function MonsterCard({ monster, selected, onSelect }: { monster: MonsterCodexEnt
   return (
     <button className={selected ? `${styles.wikiCard} ${styles.cardActive}` : styles.wikiCard} onClick={onSelect} type="button">
       <span className={styles.cardImage}><MonsterSprite monster={monster} animated /></span>
-      <span className={styles.cardType}>MONSTER</span>
+      <span className={styles.cardType}>MONSTRO</span>
       <span className={styles.cardName}>{monster.namePt}</span>
       <span className={styles.cardStats}>
         <span><b>HP</b> {compactNumber(monster.hp)}</span>
@@ -422,7 +422,7 @@ function DetailPanel({ monster }: { monster: MonsterCodexEntry | null }) {
       <div className={styles.detailHeader}>
         <div className={styles.detailSprite}><MonsterSprite monster={monster} animated /></div>
         <div>
-          <span className={styles.kicker}>MONSTRO #{monster.key}</span>
+          <span className={styles.kicker}>MONSTRO</span>
           <h2>{monster.namePt}</h2>
           <p>{monster.nameEn !== monster.namePt ? monster.nameEn : "Dados extraídos do jogo"}</p>
           <div className={styles.badges}>
@@ -514,8 +514,8 @@ export function MonsterBestiary({ initialMonsterKey }: MonsterBestiaryProps) {
           <p>61 inimigos com sprites reais, animação ao passar o mouse, estatísticas, recompensas e fases onde aparecem.</p>
         </div>
         <div className={styles.heroStats}>
-          <div><strong>{MONSTERS.length}</strong><span>enemies</span></div>
-          <div><strong>{bosses}</strong><span>bosses</span></div>
+          <div><strong>{MONSTERS.length}</strong><span>monstros</span></div>
+          <div><strong>{bosses}</strong><span>chefes</span></div>
           <div><strong>{filtered.length}</strong><span>visíveis</span></div>
         </div>
       </section>
@@ -533,14 +533,14 @@ export function MonsterBestiary({ initialMonsterKey }: MonsterBestiaryProps) {
           {damageTypes.map((item) => <option key={item} value={item}>{formatDamage(item)}</option>)}
         </select>
         <select value={act} onChange={(event) => setAct(event.target.value)}>
-          <option value="all">Todos os acts</option>
+          <option value="all">Todos os atos</option>
           {acts.map((item) => <option key={item} value={item}>Ato {item}</option>)}
         </select>
       </section>
-      <section className={styles.modeStrip}>
+      <section className={styles.modeStrip} aria-label="Filtros rápidos">
         <button className={difficulty === "all" ? styles.modeActive : ""} onClick={() => setDifficulty("all")} type="button">Todos os monstros</button>
         {difficultyOrder.map((item) => <button key={item} className={difficulty === item ? styles.modeActive : ""} onClick={() => setDifficulty(item)} type="button">{formatDifficulty(item)}</button>)}
-        <button className={role === "boss" ? styles.modeActive : ""} onClick={() => setRole(role === "boss" ? "all" : "boss")} type="button">Chefe do ato</button>
+        <button className={role === "boss" ? styles.modeActive : ""} onClick={() => setRole(role === "boss" ? "all" : "boss")} type="button">Chefes do ato</button>
       </section>
       <section className={styles.wikiGridPanel}>
         <div className={styles.resultsHeader}><h2>Todos os monstros</h2><span>{filtered.length} resultado(s)</span></div>

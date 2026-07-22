@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./BuildDoctor.module.css";
+import ItemSmartImage from "@/components/ItemSmartImage";
 
 type Goal = "dano" | "farm" | "boss" | "sobrevivencia" | "custo";
 type Profile = "barato" | "balanceado" | "premium";
@@ -350,10 +351,9 @@ async function loadFarmHintFor(itemKeyValue: string) {
 }
 
 function ItemIcon({ row, itemKeyValue, className = styles.itemIcon }: { row?: ItemRow; itemKeyValue?: number | string | null; className?: string }) {
-  const [failed, setFailed] = useState(false);
-  const src = iconUrl(row, itemKeyValue);
-  if (!src || failed) return null;
-  return <img className={className} src={src} alt="" loading="lazy" onError={() => setFailed(true)} />;
+  const key = itemKeyValue || itemKey(row);
+  const raw = firstValue(row, ["icon_path", "icon", "image", "image_path", "asset", "asset_name"]);
+  return <ItemSmartImage className={className} itemKey={key} iconPath={typeof raw === "string" ? raw : null} alt="" />;
 }
 
 function buildSlots(hero: SaveAnalysis["heroes"][number], items: ItemMap, goal: Goal): DoctorSlot[] {

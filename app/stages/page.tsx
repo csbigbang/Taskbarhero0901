@@ -1,7 +1,7 @@
-import StageWikiPro from "../../components/StageWikiPro";
+import StagePortalGame from "../../components/StagePortalGame";
 
 export const dynamic = "force-dynamic";
 
 export default function StagesPage() {
-  return <StageWikiPro />;
+  return <StagePortalGame />;
 }

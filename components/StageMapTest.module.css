@@ -1,0 +1,533 @@
+.pageShell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.stageCard {
+  width: min(760px, 100%);
+  border: 2px solid #344154;
+  background: rgba(7, 10, 16, .94);
+  box-shadow: 5px 5px 0 #000;
+  padding: 10px;
+}
+
+.compactHeader {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #202b3a;
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(180deg, #141a25, #080d15);
+  background-size: 18px 18px, 18px 18px, auto;
+  padding: 0 12px;
+  margin-bottom: 10px;
+}
+
+.compactHeader span {
+  color: #fff5c9;
+  font-size: 24px;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.compactHeader b {
+  color: #ffd95b;
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 342px minmax(220px, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.browser,
+.miniPanel {
+  border: 2px solid #334153;
+  background: rgba(8, 12, 19, .96);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.browser {
+  padding: 8px;
+  width: 342px;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.difficultySelect {
+  position: relative;
+  display: block;
+  height: 26px;
+  overflow: hidden;
+  background: url("/game-assets/stages/Button_Difficulty_Normal_Downward_Active.png") center / 100% 100% no-repeat;
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+.difficultySelect::after {
+  content: "▼";
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  color: #ffd95b;
+  font-size: 9px;
+  pointer-events: none;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.difficultySelect select {
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #fff3c1;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  text-align: center;
+  text-align-last: center;
+  outline: 0;
+  text-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+}
+
+.difficultySelect option {
+  color: #111;
+}
+
+.actTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.actTabs button {
+  height: 26px;
+  border: 0;
+  background: url("/game-assets/stages/TabButton_Large_DeActive_Active.png") center / 100% 100% no-repeat;
+  color: #ffcf58;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  text-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+}
+
+.actTabs .activeAct {
+  background-image: url("/game-assets/stages/TabButton_Large_Active.png");
+  color: #fff5c9;
+}
+
+.mapFrame {
+  position: relative;
+  width: 300px;
+  height: 430px;
+  margin: 0 auto;
+  border: 4px solid #43331f;
+  background: #12100b;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.75), 3px 3px 0 #000;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mapImage {
+  display: block;
+  width: 300px;
+  height: 430px;
+  image-rendering: pixelated;
+  object-fit: fill;
+  filter: saturate(1.05) contrast(1.02);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.stageNode {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 50px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.88));
+}
+
+.stageNode:hover,
+.stageNode:focus-visible,
+.stageNodeActive {
+  z-index: 7;
+  outline: 0;
+}
+
+.nodeBase,
+.nodeFlag,
+.nodeHover {
+  position: absolute;
+  display: block;
+  left: 50%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.nodeBase {
+  bottom: 6px;
+  width: 30px;
+  height: 30px;
+  transform: translateX(-50%);
+  background: url("/game-assets/stages/StageIcon_Hover.png") center / contain no-repeat;
+}
+
+.nodeBaseActive {
+  background-image: url("/game-assets/stages/StageIcon_Occupied_Base.png");
+  filter: drop-shadow(0 0 5px rgba(68,255,84,.95));
+}
+
+.nodeBaseBoss {
+  background-image: url("/game-assets/stages/StageIcon_Occupied_Base.png");
+  filter: hue-rotate(-118deg) saturate(2.6) brightness(1.12) drop-shadow(0 0 5px rgba(255,40,48,.95));
+}
+
+.nodeFlag {
+  top: -5px;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  background-image: url("/game-assets/stages/StageIcon_Occupied_Flag.png");
+  background-repeat: no-repeat;
+  background-size: 48px 48px;
+  animation: flagWave 1800ms steps(1) infinite;
+  z-index: 3;
+}
+
+.nodeHover {
+  bottom: 6px;
+  width: 30px;
+  height: 30px;
+  transform: translateX(-50%);
+  opacity: 0;
+  background: url("/game-assets/stages/StageIcon_Hover.png") center / contain no-repeat;
+}
+
+.stageNode:hover .nodeHover,
+.stageNode:focus-visible .nodeHover {
+  opacity: .72;
+  filter: drop-shadow(0 0 6px rgba(255,238,160,.8));
+}
+
+.stageNodeActive .nodeHover {
+  opacity: 0;
+}
+
+.nodeLabel {
+  position: absolute;
+  left: 34px;
+  top: 13px;
+  z-index: 4;
+  color: #fff5d0;
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 2px 2px 0 #00162b, -1px -1px 0 #00162b, 1px -1px 0 #00162b, -1px 1px 0 #00162b;
+  pointer-events: none;
+}
+
+.stageNodeBoss .nodeLabel {
+  color: #ffef8f;
+  text-shadow: 2px 2px 0 #590000, -1px -1px 0 #590000, 1px -1px 0 #590000, -1px 1px 0 #590000;
+}
+
+@keyframes flagWave {
+  0% { background-position: 0 0; }
+  11.11% { background-position: -16px 0; }
+  22.22% { background-position: -32px 0; }
+  33.33% { background-position: 0 -16px; }
+  44.44% { background-position: -16px -16px; }
+  55.55% { background-position: -32px -16px; }
+  66.66% { background-position: 0 -32px; }
+  77.77% { background-position: -16px -32px; }
+  88.88%, 100% { background-position: -32px -32px; }
+}
+
+.actBadge {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  padding: 2px 5px;
+  border: 1px solid rgba(255,217,91,.42);
+  background: rgba(0,0,0,.72);
+  color: #ffd95b;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.hint {
+  max-width: 300px;
+  margin: 7px auto 0;
+  color: #c6d4ef;
+  font-size: 9px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.tooltip {
+  position: absolute;
+  left: var(--tooltip-x);
+  top: var(--tooltip-y);
+  width: 264px;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  padding: 10px;
+  border: 2px solid #435067;
+  background: linear-gradient(180deg, rgba(9,12,19,.98), rgba(3,5,10,.98));
+  box-shadow: 7px 7px 0 rgba(0,0,0,.78), inset 0 0 0 1px rgba(255,255,255,.04);
+  pointer-events: none;
+}
+
+.tooltipTop {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(100,116,142,.58);
+}
+
+.tooltipIcon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #3e4b60;
+  background: radial-gradient(circle, rgba(255,255,255,.08), rgba(0,0,0,.8));
+  overflow: hidden;
+}
+
+.tooltipIconImg,
+.tooltipMobImg,
+.miniMobImg {
+  object-fit: contain;
+  image-rendering: pixelated;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.tooltipIconImg {
+  max-width: 118%;
+  max-height: 118%;
+  filter: drop-shadow(2px 3px 0 #000);
+}
+
+.tooltipTop b,
+.tooltipTop span,
+.tooltipTop strong {
+  display: block;
+}
+
+.tooltipTop b {
+  color: #ffd95b;
+  font-size: 9px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.tooltipTop span {
+  margin-top: 4px;
+  color: #dce7ff;
+  font-size: 10px;
+}
+
+.tooltipTop strong {
+  margin-top: 4px;
+  color: #fff5c9;
+  font-size: 13px;
+  line-height: 1.15;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.tooltipStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 9px;
+  margin-top: 8px;
+}
+
+.tooltipStats span {
+  color: #b6c7e8;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.tooltipStats b {
+  color: #ffd95b;
+}
+
+.tooltipMobs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tooltipMobs a {
+  min-width: 0;
+  color: #fff5c9;
+  text-decoration: none;
+  text-align: center;
+}
+
+.tooltipMobImg {
+  width: 30px;
+  height: 30px;
+}
+
+.tooltipMobs span,
+.tooltipMobs em {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tooltipMobs span {
+  font-size: 8px;
+}
+
+.tooltipMobs em {
+  color: #8fa4c5;
+  font-size: 7px;
+  font-style: normal;
+}
+
+.miniPanel {
+  min-height: 0;
+  padding: 12px;
+}
+
+.miniPanel > span {
+  display: block;
+  color: #ffd95b;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.miniPanel > strong {
+  display: block;
+  margin-top: 5px;
+  color: #fff5c9;
+  font-size: 24px;
+  line-height: 1.05;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.miniPanel > b {
+  display: block;
+  margin-top: 7px;
+  color: #dce7ff;
+  font-size: 10px;
+}
+
+.miniStats {
+  display: grid;
+  gap: 6px;
+  margin-top: 11px;
+}
+
+.miniStats em {
+  border: 1px solid #36455a;
+  background: rgba(5,9,16,.86);
+  padding: 7px 8px;
+  color: #c6d4ef;
+  font-size: 9px;
+  font-style: normal;
+}
+
+.miniMobs {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 11px;
+}
+
+.miniMobs a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #36455a;
+  background: rgba(5,9,16,.86);
+}
+
+.miniMobImg {
+  max-width: 42px;
+  max-height: 42px;
+}
+
+.miniBoss {
+  border-color: #7e1d2b !important;
+  background: rgba(109,16,29,.36) !important;
+}
+
+.miniActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.miniActions a {
+  border: 1px solid #394a61;
+  background: linear-gradient(180deg, #142134, #07101e);
+  color: #fff5c9;
+  padding: 7px 9px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.mobFallback {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #46576d;
+  color: #ffd95b;
+}
+
+@media (max-width: 760px) {
+  .stageCard {
+    width: min(380px, 100%);
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .browser {
+    width: 100%;
+  }
+}

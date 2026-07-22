@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./InventoryValueTool.module.css";
+import ItemSmartImage from "@/components/ItemSmartImage";
 import {
   compactInventory,
   entryValue,
@@ -57,12 +58,10 @@ function iconName(item: InventoryItem) {
 }
 
 function ItemIcon({ item, large = false }: { item: InventoryItem; large?: boolean }) {
-  const [failed, setFailed] = useState(false);
   const name = iconName(item);
-  if (!name || failed) return null;
   return (
     <span className={`${styles.itemIcon} ${large ? styles.itemIconLarge : ""}`}>
-      <img src={`/images/items/${name}.png`} alt="" loading="lazy" onError={() => setFailed(true)} />
+      <ItemSmartImage itemKey={item.item_key} iconPath={name} alt="" />
     </span>
   );
 }
@@ -342,7 +341,7 @@ export function InventoryValueTool() {
 
   async function copyInventory() {
     const payload = {
-      generated_by: "TBH Banco de Dados BR",
+      generated_by: "TBH Database",
       total_market_brl: portfolioSummary(entries).totalMarket,
       total_estimated_brl: portfolioSummary(entries).totalEstimated,
       items: compactInventory(entries),

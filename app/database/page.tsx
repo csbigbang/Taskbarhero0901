@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabase";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Explorador do Banco | TBH Banco de Dados BR",
+  title: "TBH Database | Central BR",
   description: "Central de dados do Task Bar Hero em português: itens, drops, monstros, stages, economia, cube e ferramentas BR.",
 };
 
@@ -141,10 +141,10 @@ export default async function DatabasePage({ searchParams }: { searchParams?: Pr
     <main className={styles.databaseShell}>
       <section className={styles.heroPanel}>
         <div>
-          <p className={styles.kicker}>TBH Banco de Dados BR</p>
-          <h1>Explorador do Banco</h1>
+          <p className={styles.kicker}>Central BR</p>
+          <h1>TBH Database</h1>
           <p>
-            Central organizada para navegar por tudo do jogo: itens, drops, stages, monstros, mercado, cube, save e ferramentas BR.
+            Central organizada do Task Bar Hero: itens, drops, fases, monstros, mercado, cube, save e ferramentas BR em um só lugar.
           </p>
         </div>
         <div className={styles.heroStats}>
@@ -201,10 +201,10 @@ export default async function DatabasePage({ searchParams }: { searchParams?: Pr
 
       <section className={styles.sectionHeader}>
         <div>
-          <p className={styles.kicker}>All Data</p>
+          <p className={styles.kicker}>Todos os dados</p>
           <h2>{filtered.length} dataset(s)</h2>
         </div>
-        <span>Banco de dados + ferramentas BR</span>
+        <span>TBH Database + ferramentas BR</span>
       </section>
 
       <section className={styles.datasetGrid}>

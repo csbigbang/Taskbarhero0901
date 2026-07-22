@@ -140,7 +140,7 @@ export default async function FarmOptimizerPage({ searchParams }: Props) {
           <form className={styles.formGrid} action="/farm/optimizer">
             <input name="q" defaultValue={q} placeholder="Item, fase, ID, chefe, material..." />
             <select name="grade" defaultValue={grade}>
-              <option value="">Todas raridades</option>
+              <option value="">Todas as raridades</option>
               {RARITIES.map((g) => <option key={g.key} value={g.key}>{g.pt}</option>)}
             </select>
             <select name="source" defaultValue={source}>

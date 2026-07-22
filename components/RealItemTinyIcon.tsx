@@ -1,27 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import ItemSmartImage from "@/components/ItemSmartImage";
 
 type Props = {
   iconPath?: string | null;
+  itemKey?: string | number | null;
   alt: string;
   size?: "sm" | "md" | "lg";
 };
 
-function cleanIconName(value?: string | null) {
-  if (!value) return "";
-  return value.trim().replace(/[^a-zA-Z0-9_-]/g, "");
-}
-
-export function RealItemTinyIcon({ iconPath, alt, size = "md" }: Props) {
-  const [hidden, setHidden] = useState(false);
-  const icon = cleanIconName(iconPath);
-
-  if (!icon || hidden) return null;
-
+export function RealItemTinyIcon({ iconPath, itemKey, alt, size = "md" }: Props) {
   return (
     <span className={`farm-real-icon farm-real-icon-${size}`}>
-      <img src={`/images/items/${icon}.png`} alt={alt} loading="lazy" onError={() => setHidden(true)} />
+      <ItemSmartImage itemKey={itemKey} iconPath={iconPath} alt={alt} />
     </span>
   );
 }

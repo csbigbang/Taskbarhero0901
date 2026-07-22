@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./SaveInspector.module.css";
+import ItemSmartImage from "@/components/ItemSmartImage";
 
 type SaveAnalysis = {
   ok: true;
@@ -161,10 +162,8 @@ async function loadItemRows(itemKeys: number[]) {
 }
 
 function ItemIcon({ row, itemKey }: { row?: ItemRow; itemKey?: number | null }) {
-  const [failed, setFailed] = useState(false);
-  const src = iconUrl(row, itemKey);
-  if (!src || failed) return null;
-  return <img className={styles.itemIcon} src={src} alt="" onError={() => setFailed(true)} />;
+  const raw = row?.icon_path || row?.icon || row?.image || row?.image_path || row?.asset || row?.asset_name;
+  return <ItemSmartImage className={styles.itemIcon} itemKey={itemKey || itemKeyOf(row)} iconPath={typeof raw === "string" ? raw : null} alt="" />;
 }
 
 function MiniItem({ itemKey, items }: { itemKey: number | null; items: ItemMap }) {

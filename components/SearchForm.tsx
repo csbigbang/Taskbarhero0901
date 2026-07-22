@@ -10,14 +10,14 @@ type Props = {
 
 export function SearchForm({ placeholder = "Pesquisar...", defaultValue = "", extra, resetHref }: Props) {
   return (
-    <form className="searchbar" action="" method="get">
+    <form className="searchbar tbh-pro-searchbar" action="" method="get">
       <div className="search-input-wrap">
         <span className="search-cursor" aria-hidden="true">▶</span>
         <input name="q" defaultValue={defaultValue} placeholder={placeholder} autoComplete="off" />
       </div>
       {extra}
       <button className="btn primary" type="submit">Buscar</button>
-      {resetHref ? <Link className="btn ghost" href={resetHref}>Limpar</Link> : null}
+      {resetHref ? <Link className="btn ghost" href={resetHref}>Limpar filtros</Link> : null}
     </form>
   );
 }

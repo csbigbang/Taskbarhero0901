@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { CubeData, CubeItem } from "@/lib/cube-calculator";
 import styles from "./CubeCalculator.module.css";
+import ItemSmartImage from "@/components/ItemSmartImage";
 
 const GRADE_ORDER = ["COMMON", "UNCOMMON", "RARE", "LEGENDARY", "IMMORTAL", "ARCANA", "BEYOND", "CELESTIAL", "DIVINE", "COSMIC"];
 const GRADE_LABEL: Record<string, string> = {
@@ -82,12 +83,10 @@ function cleanIconName(value?: string | null) {
 }
 
 function CubeIcon({ item }: { item: CubeItem }) {
-  const [hidden, setHidden] = useState(false);
   const icon = cleanIconName(item.icon_path || `Item_${item.item_key}`);
-  if (!icon || hidden) return null;
   return (
     <span className={styles.iconBox}>
-      <img src={`/images/items/${icon}.png`} alt={title(item)} loading="lazy" onError={() => setHidden(true)} />
+      <ItemSmartImage itemKey={item.item_key} iconPath={icon} alt={title(item)} />
     </span>
   );
 }

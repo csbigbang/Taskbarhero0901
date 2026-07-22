@@ -1,27 +1,34 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
-import { Press_Start_2P } from "next/font/google";
 import { BackToTop } from "@/components/BackToTop";
 import { Sidebar } from "@/components/Sidebar";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
+import "./tbh-polish.css";
+import "./tbh-user-images.css";
+import "./tbh-core-pages.css";
+import "./tbh-scale-70.css";
+import "./tbh-typography.css";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "TBH Banco de Dados BR";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "TBH Database";
 
-const pixelFont = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-pixel",
-});
+
+
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark",
+  themeColor: "#050914",
+};
 
 export const metadata: Metadata = {
   title: {
     default: siteName,
     template: `%s | ${siteName}`
   },
-  description: "Banco de dados brasileiro de itens, drops, fases e raridades de TBH: Task Bar Hero. Projeto de fãs, não oficial.",
+  description: "TBH Database: fan site brasileiro não oficial com itens, drops, fases e raridades de Task Bar Hero.",
   icons: {
     icon: "/favicon.svg"
   }
@@ -30,12 +37,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={pixelFont.variable}>
+      <body>
         <div className="wallpaper-layer" aria-hidden="true" />
         <div className="scanlines" aria-hidden="true" />
         <SiteHeader siteName={siteName} />
         <div className="app-shell">
-          <Suspense fallback={null}>
+          <Suspense fallback={<aside className="sidebar tbhdb-sidebar" aria-hidden="true" />}>
             <Sidebar />
           </Suspense>
           <div className="app-content">
@@ -43,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <footer className="footer">
               <div>
                 <strong>{siteName}</strong>
-                <p>Projeto de fãs, não oficial. Sem afiliação com os desenvolvedores de TBH: Task Bar Hero.</p>
+                <p>Fan site não oficial, feito por fãs. Sem afiliação com os desenvolvedores de TBH: Task Bar Hero.</p>
               </div>
               <div className="footer-links">
                 <Link href="/items">Itens</Link>
