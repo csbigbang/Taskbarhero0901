@@ -60,6 +60,38 @@ const SORTS = [
   { value: "name", label: "Nome" },
 ] as const;
 
+type PreferenceOption = {
+  code: string;
+  label: string;
+  active?: boolean;
+};
+
+const CURRENCY_OPTIONS: PreferenceOption[] = [
+  { code: "BRL", label: "R$1,00", active: true },
+  { code: "USD", label: "$1.00" },
+  { code: "EUR", label: "1,00 €" },
+  { code: "JPY", label: "¥1.00" },
+  { code: "PHP", label: "₱1.00" },
+  { code: "KRW", label: "₩1.00" },
+];
+
+const LANGUAGE_OPTIONS: PreferenceOption[] = [
+  { code: "PT", label: "Português", active: true },
+  { code: "EN", label: "English" },
+  { code: "ES", label: "Español" },
+  { code: "FR", label: "Français" },
+  { code: "DE", label: "Deutsch" },
+  { code: "PL", label: "Polski" },
+  { code: "TR", label: "Türkçe" },
+  { code: "RU", label: "Русский" },
+  { code: "JA", label: "日本語" },
+  { code: "KO", label: "한국어" },
+  { code: "ZH", label: "简体中文" },
+  { code: "TH", label: "ไทย" },
+  { code: "VI", label: "Tiếng Việt" },
+  { code: "ID", label: "Indonesia" },
+];
+
 function first(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
@@ -278,6 +310,37 @@ export default async function MarketPage({ searchParams }: Props) {
           <span className={styles.kicker}>Mercado Steam · BRL</span>
           <h1>Mercado</h1>
           <p>Preços armazenados da Steam com menor preço, mediana, volume, diferença percentual e histórico das últimas 24 horas.</p>
+          <details className={styles.preferenceMenu}>
+            <summary>
+              <span>BRL</span>
+              <strong>Português</strong>
+            </summary>
+            <div className={styles.preferencePanel}>
+              <section>
+                <h2>Currency</h2>
+                <div className={styles.preferenceGrid}>
+                  {CURRENCY_OPTIONS.map((option) => (
+                    <span className={option.active ? styles.preferenceActive : undefined} key={option.code}>
+                      <em>{option.code}</em>
+                      <strong>{option.label}</strong>
+                    </span>
+                  ))}
+                </div>
+              </section>
+              <section>
+                <h2>Language</h2>
+                <div className={styles.preferenceGrid}>
+                  {LANGUAGE_OPTIONS.map((option) => (
+                    <span className={option.active ? styles.preferenceActive : undefined} key={option.code}>
+                      <em>{option.code}</em>
+                      <strong>{option.label}</strong>
+                    </span>
+                  ))}
+                </div>
+              </section>
+              <p>Conversão e idiomas extras entram depois. Hoje o mercado usa BRL oficial da Steam e interface PT-BR.</p>
+            </div>
+          </details>
         </div>
         <div className={styles.heroStats}>
           <div><strong>{allRows.length}</strong><span>itens com preço</span></div>
