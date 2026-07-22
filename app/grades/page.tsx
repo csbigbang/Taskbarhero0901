@@ -8,16 +8,16 @@ import styles from "./grades.module.css";
 export const dynamic = "force-dynamic";
 
 const gradeAssetMap: Record<string, string> = {
-  COMMON: "/images/rarities/common.png",
-  UNCOMMON: "/images/rarities/uncommon.png",
-  RARE: "/images/rarities/rare.png",
-  LEGENDARY: "/images/rarities/legendary.png",
-  IMMORTAL: "/images/rarities/immortal.png",
-  ARCANA: "/images/rarities/arcana.png",
-  BEYOND: "/images/rarities/beyond.png",
-  CELESTIAL: "/images/rarities/celestial.png",
-  DIVINE: "/images/rarities/divine.png",
-  COSMIC: "/images/rarities/cosmic.png",
+  COMMON: "/tbh-real/rarities/common.png",
+  UNCOMMON: "/tbh-real/rarities/uncommon.png",
+  RARE: "/tbh-real/rarities/rare.png",
+  LEGENDARY: "/tbh-real/rarities/legendary.png",
+  IMMORTAL: "/tbh-real/rarities/immortal.png",
+  ARCANA: "/tbh-real/rarities/arcana.png",
+  BEYOND: "/tbh-real/rarities/beyond.png",
+  CELESTIAL: "/tbh-real/rarities/celestial.png",
+  DIVINE: "/tbh-real/rarities/divine.png",
+  COSMIC: "/tbh-real/rarities/cosmic.png",
 };
 
 const gradeSlotMap: Record<string, string> = {
