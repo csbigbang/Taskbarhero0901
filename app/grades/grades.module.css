@@ -77,13 +77,17 @@
   display: grid;
   place-items: center;
   gap: 6px;
-  padding: 12px 8px;
+  min-height: 84px;
+  padding: 10px 8px;
   border: 2px solid #577aa2;
   background: linear-gradient(180deg, rgba(10,18,31,.96), rgba(4,8,15,.96));
   box-shadow: 3px 3px 0 #000;
 }
 
 .stripChip img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
   image-rendering: pixelated;
 }
 
@@ -105,16 +109,16 @@
   gap: 14px;
   min-height: 280px;
   padding: 16px;
-  border: 2px solid color-mix(in srgb, var(--rarity-color) 55%, #5d7ea5);
+  border: 2px solid var(--rarity-color);
   background:
     linear-gradient(180deg, rgba(8, 15, 27, 0.98), rgba(4, 9, 17, 0.98)),
-    radial-gradient(circle at top right, color-mix(in srgb, var(--rarity-color) 18%, transparent), transparent 42%);
+    radial-gradient(circle at top right, rgba(255, 255, 255, .045), transparent 42%);
   box-shadow: 5px 5px 0 #000, inset 0 0 24px rgba(255,255,255,.025);
 }
 
 .card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 #000, 0 0 20px color-mix(in srgb, var(--rarity-color) 18%, transparent);
+  box-shadow: 7px 7px 0 #000, 0 0 18px var(--rarity-color);
 }
 
 .cardGlow {
@@ -140,25 +144,30 @@
   height: 74px;
   display: grid;
   place-items: center;
-  border: 2px solid color-mix(in srgb, var(--rarity-color) 55%, #6a89ae);
-  background: rgba(6, 12, 22, .95);
-  box-shadow: 3px 3px 0 #000;
+  border: 2px solid var(--rarity-color);
+  background:
+    linear-gradient(180deg, rgba(10, 18, 31, .88), rgba(3, 7, 13, .94));
+  box-shadow: 3px 3px 0 #000, inset 0 0 12px rgba(255,255,255,.04);
 }
 
-.slotBg {
-  position: absolute;
-  inset: 0;
-  background-image: var(--rarity-slot);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: .45;
-}
-
-.iconWrap img {
-  position: relative;
-  z-index: 1;
+.gradeSlot {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
   image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.55));
+}
+
+.gradeEffect {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
+  filter: drop-shadow(1px 2px 0 rgba(0,0,0,.65));
 }
 
 .topline {
@@ -188,7 +197,7 @@
 
 .keyTag {
   color: var(--rarity-color);
-  border-color: color-mix(in srgb, var(--rarity-color) 45%, rgba(255,255,255,.2));
+  border-color: var(--rarity-color);
 }
 
 .headerText h3 {
@@ -270,7 +279,7 @@
 }
 
 .actionBtnSecondary {
-  border: 2px solid color-mix(in srgb, var(--rarity-color) 55%, #5c7ca0);
+  border: 2px solid var(--rarity-color);
   background: linear-gradient(180deg, rgba(12, 22, 36, .96), rgba(6, 12, 22, .98));
   color: #e4eef9;
 }

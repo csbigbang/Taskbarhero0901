@@ -7,7 +7,7 @@ import styles from "./grades.module.css";
 
 export const dynamic = "force-dynamic";
 
-const gradeAssetMap: Record<string, string> = {
+const gradeEffectMap: Record<string, string> = {
   COMMON: "/tbh-real/rarities/common.png",
   UNCOMMON: "/tbh-real/rarities/uncommon.png",
   RARE: "/tbh-real/rarities/rare.png",
@@ -64,7 +64,7 @@ export default async function GradesPage() {
             {RARITIES.map((rarity, index) => (
               <div key={rarity.key} className={styles.stripChip} title={rarity.pt}>
                 <span className={styles.stripIndex}>{index + 1}</span>
-                <Image src={gradeAssetMap[rarity.key]} alt={rarity.pt} width={30} height={30} unoptimized />
+                <Image src={gradeSlotMap[rarity.key]} alt={rarity.pt} width={42} height={42} unoptimized />
               </div>
             ))}
           </div>
@@ -79,14 +79,13 @@ export default async function GradesPage() {
                 className={styles.card}
                 style={{
                   ["--rarity-color" as string]: rarity.color,
-                  ["--rarity-slot" as string]: `url(${gradeSlotMap[rarity.key]})`,
                 }}
               >
                 <div className={styles.cardGlow} />
                 <div className={styles.cardHeader}>
                   <div className={styles.iconWrap}>
-                    <div className={styles.slotBg} />
-                    <Image src={gradeAssetMap[rarity.key]} alt={rarity.pt} width={54} height={54} unoptimized />
+                    <Image className={styles.gradeSlot} src={gradeSlotMap[rarity.key]} alt={rarity.pt} width={68} height={68} unoptimized />
+                    <Image className={styles.gradeEffect} src={gradeEffectMap[rarity.key]} alt="" width={24} height={24} unoptimized />
                   </div>
 
                   <div className={styles.headerText}>
