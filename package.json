@@ -13,6 +13,7 @@
     "market:discover": "node scripts/discover-steam-market.mjs",
     "market:link": "node scripts/map-steam-market.mjs",
     "market:sync": "node scripts/sync-steam-market-prices.mjs",
+    "market:auto": "npm run market:discover && npm run market:sync",
     "market:all": "npm run market:discover && npm run market:link && npm run market:sync"
   },
   "dependencies": {

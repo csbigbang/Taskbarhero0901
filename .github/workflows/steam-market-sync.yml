@@ -1,0 +1,80 @@
+name: Atualizar mercado Steam
+
+on:
+  schedule:
+    # GitHub usa UTC. Executa às 02:23, 08:23, 14:23 e 20:23 UTC.
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      rebuild_mapping:
+        description: "Refazer o vínculo automático entre itens locais e Steam"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: steam-market-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-market:
+    name: Coletar e sincronizar preços
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Baixar o projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci --no-audit --no-fund
+
+      - name: Descobrir itens e preços atuais na Steam
+        run: npm run market:discover
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STEAM_APP_ID: "3678970"
+          STEAM_MARKET_CURRENCY: "7"
+          STEAM_MARKET_COUNTRY: "BR"
+          STEAM_MARKET_LANGUAGE: "brazilian"
+          STEAM_MARKET_DELAY_MS: "3500"
+          STEAM_DISCOVER_MAX: "1200"
+          STEAM_DISCOVER_COUNT: "100"
+          STEAM_MARKET_RETRIES: "5"
+          STEAM_MARKET_RETRY_BASE_MS: "5000"
+
+      - name: Refazer vínculos do catálogo
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.rebuild_mapping }}
+        run: npm run market:link
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STEAM_APP_ID: "3678970"
+          STEAM_AUTO_ACCEPT: "true"
+          STEAM_AUTO_ACCEPT_SCORE: "92"
+          STEAM_MAP_LIMIT: "5000"
+          STEAM_MAP_LOCAL_LIMIT: "0"
+
+      - name: Publicar preços no mercado do site
+        run: npm run market:sync
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STEAM_APP_ID: "3678970"
+          STEAM_MARKET_CURRENCY: "7"
+
+      - name: Exibir auditoria resumida
+        run: node scripts/audit-steam-prices.mjs 20
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
